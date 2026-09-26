@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
 <title>CraftPic — Minecraft Thumbnail Maker</title>
-<meta name="description" content="Pose Minecraft characters in 3D, turn item textures into 3D, and design professional YouTube thumbnails.">
+<meta name="description" content="Design custom blocks, pose characters, extrude items, and build YouTube thumbnails.">
 <meta name="theme-color" content="#3b6ef5">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -43,29 +43,24 @@ button,input,select,textarea{font-family:inherit;color:inherit}
 
 .app{height:100vh;height:100dvh;display:flex;flex-direction:column;overflow:hidden}
 
-/* ---------- TOP BAR ---------- */
 .topbar{
   flex:0 0 auto;display:flex;align-items:center;gap:12px;
   padding:10px 16px;padding-top:calc(10px + env(safe-area-inset-top));
-  background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(18px);
-  -webkit-backdrop-filter:saturate(180%) blur(18px);
-  border-bottom:1px solid var(--border);z-index:50;
-  position:relative;
+  background:#ffffff;
+  border-bottom:1px solid var(--border);z-index:50;position:relative;
 }
 .brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:15.5px;letter-spacing:-.3px;white-space:nowrap;flex:0 0 auto}
 .brand .logo{
   width:30px;height:30px;border-radius:9px;
-  background:linear-gradient(140deg,#5b86ff,#2a56d6);
-  display:grid;place-items:center;box-shadow:0 4px 12px -4px rgba(59,110,245,.7);
-  flex:0 0 auto;
+  background:var(--accent);
+  display:grid;place-items:center;flex:0 0 auto;
 }
 .brand .logo svg{width:18px;height:18px;display:block}
 .brand span.accent{color:var(--accent)}
 
 .tabs{
   display:flex;gap:4px;background:var(--bg-2);padding:4px;border-radius:14px;
-  border:1px solid var(--border);overflow-x:auto;scrollbar-width:none;flex:0 1 auto;
-  min-width:0;
+  border:1px solid var(--border);overflow-x:auto;scrollbar-width:none;flex:0 1 auto;min-width:0;
 }
 .tabs::-webkit-scrollbar{display:none}
 .tab{
@@ -85,24 +80,20 @@ button,input,select,textarea{font-family:inherit;color:inherit}
 }
 .btn:hover{background:var(--panel-2);border-color:#c3d2e8;transform:translateY(-1px)}
 .btn:active{transform:translateY(0) scale(.985)}
-.btn.primary{background:linear-gradient(160deg,#4b7bff,#2a56d6);border-color:transparent;color:#fff;box-shadow:0 6px 18px -8px rgba(59,110,245,.9)}
-.btn.primary:hover{background:linear-gradient(160deg,#5c88ff,#315ee0);box-shadow:0 10px 22px -8px rgba(59,110,245,.9)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 6px 18px -8px rgba(59,110,245,.9)}
+.btn.primary:hover{background:var(--accent-2);border-color:var(--accent-2)}
 .btn.ghost{background:transparent;border-color:transparent;color:var(--text-2)}
 .btn.ghost:hover{background:var(--bg-2);color:var(--text)}
 .btn.block{width:100%}
 .btn.sm{padding:5px 10px;font-size:12px;border-radius:9px}
-.btn.danger{color:var(--danger);border-color:#f7d6d7;background:#fff5f5}
-.btn.danger:hover{background:#ffecec;border-color:#f0b4b6}
 .btn:disabled{opacity:.45;pointer-events:none}
 
 #installBtn{
-  background:linear-gradient(160deg,#4b7bff,#2a56d6);
-  border-color:transparent;color:#fff;
+  background:var(--accent);border-color:var(--accent);color:#fff;
   box-shadow:0 6px 18px -8px rgba(59,110,245,.9);
 }
-#installBtn:hover{background:linear-gradient(160deg,#5c88ff,#315ee0);color:#fff}
+#installBtn:hover{background:var(--accent-2);border-color:var(--accent-2);color:#fff}
 
-/* ---------- MAIN ---------- */
 main{flex:1 1 auto;position:relative;overflow:hidden;display:flex}
 .view{
   position:absolute;inset:0;display:none;
@@ -115,8 +106,7 @@ main{flex:1 1 auto;position:relative;overflow:hidden;display:flex}
 .panel{
   background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
   box-shadow:var(--shadow);overflow-y:auto;overflow-x:hidden;
-  padding:4px;scrollbar-width:thin;
-  min-height:0;
+  padding:4px;scrollbar-width:thin;min-height:0;
 }
 .panel::-webkit-scrollbar{width:8px}
 .panel::-webkit-scrollbar-thumb{border:2px solid var(--panel)}
@@ -124,27 +114,18 @@ main{flex:1 1 auto;position:relative;overflow:hidden;display:flex}
 .section:last-child{border-bottom:0}
 .section h3{
   margin:0 0 11px;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--muted);display:flex;align-items:center;gap:7px;
+  color:var(--muted);
 }
-.section h3 .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:0 0 auto}
 .hint{font-size:11.5px;color:var(--muted);line-height:1.5;margin:8px 0 0}
 
 .stage{
   position:relative;border-radius:var(--radius);overflow:hidden;
-  background:radial-gradient(120% 100% at 50% 0%,#ffffff 0%,#f2f6fd 45%,#e8eefa 100%);
+  background:#f2f6fd;
   border:1px solid var(--border);box-shadow:var(--shadow);
   display:flex;align-items:center;justify-content:center;min-height:0;min-width:0;
 }
-.stage::before{
-  content:'';position:absolute;inset:0;pointer-events:none;
-  background-image:linear-gradient(rgba(59,110,245,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(59,110,245,.045) 1px,transparent 1px);
-  background-size:28px 28px;
-  mask-image:radial-gradient(90% 90% at 50% 50%,#000 20%,transparent 100%);
-  -webkit-mask-image:radial-gradient(90% 90% at 50% 50%,#000 20%,transparent 100%);
-}
 .gl-canvas{display:block;border-radius:12px;touch-action:none;position:relative;z-index:1}
 
-/* ---------- CONTROLS ---------- */
 .ctrl{margin-bottom:12px}
 .ctrl:last-child{margin-bottom:0}
 .ctrl-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;gap:8px}
@@ -242,6 +223,98 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
 .part-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
 .part-btn.active svg{opacity:1}
 
+/* Face grid for Custom Block */
+.face-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.face-slot{
+  border:1px solid var(--border-2);border-radius:12px;padding:8px;
+  background:var(--panel-2);
+}
+.face-slot.linked{background:var(--accent-soft);border-color:#b9cdff}
+.face-slot-label{
+  font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;
+}
+.face-slot.linked .face-slot-label{color:var(--accent)}
+.face-preview{
+  position:relative;aspect-ratio:1;border-radius:8px;overflow:hidden;
+  background:repeating-conic-gradient(#eef3fb 0% 25%,#fff 0% 50%) 50%/12px 12px;
+  border:1px solid var(--border);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+}
+.face-preview img{
+  width:100%;height:100%;object-fit:contain;
+  image-rendering:pixelated;image-rendering:crisp-edges;
+  display:none;
+}
+.face-preview.has-img img{display:block}
+.face-preview.has-img .face-plus{display:none}
+.face-plus{
+  font-size:22px;color:var(--muted);font-weight:300;line-height:1;
+}
+.face-preview.linked-preview{
+  background:transparent;
+}
+.face-preview .linked-tag{
+  font-size:11px;font-weight:700;color:var(--accent);
+  padding:4px 8px;background:#fff;border-radius:8px;
+  border:1px solid #b9cdff;
+}
+.face-buttons{display:flex;gap:4px;margin-top:6px}
+.face-buttons .btn{flex:1;padding:5px 4px;font-size:11px;border-radius:8px}
+.face-link{
+  margin-top:6px;font-size:11px;padding:5px 8px;border-radius:8px;
+}
+
+/* Asset action buttons grid (4 blue buttons) */
+.asset-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:5px;
+  padding:0 10px 12px;
+  flex:0 0 auto;
+}
+.asset-actions button{
+  border:1px solid var(--accent);
+  border-radius:9px;
+  padding:10px 4px;
+  font-size:12px;
+  font-weight:700;
+  cursor:pointer;transition:all .15s var(--ease);
+  background:var(--accent);color:#fff;
+  white-space:nowrap;letter-spacing:.01em;
+}
+.asset-actions button:hover{background:var(--accent-2);border-color:var(--accent-2)}
+.asset-actions button:active{transform:scale(.97)}
+
+/* Face picker modal */
+.face-modal{
+  position:fixed;inset:0;background:rgba(14,26,43,.55);
+  display:flex;align-items:center;justify-content:center;
+  z-index:500;padding:20px;backdrop-filter:blur(2px);
+}
+.face-modal[hidden]{display:none}
+.face-modal-inner{
+  background:#fff;border-radius:16px;padding:20px;
+  box-shadow:var(--shadow-lg);max-width:360px;width:100%;
+}
+.face-modal-inner h3{
+  margin:0 0 6px;font-size:16px;font-weight:700;color:var(--text);
+}
+.face-modal-inner p{
+  margin:0 0 14px;font-size:12.5px;color:var(--muted);
+}
+.face-modal-buttons{
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px;
+}
+.face-modal-buttons button{
+  border:1px solid var(--border-2);background:#fff;color:var(--text);
+  padding:12px 6px;border-radius:10px;font-size:12.5px;font-weight:600;
+  cursor:pointer;transition:all .15s var(--ease);
+}
+.face-modal-buttons button:hover{
+  background:var(--accent);border-color:var(--accent);color:#fff;
+}
+
 .gallery{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .shot{
   position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--border);
@@ -252,8 +325,7 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
 .shot img{width:100%;height:100%;object-fit:contain;display:block}
 .shot .shot-actions{
   position:absolute;inset:auto 0 0 0;display:flex;gap:4px;padding:5px;
-  background:linear-gradient(transparent,rgba(10,20,40,.75));
-  opacity:0;transition:opacity .2s var(--ease);
+  background:rgba(10,20,40,.75);opacity:0;transition:opacity .2s var(--ease);
 }
 .shot:hover .shot-actions,.shot:active .shot-actions{opacity:1}
 .shot .shot-actions button{
@@ -272,9 +344,14 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
 .layer-row.selected{background:var(--accent-soft);border-color:#b9cdff;color:var(--accent)}
 .layer-row.drag-over{border-top:2px solid var(--accent)}
 .layer-row .lname{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.layer-row .badge{
+  font-size:9.5px;font-weight:700;letter-spacing:.05em;
+  padding:2px 5px;border-radius:4px;background:var(--bg-2);color:var(--muted);flex:0 0 auto;
+}
+.layer-row.selected .badge{background:#fff;color:var(--accent)}
 .layer-row .icon-btn{
   border:0;background:transparent;width:22px;height:22px;border-radius:6px;cursor:pointer;
-  display:grid;place-items:center;color:var(--muted);transition:all .15s;flex:0 0 auto;font-size:11px;
+  display:grid;place-items:center;color:var(--muted);transition:all .15s;flex:0 0 auto;font-size:11px;font-weight:700;
 }
 .layer-row .icon-btn:hover{background:rgba(0,0,0,.06);color:var(--text)}
 .layer-row .icon-btn.del:hover{background:#ffe9e9;color:var(--danger)}
@@ -293,7 +370,6 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
 
 .empty{font-size:12px;color:var(--muted);text-align:center;padding:16px 8px;line-height:1.5}
 .stack{display:flex;flex-direction:column;gap:8px}
-
 .undo-row{display:flex;gap:6px}
 .undo-row .btn{flex:1;justify-content:center}
 
@@ -305,125 +381,164 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
 }
 .toast.show{opacity:1;transform:translate(-50%,0)}
 
+/* ========== ASSETS TAB ========== */
+#view-assets.active{
+  display:flex !important;flex-direction:column !important;
+  grid-template-columns:none !important;grid-template-rows:none !important;
+  padding:0 !important;gap:0 !important;
+}
+.asset-toolbar{
+  flex:0 0 auto;display:flex;align-items:center;gap:12px;
+  padding:14px 16px 10px;background:var(--bg);
+}
+.asset-search{flex:1 1 auto;min-width:120px;position:relative}
+.asset-search input{
+  width:100%;padding:10px 14px 10px 38px;
+  border:1px solid var(--border-2);border-radius:12px;background:#fff;font-size:14px;font-weight:500;
+  outline:none;transition:all .18s var(--ease);
+}
+.asset-search input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-ring)}
+.asset-search::before{
+  content:'';position:absolute;left:13px;top:50%;transform:translateY(-50%);
+  width:13px;height:13px;border:2px solid var(--muted);border-radius:50%;pointer-events:none;
+}
+.asset-search::after{
+  content:'';position:absolute;left:22px;top:calc(50% + 5px);
+  width:6px;height:2px;background:var(--muted);transform:rotate(45deg);border-radius:2px;pointer-events:none;
+}
+.asset-count{
+  flex:0 0 auto;font-size:12.5px;font-weight:600;color:var(--muted);
+  background:var(--bg-2);padding:6px 12px;border-radius:20px;white-space:nowrap;
+}
+.asset-grid{
+  flex:1 1 auto;
+  min-height:0;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  grid-auto-rows:340px;
+  gap:16px;
+  padding:8px 16px 24px;
+  overflow-y:auto;
+  overflow-x:hidden;
+  align-content:start;
+  -webkit-overflow-scrolling:touch;
+}
+.asset-card{
+  display:flex;
+  flex-direction:column;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transition:transform .2s var(--ease),box-shadow .2s var(--ease);
+  height:100%;
+  width:100%;
+  min-height:0;
+}
+.asset-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.asset-thumb{
+  flex:1 1 auto;
+  min-height:0;
+  width:100%;
+  padding:0;
+  display:block;
+  background:#fff;
+  overflow:hidden;
+  border-bottom:1px solid var(--border);
+}
+.asset-thumb img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  image-rendering:pixelated;
+  image-rendering:crisp-edges;
+  -ms-interpolation-mode:nearest-neighbor;
+}
+.asset-name{
+  display:block;
+  flex:0 0 auto;
+  font-size:12px;
+  font-weight:700;
+  padding:10px 12px 8px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  text-align:left;
+  color:var(--text-2);
+  height:34px;
+  box-sizing:border-box;
+}
+.asset-loader{
+  grid-column:1/-1;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:12px;
+  padding:60px 20px;color:var(--muted);font-size:14px;text-align:center;
+}
+.asset-loader .spinner{
+  width:32px;height:32px;border-radius:50%;
+  border:3px solid var(--border-2);border-top-color:var(--accent);
+  animation:spin .8s linear infinite;
+}
+.asset-sentinel{
+  grid-column:1/-1;display:flex;justify-content:center;align-items:center;
+  padding:20px;min-height:60px;
+}
+.asset-sentinel .spinner{
+  width:26px;height:26px;border-radius:50%;
+  border:3px solid var(--border-2);border-top-color:var(--accent);
+  animation:spin .8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
 @media (max-width:1180px){
   .view{grid-template-columns:272px minmax(0,1fr) 264px}
 }
-
-/* =========================================================
-   MOBILE LAYOUT — stack everything vertically, let main scroll
-   ========================================================= */
 @media (max-width:900px){
-  main{
-    overflow-y:auto;
-    overflow-x:hidden;
-    -webkit-overflow-scrolling:touch;
-    display:block;
+  main{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;display:block}
+  .view,.view.active{
+    position:relative;inset:auto;top:auto;right:auto;bottom:auto;left:auto;
+    display:none;width:100%;height:auto;min-height:0;
+    padding:12px;padding-bottom:calc(12px + env(safe-area-inset-bottom));
+    gap:12px;animation:none;
   }
-  .view,
-  .view.active{
-    position:relative;
-    inset:auto;
-    top:auto;right:auto;bottom:auto;left:auto;
-    display:none;
-    width:100%;
-    height:auto;
-    min-height:0;
-    padding:12px;
-    padding-bottom:calc(12px + env(safe-area-inset-bottom));
-    gap:12px;
-    animation:none;
-  }
-  .view.active{
-    display:flex;
-    flex-direction:column;
-  }
-
-  /* Panel: normal flow, no internal scroll */
-  .view .panel{
-    max-height:none;
-    overflow:visible;
-    flex:0 0 auto;
-    width:100%;
-    order:2;
-    padding:0;
-  }
-  .view .panel .section:first-child{border-top-left-radius:var(--radius);border-top-right-radius:var(--radius)}
-  .view .panel .section:last-child{border-bottom-left-radius:var(--radius);border-bottom-right-radius:var(--radius)}
-
-  /* Stage goes on top, gets a fixed height */
-  .stage{
-    order:1;
-    flex:0 0 auto;
-    height:52vh;
-    min-height:280px;
-    max-height:60vh;
-    width:100%;
-    padding:8px;
-  }
-  #thumbStage{
-    height:auto;
-    min-height:42vh;
-    max-height:none;
-    padding:14px 8px;
-  }
-
-  /* Topbar: brand + install on row 1, tabs on row 2 */
-  .topbar{
-    flex-wrap:wrap;
-    gap:8px;
-    padding:10px 12px;
-    padding-top:calc(10px + env(safe-area-inset-top));
-  }
-  .brand{order:1}
-  .brand span.name{display:inline}
+  .view.active{display:flex;flex-direction:column}
+  .view .panel{max-height:none;overflow:visible;flex:0 0 auto;width:100%;order:2;padding:0}
+  .stage{order:1;flex:0 0 auto;height:52vh;min-height:280px;max-height:60vh;width:100%;padding:8px}
+  #thumbStage{height:auto;min-height:42vh;max-height:none;padding:14px 8px}
+  .topbar{flex-wrap:wrap;gap:8px;padding:10px 12px;padding-top:calc(10px + env(safe-area-inset-top))}
+  .brand{order:1}.brand span.name{display:inline}
   .spacer{display:none}
-  #installBtn{
-    order:2;
-    margin-left:auto;
-    padding:7px 12px;
-    font-size:12px;
-  }
-  .tabs{
-    order:3;
-    flex:1 1 100%;
-    width:100%;
-    padding:3px;
-  }
-  .tab{
-    flex:1 1 0;
-    min-width:0;
-    text-align:center;
-    padding:8px 6px;
-    font-size:12.5px;
-    overflow:hidden;
-    text-overflow:ellipsis;
-  }
-
+  #installBtn{order:2;margin-left:auto;padding:7px 12px;font-size:12px}
+  .tabs{order:3;flex:1 1 100%;width:100%;padding:3px}
+  .tab{flex:1 1 0;min-width:0;text-align:center;padding:8px 4px;font-size:12px;overflow:hidden;text-overflow:ellipsis}
   .gallery{grid-template-columns:repeat(3,1fr)}
-
-  /* Keep shot actions visible on touch */
   .shot .shot-actions{opacity:1}
-
-  /* Slider thumbs slightly bigger for touch */
   input[type=range]::-webkit-slider-thumb{width:20px;height:20px;margin-top:-7.5px}
   input[type=range]::-moz-range-thumb{width:19px;height:19px}
-
-  /* Prevent iOS from zooming on input focus */
   input[type=text],input[type=number],textarea,select,.val-input{font-size:16px}
   .val-input{width:52px}
+  #view-assets.active{display:flex !important;flex-direction:column !important;padding:0 !important;min-height:calc(100vh - 140px)}
+  .asset-toolbar{padding:12px 12px 8px}
+  .asset-grid{flex:1 1 auto;min-height:400px;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));grid-auto-rows:270px;gap:12px;padding:6px 12px 20px}
+  .asset-thumb{padding:0}
+  .asset-name{font-size:11px;padding:8px 10px 6px;height:30px}
+  .asset-actions{padding:0 8px 10px;gap:4px}
+  .asset-actions button{font-size:11px;padding:9px 2px}
 }
-
 @media (max-width:480px){
   .gallery{grid-template-columns:repeat(2,1fr)}
-  .tab{font-size:11.5px;padding:7px 4px}
+  .tab{font-size:11px;padding:7px 3px}
   .brand span.name{font-size:14px}
   .brand .logo{width:26px;height:26px}
   .brand .logo svg{width:16px;height:16px}
   .stage{height:48vh;min-height:240px}
   #thumbStage{min-height:38vh}
+  .asset-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));grid-auto-rows:230px;gap:10px;padding:6px 8px 20px}
+  .asset-thumb{padding:0}
+  .asset-actions button{font-size:10px;padding:8px 2px}
+  .face-grid{grid-template-columns:1fr 1fr}
 }
-
-/* Landscape phones: give the stage more room, less padding */
 @media (max-width:900px) and (orientation:landscape){
   .stage{height:70vh;max-height:70vh}
   #thumbStage{min-height:60vh}
@@ -448,28 +563,29 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
     <nav class="tabs">
       <button class="tab active" data-view="character">Pose Character</button>
       <button class="tab" data-view="item">Pose Item</button>
+      <button class="tab" data-view="block">Custom Block</button>
       <button class="tab" data-view="thumb">Make Thumbnail</button>
+      <button class="tab" data-view="assets">Assets</button>
     </nav>
 
     <div class="spacer"></div>
-    <button class="btn" id="installBtn">⬇ Download App</button>
+    <button id="installBtn">Install App</button>
   </header>
 
   <main>
-    <!-- ============ POSE CHARACTER ============ -->
+    <!-- ===== POSE CHARACTER ===== -->
     <section class="view active" id="view-character">
       <aside class="panel">
         <div class="section">
-          <h3><span class="dot"></span>History</h3>
+          <h3>History</h3>
           <div class="undo-row">
-            <button class="btn sm" id="btnCharUndo" title="Undo (Ctrl+Z)">↶ Undo</button>
-            <button class="btn sm" id="btnCharRedo" title="Redo (Ctrl+Shift+Z)">↷ Redo</button>
+            <button class="btn sm" id="btnCharUndo">Undo</button>
+            <button class="btn sm" id="btnCharRedo">Redo</button>
           </div>
         </div>
-
         <div class="section">
-          <h3><span class="dot"></span>Character</h3>
-          <button class="btn primary block" id="btnUploadSkin">📁 Import Skin PNG</button>
+          <h3>Character</h3>
+          <button class="btn primary block" id="btnUploadSkin">Import Skin PNG</button>
           <input type="file" id="skinFile" accept="image/png,image/*" hidden>
           <div style="height:8px"></div>
           <div class="seg" id="skinType">
@@ -479,16 +595,14 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
           <label class="chk"><input type="checkbox" id="chkOverlay" checked> Render overlay layer</label>
           <label class="chk"><input type="checkbox" id="chkGizmo" checked> Show transform gizmo</label>
           <div style="height:6px"></div>
-          <button class="btn ghost block sm" id="btnResetSkin">↺ Reset to Steve</button>
+          <button class="btn ghost block sm" id="btnResetSkin">Reset to Steve</button>
         </div>
-
         <div class="section">
-          <h3><span class="dot"></span>Pose Presets</h3>
+          <h3>Pose Presets</h3>
           <div class="chips" id="posePresets"></div>
         </div>
-
         <div class="section">
-          <h3><span class="dot"></span>Body Part</h3>
+          <h3>Body Part</h3>
           <div class="part-list" id="partList"></div>
           <div class="seg" id="gizmoMode" style="margin-bottom:12px">
             <button data-mode="rotate" class="active">Rotate</button>
@@ -497,25 +611,23 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
           <div id="partControls"><p class="empty">Select a body part to edit it.</p></div>
         </div>
       </aside>
-
       <div class="stage" id="charStage"></div>
-
       <aside class="panel">
         <div class="section">
-          <h3><span class="dot"></span>Camera</h3>
+          <h3>Camera</h3>
           <div class="chips" style="margin-bottom:10px">
             <button class="chip" data-cam="front">Front</button>
             <button class="chip" data-cam="side">Side</button>
             <button class="chip" data-cam="three">3/4</button>
             <button class="chip" data-cam="closeup">Close-up</button>
           </div>
-          <button class="btn block sm" id="btnFitView" style="margin-bottom:10px">🎯 Fit View to Model</button>
+          <button class="btn block sm" id="btnFitView" style="margin-bottom:10px">Fit View to Model</button>
           <label class="chk"><input type="checkbox" id="chkAutoRotate"> Auto-rotate turntable</label>
+          <label class="chk"><input type="checkbox" id="chkCharShadows" checked> Shadows (3D shading)</label>
           <div class="ctrl" id="charLightCtrl"></div>
         </div>
-
         <div class="section">
-          <h3><span class="dot"></span>Capture</h3>
+          <h3>Capture</h3>
           <div class="ctrl">
             <div class="ctrl-head"><label>Aspect ratio</label></div>
             <select id="charAspect">
@@ -535,68 +647,61 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
               <option value="2160">4K — 2160p</option>
             </select>
           </div>
-          <button class="btn primary block" id="btnCharCapture">📸 Capture Transparent PNG</button>
-          <p class="hint">Captures at the resolution above with a fully transparent background.</p>
+          <button class="btn primary block" id="btnCharCapture">Capture Transparent PNG</button>
         </div>
-
         <div class="section">
-          <h3><span class="dot"></span>Captures</h3>
+          <h3>Captures</h3>
           <div class="gallery" id="charGallery"></div>
           <p class="empty" id="charGalleryEmpty">No captures yet.</p>
         </div>
       </aside>
     </section>
 
-    <!-- ============ POSE ITEM ============ -->
+    <!-- ===== POSE ITEM ===== -->
     <section class="view" id="view-item">
       <aside class="panel">
         <div class="section">
-          <h3><span class="dot"></span>History</h3>
+          <h3>History</h3>
           <div class="undo-row">
-            <button class="btn sm" id="btnItemUndo" title="Undo (Ctrl+Z)">↶ Undo</button>
-            <button class="btn sm" id="btnItemRedo" title="Redo (Ctrl+Shift+Z)">↷ Redo</button>
+            <button class="btn sm" id="btnItemUndo">Undo</button>
+            <button class="btn sm" id="btnItemRedo">Redo</button>
           </div>
         </div>
-
         <div class="section">
-          <h3><span class="dot"></span>Item Texture</h3>
-          <button class="btn primary block" id="btnUploadItem">📁 Import Item PNG</button>
+          <h3>Item Texture</h3>
+          <button class="btn primary block" id="btnUploadItem">Import Item PNG</button>
           <input type="file" id="itemFile" accept="image/png,image/*" hidden>
-          <p class="hint">Every visible pixel becomes a 3D cube. Works best with 16×16 or 32×32 textures.</p>
+          <p class="hint">Every visible pixel becomes a 3D cube.</p>
         </div>
-
         <div class="section">
-          <h3><span class="dot"></span>Extrusion</h3>
+          <h3>Extrusion</h3>
           <div class="ctrl" id="itemDepthCtrl"></div>
           <div class="ctrl" id="itemScaleCtrl"></div>
           <label class="chk"><input type="checkbox" id="chkItemWire"> Show wireframe grid</label>
           <label class="chk"><input type="checkbox" id="chkItemSpin"> Auto-rotate item</label>
           <label class="chk"><input type="checkbox" id="chkItemGizmo" checked> Show transform gizmo</label>
         </div>
-
         <div class="section">
-          <h3><span class="dot"></span>Transform</h3>
+          <h3>Transform</h3>
           <div id="itemControls"></div>
         </div>
       </aside>
-
       <div class="stage" id="itemStage"></div>
-
       <aside class="panel">
         <div class="section">
-          <h3><span class="dot"></span>Camera</h3>
+          <h3>Camera</h3>
           <div class="chips" style="margin-bottom:10px">
             <button class="chip" data-icam="front">Front</button>
             <button class="chip" data-icam="iso">Isometric</button>
             <button class="chip" data-icam="top">Top</button>
           </div>
-          <button class="btn block sm" id="btnFitItemView" style="margin-bottom:10px">🎯 Fit View to Item</button>
+          <button class="btn block sm" id="btnFitItemView" style="margin-bottom:10px">Fit View to Item</button>
           <label class="chk"><input type="checkbox" id="chkItemAuto"> Auto-rotate turntable</label>
+          <label class="chk"><input type="checkbox" id="chkItemShadows" checked> Shadows (3D shading)</label>
           <div class="ctrl" id="itemLightCtrl"></div>
         </div>
-
         <div class="section">
-          <h3><span class="dot"></span>Capture</h3>
+          <h3>Capture</h3>
           <div class="ctrl">
             <div class="ctrl-head"><label>Aspect ratio</label></div>
             <select id="itemAspect">
@@ -615,45 +720,107 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
               <option value="2160">4K — 2160p</option>
             </select>
           </div>
-          <button class="btn primary block" id="btnItemCapture">📸 Capture Transparent PNG</button>
+          <button class="btn primary block" id="btnItemCapture">Capture Transparent PNG</button>
         </div>
-
         <div class="section">
-          <h3><span class="dot"></span>Captures</h3>
+          <h3>Captures</h3>
           <div class="gallery" id="itemGallery"></div>
           <p class="empty" id="itemGalleryEmpty">No captures yet.</p>
         </div>
       </aside>
     </section>
 
-    <!-- ============ MAKE THUMBNAIL ============ -->
+    <!-- ===== CUSTOM BLOCK ===== -->
+    <section class="view" id="view-block">
+      <aside class="panel">
+        <div class="section">
+          <h3>Faces</h3>
+          <div class="face-grid" id="faceGrid"></div>
+        </div>
+        <div class="section">
+          <h3>Reset</h3>
+          <button class="btn ghost block sm" id="btnResetBlock">Clear All Faces</button>
+        </div>
+      </aside>
+      <div class="stage" id="blockStage"></div>
+      <aside class="panel">
+        <div class="section">
+          <h3>Camera</h3>
+          <div class="chips" style="margin-bottom:10px">
+            <button class="chip" data-bcam="front">Front</button>
+            <button class="chip" data-bcam="side">Side</button>
+            <button class="chip" data-bcam="three">3/4</button>
+            <button class="chip" data-bcam="top">Top</button>
+          </div>
+          <button class="btn block sm" id="btnFitBlockView" style="margin-bottom:10px">Fit View to Block</button>
+          <label class="chk"><input type="checkbox" id="chkBlockSpin"> Auto-rotate turntable</label>
+          <label class="chk"><input type="checkbox" id="chkBlockShadows" checked> Shadows (3D shading)</label>
+          <div class="ctrl" id="blockLightCtrl"></div>
+        </div>
+        <div class="section">
+          <h3>Capture</h3>
+          <div class="ctrl">
+            <div class="ctrl-head"><label>Aspect ratio</label></div>
+            <select id="blockAspect">
+              <option value="1.7777" selected>16 : 9 — YouTube</option>
+              <option value="1">1 : 1 — Square</option>
+              <option value="0.8">4 : 5</option>
+              <option value="0.5625">9 : 16 — Shorts</option>
+            </select>
+          </div>
+          <div class="ctrl">
+            <div class="ctrl-head"><label>Resolution</label></div>
+            <select id="blockRes">
+              <option value="720">HD — 720p</option>
+              <option value="1080" selected>Full HD — 1080p</option>
+              <option value="1440">QHD — 1440p</option>
+              <option value="2160">4K — 2160p</option>
+            </select>
+          </div>
+          <button class="btn primary block" id="btnBlockCapture">Capture Transparent PNG</button>
+          <p class="hint">Renders the block with a transparent background.</p>
+        </div>
+        <div class="section">
+          <h3>Captures</h3>
+          <div class="gallery" id="blockGallery"></div>
+          <p class="empty" id="blockGalleryEmpty">No captures yet.</p>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ===== MAKE THUMBNAIL ===== -->
     <section class="view" id="view-thumb">
       <aside class="panel">
         <div class="section">
-          <h3><span class="dot"></span>History</h3>
+          <h3>History</h3>
           <div class="undo-row">
-            <button class="btn sm" id="btnUndo" title="Undo (Ctrl+Z)">↶ Undo</button>
-            <button class="btn sm" id="btnRedo" title="Redo (Ctrl+Shift+Z)">↷ Redo</button>
+            <button class="btn sm" id="btnUndo">Undo</button>
+            <button class="btn sm" id="btnRedo">Redo</button>
           </div>
         </div>
-
         <div class="section">
-          <h3><span class="dot"></span>Add Layer</h3>
+          <h3>Add Layer</h3>
           <div class="stack">
-            <button class="btn block" id="btnAddImage">🖼 Image</button>
+            <button class="btn block" id="btnAddImage">Image</button>
             <input type="file" id="thumbImgFile" accept="image/*" hidden multiple>
-            <button class="btn block" id="btnAddText">🔤 Text</button>
-            <button class="btn block" id="btnAddEffect">✨ Effect / Overlay</button>
+            <button class="btn block" id="btnAddText">Text</button>
+            <button class="btn block" id="btnAddEffect">Effect / Overlay</button>
           </div>
         </div>
-
         <div class="section">
-          <h3><span class="dot"></span>Canvas</h3>
+          <h3>Fonts</h3>
+          <button class="btn block sm" id="btnImportFont">Import Custom Font</button>
+          <input type="file" id="fontFile" accept=".ttf,.otf,.woff,.woff2,font/*" hidden>
+          <p class="hint" id="fontListHint">No custom fonts imported.</p>
+        </div>
+        <div class="section">
+          <h3>Canvas</h3>
           <div class="ctrl">
             <div class="ctrl-head"><label>Size</label></div>
             <select id="thumbSize">
               <option value="1280x720" selected>1280 × 720 — YouTube</option>
               <option value="1920x1080">1920 × 1080 — Full HD</option>
+              <option value="3840x2160">3840 × 2160 — 4K Ultra HD</option>
               <option value="1080x1080">1080 × 1080 — Square</option>
               <option value="1080x1350">1080 × 1350 — Portrait</option>
               <option value="1080x1920">1080 × 1920 — Shorts</option>
@@ -670,42 +837,75 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
           <div class="row tight" id="bgColors">
             <input type="color" id="bgC1" value="#1b2a5e">
             <input type="color" id="bgC2" value="#3b6ef5">
-            <button class="btn sm" id="btnSwapBg" title="Swap colors">⇄</button>
+            <button class="btn sm" id="btnSwapBg">Swap</button>
           </div>
           <div class="ctrl" id="bgAngleWrap"></div>
+          <div style="height:6px"></div>
+          <label class="chk"><input type="checkbox" id="chkSnap"> Snap to center</label>
+          <label class="chk"><input type="checkbox" id="chkConstrain"> Equal corner resize</label>
         </div>
-
         <div class="section">
-          <h3><span class="dot"></span>Layers</h3>
+          <h3>Layers</h3>
           <div class="layer-list" id="layerList"></div>
-          <p class="empty" id="layerEmpty">No layers yet. Add an image, text or effect to get started.</p>
+          <p class="empty" id="layerEmpty">No layers yet.</p>
         </div>
       </aside>
-
       <div class="stage" id="thumbStage">
         <div class="canvas-wrap" id="canvasWrap">
           <canvas id="artCanvas"></canvas>
           <canvas id="ovCanvas"></canvas>
         </div>
       </div>
-
       <aside class="panel">
         <div class="section">
-          <h3><span class="dot"></span>Export</h3>
-          <button class="btn primary block" id="btnExport">⬇ Export PNG</button>
+          <h3>Export</h3>
+          <button class="btn primary block" id="btnExport">Export PNG</button>
           <div style="height:8px"></div>
-          <button class="btn block sm" id="btnClearLayers">🗑 Clear all layers</button>
+          <button class="btn block sm" id="btnClearLayers">Clear All Layers</button>
         </div>
         <div class="section" id="propsSection">
-          <h3><span class="dot"></span>Properties</h3>
+          <h3>Properties</h3>
           <div id="props"><p class="empty">Select a layer to edit its properties.</p></div>
         </div>
       </aside>
+    </section>
+
+    <!-- ===== ASSETS ===== -->
+    <section class="view" id="view-assets">
+      <div class="asset-toolbar">
+        <div class="asset-search">
+          <input type="text" id="assetSearch" placeholder="Search textures…" autocomplete="off" spellcheck="false">
+        </div>
+        <span class="asset-count" id="assetCount">Loading…</span>
+      </div>
+      <div class="asset-grid" id="assetGrid">
+        <div class="asset-loader">
+          <div class="spinner"></div>
+          <span>Fetching textures from Faithful Pack…</span>
+        </div>
+      </div>
     </section>
   </main>
 </div>
 
 <div class="toast" id="toast"></div>
+
+<!-- Face picker modal -->
+<div class="face-modal" id="faceModal" hidden>
+  <div class="face-modal-inner">
+    <h3>Assign to face</h3>
+    <p>Which face of the block should use this texture?</p>
+    <div class="face-modal-buttons" id="faceModalButtons">
+      <button data-face="top">Top</button>
+      <button data-face="bottom">Bottom</button>
+      <button data-face="front">Front</button>
+      <button data-face="back">Back</button>
+      <button data-face="left">Left</button>
+      <button data-face="right">Right</button>
+    </div>
+    <button class="btn ghost block sm" id="btnCancelFace">Cancel</button>
+  </div>
+</div>
 
 <script type="importmap">
 {
@@ -721,7 +921,6 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { TransformControls } from 'three/addons/controls/TransformControls.js';
 
-/* ========================= HELPERS ========================= */
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
@@ -743,32 +942,49 @@ function loadImage(src, cross = false) {
     const img = new Image();
     if (cross) img.crossOrigin = 'anonymous';
     img.onload = () => resolve(img);
-    img.onerror = () => reject(new Error('Image load failed'));
+    img.onerror = () => reject(new Error('Image load failed: ' + src));
     img.src = src;
   });
 }
 
-/* ============ SLIDER WITH EDITABLE VALUE ============ */
+function fileToDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(r.result);
+    r.onerror = reject;
+    r.readAsDataURL(file);
+  });
+}
+
+function upscaleImageTo4K(img) {
+  const MIN_EDGE = 2160;
+  const shortest = Math.min(img.width, img.height);
+  if (shortest >= MIN_EDGE) return img;
+  const scale = Math.ceil(MIN_EDGE / shortest);
+  const c = document.createElement('canvas');
+  c.width = img.width * scale;
+  c.height = img.height * scale;
+  const x = c.getContext('2d');
+  x.imageSmoothingEnabled = false;
+  x.drawImage(img, 0, 0, c.width, c.height);
+  return c;
+}
+
 function buildSlider({ label, value, min, max, step, unit = '', onInput }) {
   const c = document.createElement('div');
   c.className = 'ctrl';
-
   const head = document.createElement('div');
   head.className = 'ctrl-head';
-
   const lab = document.createElement('label');
   lab.textContent = label;
-
   const valWrap = document.createElement('div');
   valWrap.className = 'val-wrap';
-
   const valInput = document.createElement('input');
   valInput.type = 'text';
   valInput.className = 'val-input';
   valInput.inputMode = 'decimal';
   valInput.autocomplete = 'off';
   valInput.spellcheck = false;
-
   valWrap.appendChild(valInput);
   if (unit) {
     const u = document.createElement('span');
@@ -778,32 +994,26 @@ function buildSlider({ label, value, min, max, step, unit = '', onInput }) {
   }
   head.appendChild(lab);
   head.appendChild(valWrap);
-
   const inp = document.createElement('input');
   inp.type = 'range';
   inp.min = min; inp.max = max; inp.step = step; inp.value = value;
-
   const fmt = v => {
     const r = Math.round(v * 100) / 100;
     if (Number.isInteger(r)) return String(r);
     return r.toFixed(2).replace(/0+$/, '').replace(/\.$/, '');
   };
-
   const setVal = (v, updateInput = true) => {
     v = clamp(v, min, max);
     if (updateInput) valInput.value = fmt(v);
     inp.value = v;
     inp.style.setProperty('--p', ((v - min) / (max - min) * 100) + '%');
   };
-
   const apply = (v, fromSlider) => {
     v = clamp(v, min, max);
     setVal(v, fromSlider);
     if (onInput) onInput(v);
   };
-
   setVal(value);
-
   inp.addEventListener('input', () => apply(parseFloat(inp.value), true));
   valInput.addEventListener('focus', () => valInput.select());
   valInput.addEventListener('blur', () => {
@@ -815,10 +1025,8 @@ function buildSlider({ label, value, min, max, step, unit = '', onInput }) {
     if (e.key === 'Enter') { e.preventDefault(); valInput.blur(); }
     if (e.key === 'Escape') { setVal(parseFloat(inp.value)); valInput.blur(); }
   });
-
   c.appendChild(head);
   c.appendChild(inp);
-
   return { el: c, setVal, input: inp, valInput };
 }
 
@@ -826,7 +1034,8 @@ function buildCheckbox(labelText, checked, onChange) {
   const l = document.createElement('label');
   l.className = 'chk';
   const inp = document.createElement('input');
-  inp.type = 'checkbox'; inp.checked = checked;
+  inp.type = 'checkbox';
+  inp.checked = checked;
   inp.addEventListener('change', () => onChange(inp.checked));
   l.appendChild(inp);
   const s = document.createElement('span');
@@ -835,21 +1044,18 @@ function buildCheckbox(labelText, checked, onChange) {
   return l;
 }
 
-/* ========================= PWA ========================= */
 function makeIcon(size) {
   const c = document.createElement('canvas');
   c.width = c.height = size;
   const x = c.getContext('2d');
   const r = size * 0.22;
-  const g = x.createLinearGradient(0, 0, size, size);
-  g.addColorStop(0, '#5b86ff'); g.addColorStop(1, '#2a56d6');
+  x.fillStyle = '#3b6ef5';
   x.beginPath();
   x.moveTo(r, 0); x.lineTo(size - r, 0); x.quadraticCurveTo(size, 0, size, r);
   x.lineTo(size, size - r); x.quadraticCurveTo(size, size, size - r, size);
   x.lineTo(r, size); x.quadraticCurveTo(0, size, 0, size - r);
   x.lineTo(0, r); x.quadraticCurveTo(0, 0, r, 0);
-  x.closePath(); x.fillStyle = g; x.fill();
-
+  x.closePath(); x.fill();
   const cx = size / 2, cy = size / 2;
   const w = size * 0.30, h = size * 0.155, d = size * 0.27;
   const top = cy - d * 0.55;
@@ -868,26 +1074,18 @@ function makeIcon(size) {
 (function initPWA() {
   const icon192 = makeIcon(192);
   const icon512 = makeIcon(512);
-  const icon180 = makeIcon(180);
-
-  // apple-touch-icon
   const ati = document.createElement('link');
   ati.rel = 'apple-touch-icon';
-  ati.href = icon180;
+  ati.href = makeIcon(180);
   document.head.appendChild(ati);
-
-  // Build manifest as a data URI — more reliable than blob for install detection
   const manifest = {
     name: 'CraftPic — Minecraft Thumbnail Maker',
     short_name: 'CraftPic',
-    description: 'Pose Minecraft characters in 3D, extrude items and design YouTube thumbnails.',
-    start_url: './',
-    scope: './',
-    display: 'standalone',
+    description: 'Design custom blocks, pose characters, extrude items, and build YouTube thumbnails.',
+    start_url: './', scope: './', display: 'standalone',
     display_override: ['standalone', 'minimal-ui'],
     orientation: 'any',
-    background_color: '#f5f8fd',
-    theme_color: '#3b6ef5',
+    background_color: '#f5f8fd', theme_color: '#3b6ef5',
     categories: ['graphics', 'photo', 'productivity'],
     icons: [
       { src: icon192, sizes: '192x192', type: 'image/png', purpose: 'any' },
@@ -896,15 +1094,12 @@ function makeIcon(size) {
     ]
   };
   try {
-    const manifestUrl = 'data:application/manifest+json;charset=utf-8,' +
-      encodeURIComponent(JSON.stringify(manifest));
+    const manifestUrl = 'data:application/manifest+json;charset=utf-8,' + encodeURIComponent(JSON.stringify(manifest));
     const link = document.createElement('link');
     link.rel = 'manifest';
     link.href = manifestUrl;
     document.head.appendChild(link);
   } catch (e) {}
-
-  // Register a real service worker if the deploy provides sw.js
   if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
     window.addEventListener('load', () => {
       fetch('sw.js', { method: 'HEAD' })
@@ -912,84 +1107,37 @@ function makeIcon(size) {
         .catch(() => {});
     });
   }
-
-  // ---------- Install button ----------
   const installBtn = $('#installBtn');
   let deferredPrompt = null;
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
                 (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   const isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
                        window.navigator.standalone === true;
-
-  function setBtnReady(ready) {
-    if (ready) {
-      installBtn.textContent = '⬇ Install App';
-      installBtn.dataset.ready = '1';
-    } else {
-      installBtn.textContent = isIOS ? '⬇ Add to Home Screen' : '⬇ Download App';
-      installBtn.dataset.ready = '0';
-    }
-  }
-  setBtnReady(false);
-
   window.addEventListener('beforeinstallprompt', e => {
-    e.preventDefault();
-    deferredPrompt = e;
-    setBtnReady(true);
+    e.preventDefault(); deferredPrompt = e;
   });
-
   window.addEventListener('appinstalled', () => {
     deferredPrompt = null;
-    setBtnReady(false);
-    installBtn.textContent = '✓ Installed';
+    installBtn.textContent = 'Installed';
     setTimeout(() => { if (isStandalone) installBtn.hidden = true; }, 3000);
-    toast('App installed 🎉');
+    toast('App installed');
   });
-
-  if (isStandalone) {
-    // Already running as installed app
-    installBtn.hidden = true;
-  }
-
+  if (isStandalone) installBtn.hidden = true;
   installBtn.addEventListener('click', async () => {
-    // 1) Real install prompt available → use it (same as the URL bar button)
     if (deferredPrompt) {
-      try {
-        deferredPrompt.prompt();
-        const choice = await deferredPrompt.userChoice;
-        if (choice && choice.outcome === 'accepted') {
-          installBtn.textContent = '✓ Installing…';
-        } else {
-          toast('Install dismissed — you can try again anytime');
-        }
-      } catch (err) {
-        toast('Install prompt failed — try the browser menu');
-      }
+      try { deferredPrompt.prompt(); await deferredPrompt.userChoice; }
+      catch (err) { toast('Try the browser menu instead'); }
       deferredPrompt = null;
-      setBtnReady(false);
       return;
     }
-
-    // 2) iOS → explain the Share menu flow
-    if (isIOS) {
-      toast('Tap Share ⤴ then "Add to Home Screen"');
-      return;
-    }
-
-    // 3) Desktop fallback: nudge user toward the URL-bar install icon
-    const ua = navigator.userAgent;
-    if (/Edg\//.test(ua)) {
-      toast('Look for the install ⊕ icon in the address bar, or ⋯ menu → Apps → Install this site');
-    } else if (/Chrome\//.test(ua)) {
-      toast('Look for the install ⊕ icon in the address bar, or ⋮ menu → Cast, save, share → Install page');
-    } else {
-      toast('Use your browser menu → "Install CraftPic" / "Add to Home Screen"');
-    }
+    if (isIOS) { toast('Tap Share, then "Add to Home Screen"'); return; }
+    toast('Use your browser menu to install');
   });
 })();
 
-/* ==================== VIEW SWITCHING ==================== */
 let currentView = 'character';
+let assetsLoaded = false;
+
 function setView(name) {
   currentView = name;
   $$('.view').forEach(v => v.classList.toggle('active', v.id === 'view-' + name));
@@ -997,30 +1145,34 @@ function setView(name) {
   requestAnimationFrame(() => {
     if (name === 'character') { charViewer.resize(); activeViewer = charViewer; }
     else if (name === 'item') { itemViewer.resize(); activeViewer = itemViewer; }
-    else { activeViewer = null; layoutThumb(); renderThumb(); }
+    else if (name === 'block') { blockViewer.resize(); activeViewer = blockViewer; }
+    else if (name === 'thumb') { activeViewer = null; layoutThumb(); renderThumb(); }
+    else if (name === 'assets') {
+      activeViewer = null;
+      if (!assetsLoaded) { assetsLoaded = true; loadAssets(); }
+    }
   });
-}
-$$('.tab').forEach(t => t.addEventListener('click', () => {
-  setView(t.dataset.view);
-  // On mobile, scroll to top of main when switching tabs
   if (window.matchMedia('(max-width:900px)').matches) {
     const m = document.querySelector('main');
     if (m) m.scrollTop = 0;
   }
-}));
+}
+$$('.tab').forEach(t => t.addEventListener('click', () => setView(t.dataset.view)));
 
-/* ==================== 3D VIEWER ==================== */
 let activeViewer = null;
 
 class Viewer {
   constructor(container, aspect = 16 / 9) {
     this.container = container;
     this.aspect = aspect;
-    this.boxW = 100; this.boxH = 100;
+    this.boxW = 100;
+    this.boxH = 100;
+    this.flat = false;
+    this.lightPct = 100;
 
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(42, aspect, 0.1, 8000);
-    this.camera.position.set(30, 28, 62);
+    this.camera.position.set(2.5, 2.2, 3.2);
 
     this.renderer = new THREE.WebGLRenderer({
       antialias: true, alpha: true, preserveDrawingBuffer: true, powerPreference: 'high-performance'
@@ -1039,10 +1191,12 @@ class Viewer {
     this.controls.rotateSpeed = 0.9;
     this.controls.zoomSpeed = 0.9;
     this.controls.panSpeed = 0.8;
-    this.controls.minDistance = 4;
+    this.controls.minDistance = 0.5;
     this.controls.maxDistance = 600;
-    this.controls.target.set(0, 16, 0);
+    this.controls.target.set(0, 0.5, 0);
 
+    this.ambient = new THREE.AmbientLight(0xffffff, 0);
+    this.scene.add(this.ambient);
     this.hemi = new THREE.HemisphereLight(0xffffff, 0x6b7690, 1.35);
     this.scene.add(this.hemi);
     this.key = new THREE.DirectionalLight(0xffffff, 1.9);
@@ -1066,8 +1220,8 @@ class Viewer {
     this.ro = new ResizeObserver(() => this.resize());
     this.ro.observe(container);
     this.resize();
+    this.applyLighting();
   }
-
   resize() {
     const r = this.container.getBoundingClientRect();
     const pad = window.innerWidth < 900 ? 8 : 26;
@@ -1075,45 +1229,50 @@ class Viewer {
     const ah = Math.max(40, r.height - pad * 2);
     let bw = aw, bh = aw / this.aspect;
     if (bh > ah) { bh = ah; bw = ah * this.aspect; }
-    this.boxW = Math.round(bw); this.boxH = Math.round(bh);
+    this.boxW = Math.round(bw);
+    this.boxH = Math.round(bh);
     this.renderer.setSize(this.boxW, this.boxH, true);
     this.camera.aspect = this.aspect;
     this.camera.updateProjectionMatrix();
   }
-
   setAspect(a) { this.aspect = a; this.resize(); }
-
-  setLighting(pct) {
-    const k = pct / 100 * this.baseLight;
-    this.hemi.intensity = 1.35 * k;
-    this.key.intensity = 1.9 * k;
-    this.fill.intensity = 0.85 * k;
-    this.rim.intensity = 0.45 * k;
+  setLighting(pct) { this.lightPct = pct; this.applyLighting(); }
+  setFlat(flat) { this.flat = flat; this.applyLighting(); }
+  applyLighting() {
+    const k = this.lightPct / 100;
+    if (this.flat) {
+      this.ambient.intensity = 3.2 * k;
+      this.hemi.intensity = 0;
+      this.key.intensity = 0;
+      this.fill.intensity = 0;
+      this.rim.intensity = 0;
+    } else {
+      this.ambient.intensity = 0;
+      this.hemi.intensity = 1.35 * k;
+      this.key.intensity = 1.9 * k;
+      this.fill.intensity = 0.85 * k;
+      this.rim.intensity = 0.45 * k;
+    }
   }
-
   fitToObject(object, padding = 1.4) {
     if (!object) return;
     const box = new THREE.Box3().setFromObject(object);
     if (box.isEmpty()) return;
     const size = box.getSize(new THREE.Vector3());
     const center = box.getCenter(new THREE.Vector3());
-
     let dir = this.camera.position.clone().sub(this.controls.target);
     if (dir.lengthSq() < 0.0001) dir.set(0.45, 0.55, 1);
     dir.normalize();
-
     const fov = this.camera.fov * Math.PI / 180;
     const fitHeight = (size.y / 2) / Math.tan(fov / 2);
     const fitWidth = (size.x / 2) / Math.tan(fov / 2) / this.camera.aspect;
     const depthPad = size.z * 0.6;
     const dist = Math.max(fitHeight, fitWidth) * padding + depthPad;
-
     this.controls.target.copy(center);
     this.camera.position.copy(center.clone().add(dir.multiplyScalar(dist)));
     this.camera.updateProjectionMatrix();
     this.controls.update();
   }
-
   render() {
     this.controls.update();
     this.renderer.render(this.scene, this.camera);
@@ -1125,21 +1284,17 @@ async function captureViewer(v, targetHeight) {
   const scale = clamp(targetHeight / Math.max(oldH, 1), 0.5, 8);
   const w = Math.max(64, Math.round(oldW * scale));
   const h = Math.max(64, Math.round(oldH * scale));
-
   v.renderer.setPixelRatio(1);
   v.renderer.setSize(w, h, false);
   v.camera.aspect = w / h;
   v.camera.updateProjectionMatrix();
   v.renderer.render(v.scene, v.camera);
-
   const url = v.renderer.domElement.toDataURL('image/png');
-
   v.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   v.renderer.setSize(oldW, oldH, true);
   v.camera.aspect = v.aspect;
   v.camera.updateProjectionMatrix();
   v.renderer.render(v.scene, v.camera);
-
   return { url, w, h };
 }
 
@@ -1149,7 +1304,7 @@ function loop() {
 }
 loop();
 
-/* ============ MINECRAFT SKIN HELPERS ============ */
+/* ===== UV mapping for character ===== */
 function skinFaces(X, Y, w, h, d) {
   return {
     py: [X + d, Y, w, d],
@@ -1160,7 +1315,6 @@ function skinFaces(X, Y, w, h, d) {
     nz: [X + d + w + d, Y + d, w, h]
   };
 }
-
 function makeBox(w, h, d, faces, texSize) {
   const geo = new THREE.BoxGeometry(w, h, d);
   const uv = geo.attributes.uv;
@@ -1178,18 +1332,21 @@ function makeBox(w, h, d, faces, texSize) {
   uv.needsUpdate = true;
   return geo;
 }
-
-function makeSkinTexture(source) {
+function makePixelTexture(source, flipY = false) {
   const tex = new THREE.Texture(source);
   tex.magFilter = THREE.NearestFilter;
   tex.minFilter = THREE.NearestFilter;
   tex.generateMipmaps = false;
-  tex.flipY = false;
+  tex.flipY = flipY;
   tex.colorSpace = THREE.SRGBColorSpace;
   tex.needsUpdate = true;
   return tex;
 }
 
+/* =========================================================
+   CHARACTER VIEW
+   ========================================================= */
+function makeSkinTexture(source) { return makePixelTexture(source, false); }
 function normalizeSkin(img) {
   const w = img.width, h = img.height;
   if (w === 64 && h === 32) {
@@ -1212,26 +1369,18 @@ function normalizeSkin(img) {
   x.drawImage(img, 0, 0, w, h, 0, 0, 64, 64);
   return { source: c, size: 64 };
 }
-
 function buildCharacter(texture, texSize, slim, showOverlay) {
-  const mat = new THREE.MeshLambertMaterial({
-    map: texture, transparent: true, alphaTest: 0.5, side: THREE.FrontSide
-  });
-  const overlayMat = new THREE.MeshLambertMaterial({
-    map: texture, transparent: true, alphaTest: 0.5, side: THREE.FrontSide
-  });
-
+  const mat = new THREE.MeshLambertMaterial({ map: texture, transparent: true, alphaTest: 0.5, side: THREE.FrontSide });
+  const overlayMat = new THREE.MeshLambertMaterial({ map: texture, transparent: true, alphaTest: 0.5, side: THREE.FrontSide });
   const root = new THREE.Group();
   const AW = slim ? 3 : 4;
   const groups = {};
-
   const addMesh = (geo, parent, pos, m) => {
     const mesh = new THREE.Mesh(geo, m);
     mesh.position.set(pos[0], pos[1], pos[2]);
     parent.add(mesh);
     return mesh;
   };
-
   const torso = new THREE.Group();
   torso.position.set(0, 12, 0);
   torso.name = 'Body';
@@ -1239,7 +1388,6 @@ function buildCharacter(texture, texSize, slim, showOverlay) {
   groups.torso = torso;
   addMesh(makeBox(8, 12, 4, skinFaces(16, 16, 8, 12, 4), texSize), torso, [0, 6, 0], mat);
   if (showOverlay) addMesh(makeBox(8.5, 12.5, 4.5, skinFaces(16, 32, 8, 12, 4), texSize), torso, [0, 6, 0], overlayMat);
-
   const head = new THREE.Group();
   head.position.set(0, 12, 0);
   head.name = 'Head';
@@ -1247,7 +1395,6 @@ function buildCharacter(texture, texSize, slim, showOverlay) {
   groups.head = head;
   addMesh(makeBox(8, 8, 8, skinFaces(0, 0, 8, 8, 8), texSize), head, [0, 4, 0], mat);
   if (showOverlay) addMesh(makeBox(9, 9, 9, skinFaces(32, 0, 8, 8, 8), texSize), head, [0, 4, 0], overlayMat);
-
   const armR = new THREE.Group();
   armR.position.set(-(4 + AW / 2), 12, 0);
   armR.name = 'Right Arm';
@@ -1255,7 +1402,6 @@ function buildCharacter(texture, texSize, slim, showOverlay) {
   groups.armR = armR;
   addMesh(makeBox(AW, 12, 4, skinFaces(40, 16, AW, 12, 4), texSize), armR, [0, -6, 0], mat);
   if (showOverlay) addMesh(makeBox(AW + 0.5, 12.5, 4.5, skinFaces(40, 32, AW, 12, 4), texSize), armR, [0, -6, 0], overlayMat);
-
   const armL = new THREE.Group();
   armL.position.set(4 + AW / 2, 12, 0);
   armL.name = 'Left Arm';
@@ -1263,7 +1409,6 @@ function buildCharacter(texture, texSize, slim, showOverlay) {
   groups.armL = armL;
   addMesh(makeBox(AW, 12, 4, skinFaces(32, 48, AW, 12, 4), texSize), armL, [0, -6, 0], mat);
   if (showOverlay) addMesh(makeBox(AW + 0.5, 12.5, 4.5, skinFaces(48, 48, AW, 12, 4), texSize), armL, [0, -6, 0], overlayMat);
-
   const legR = new THREE.Group();
   legR.position.set(-2, 0, 0);
   legR.name = 'Right Leg';
@@ -1271,7 +1416,6 @@ function buildCharacter(texture, texSize, slim, showOverlay) {
   groups.legR = legR;
   addMesh(makeBox(4, 12, 4, skinFaces(0, 16, 4, 12, 4), texSize), legR, [0, -6, 0], mat);
   if (showOverlay) addMesh(makeBox(4.5, 12.5, 4.5, skinFaces(0, 32, 4, 12, 4), texSize), legR, [0, -6, 0], overlayMat);
-
   const legL = new THREE.Group();
   legL.position.set(2, 0, 0);
   legL.name = 'Left Leg';
@@ -1279,85 +1423,46 @@ function buildCharacter(texture, texSize, slim, showOverlay) {
   groups.legL = legL;
   addMesh(makeBox(4, 12, 4, skinFaces(16, 48, 4, 12, 4), texSize), legL, [0, -6, 0], mat);
   if (showOverlay) addMesh(makeBox(4.5, 12.5, 4.5, skinFaces(0, 48, 4, 12, 4), texSize), legL, [0, -6, 0], overlayMat);
-
   return { root, groups, armWidth: AW };
 }
 
-/* ==================== CHARACTER VIEW ==================== */
 const DEFAULT_SKIN = 'https://raw.githubusercontent.com/KygekDev/default-textures/master/textures/entity/steve.png';
 const charViewer = new Viewer($('#charStage'), 16 / 9);
 charViewer.camera.position.set(32, 34, 72);
 charViewer.controls.target.set(0, 16, 0);
-
-const charState = {
-  source: null,
-  texSize: 64,
-  slim: false,
-  overlay: true,
-  gizmo: true,
-  model: null,
-  selected: 'head',
-  tex: null
-};
-
-/* ===== CHARACTER UNDO / REDO ===== */
+const charState = { source: null, texSize: 64, slim: false, overlay: true, gizmo: true, model: null, selected: 'head', tex: null };
 const charHistory = { stack: [], index: -1, max: 80, suspended: false };
 let charHistoryTimer = null;
-
 function snapshotChar() {
   const parts = {};
   if (charState.model) {
     for (const k in charState.model.groups) {
       const g = charState.model.groups[k];
-      parts[k] = {
-        pos: [g.position.x, g.position.y, g.position.z],
-        rot: [g.rotation.x, g.rotation.y, g.rotation.z]
-      };
+      parts[k] = { pos: [g.position.x, g.position.y, g.position.z], rot: [g.rotation.x, g.rotation.y, g.rotation.z] };
     }
   }
-  return {
-    parts,
-    slim: charState.slim,
-    overlay: charState.overlay,
-    source: charState.source,
-    texSize: charState.texSize,
-    selected: charState.selected
-  };
+  return { parts, slim: charState.slim, overlay: charState.overlay, source: charState.source, texSize: charState.texSize, selected: charState.selected };
 }
-
 function pushCharHistory() {
-  if (charHistory.suspended) return;
-  if (!charState.model) return;
+  if (charHistory.suspended || !charState.model) return;
   charHistory.stack = charHistory.stack.slice(0, charHistory.index + 1);
   charHistory.stack.push(snapshotChar());
   if (charHistory.stack.length > charHistory.max) charHistory.stack.shift();
   charHistory.index = charHistory.stack.length - 1;
   updateCharUndoButtons();
 }
-
-function scheduleCharHistory() {
-  clearTimeout(charHistoryTimer);
-  charHistoryTimer = setTimeout(pushCharHistory, 350);
-}
-
+function scheduleCharHistory() { clearTimeout(charHistoryTimer); charHistoryTimer = setTimeout(pushCharHistory, 350); }
 function updateCharUndoButtons() {
   const u = $('#btnCharUndo'), r = $('#btnCharRedo');
   if (u) u.disabled = charHistory.index <= 0;
   if (r) r.disabled = charHistory.index >= charHistory.stack.length - 1;
 }
-
 async function restoreChar(snap) {
   charHistory.suspended = true;
-
-  const needsRebuild =
-    charState.slim !== snap.slim ||
-    charState.overlay !== snap.overlay ||
-    charState.source !== snap.source ||
-    charState.texSize !== snap.texSize;
-
+  const needsRebuild = charState.slim !== snap.slim || charState.overlay !== snap.overlay ||
+                       charState.source !== snap.source || charState.texSize !== snap.texSize;
   charState.slim = snap.slim;
   charState.overlay = snap.overlay;
-
   if (needsRebuild && snap.source) {
     charViewer.tc.detach();
     if (charState.model) {
@@ -1365,17 +1470,11 @@ async function restoreChar(snap) {
       charState.model.root.traverse(o => { if (o.geometry) o.geometry.dispose(); });
     }
     if (charState.tex) { charState.tex.dispose(); charState.tex = null; }
-
     const tex = makeSkinTexture(snap.source);
-    charState.tex = tex;
-    charState.source = snap.source;
-    charState.texSize = snap.texSize;
-
+    charState.tex = tex; charState.source = snap.source; charState.texSize = snap.texSize;
     const model = buildCharacter(tex, snap.texSize, snap.slim, snap.overlay);
-    charState.model = model;
-    charViewer.scene.add(model.root);
+    charState.model = model; charViewer.scene.add(model.root);
   }
-
   if (charState.model && snap.parts) {
     for (const k in snap.parts) {
       const g = charState.model.groups[k];
@@ -1384,30 +1483,16 @@ async function restoreChar(snap) {
       g.rotation.set(snap.parts[k].rot[0], snap.parts[k].rot[1], snap.parts[k].rot[2]);
     }
   }
-
   $$('#skinType button').forEach(b => b.classList.toggle('active', (b.dataset.type === 'slim') === snap.slim));
   $('#chkOverlay').checked = snap.overlay;
-
   selectPart(snap.selected);
   charHistory.suspended = false;
   updateCharUndoButtons();
 }
-
-function undoChar() {
-  if (charHistory.index <= 0) return;
-  charHistory.index--;
-  restoreChar(charHistory.stack[charHistory.index]);
-}
-
-function redoChar() {
-  if (charHistory.index >= charHistory.stack.length - 1) return;
-  charHistory.index++;
-  restoreChar(charHistory.stack[charHistory.index]);
-}
-
+function undoChar() { if (charHistory.index <= 0) return; charHistory.index--; restoreChar(charHistory.stack[charHistory.index]); }
+function redoChar() { if (charHistory.index >= charHistory.stack.length - 1) return; charHistory.index++; restoreChar(charHistory.stack[charHistory.index]); }
 $('#btnCharUndo').addEventListener('click', undoChar);
 $('#btnCharRedo').addEventListener('click', redoChar);
-
 async function applySkin(source, texSize, preservePose = false) {
   let savedPose = null;
   if (preservePose && charState.model) {
@@ -1417,23 +1502,16 @@ async function applySkin(source, texSize, preservePose = false) {
       savedPose[k] = { pos: g.position.clone(), rot: g.rotation.clone() };
     }
   }
-
   charViewer.tc.detach();
   if (charState.model) {
     charViewer.scene.remove(charState.model.root);
     charState.model.root.traverse(o => { if (o.geometry) o.geometry.dispose(); });
   }
   if (charState.tex) { charState.tex.dispose(); charState.tex = null; }
-
   const tex = makeSkinTexture(source);
-  charState.tex = tex;
-  charState.source = source;
-  charState.texSize = texSize;
-
+  charState.tex = tex; charState.source = source; charState.texSize = texSize;
   const model = buildCharacter(tex, texSize, charState.slim, charState.overlay);
-  charState.model = model;
-  charViewer.scene.add(model.root);
-
+  charState.model = model; charViewer.scene.add(model.root);
   if (savedPose) {
     for (const k in savedPose) {
       const g = model.groups[k];
@@ -1444,12 +1522,11 @@ async function applySkin(source, texSize, preservePose = false) {
     if (charState.gizmo) charViewer.tc.attach(model.groups[charState.selected]);
     buildPartControls(charState.selected);
   } else {
-    applyPosePreset('idle', true);
+    applyPosePreset('idle');
     selectPart(charState.selected);
     requestAnimationFrame(() => charViewer.fitToObject(model.root, 1.4));
   }
 }
-
 async function loadDefaultSkin() {
   try {
     const img = await loadImage(DEFAULT_SKIN, true);
@@ -1468,8 +1545,6 @@ async function loadDefaultSkin() {
     await applySkin(c, 64);
   }
 }
-
-/* Straight arms by default */
 const POSES = {
   idle:   { armR: [0, 0, 0],          armL: [0, 0, 0],          legR: [0, 0, 0],        legL: [0, 0, 0],        head: [0, 0, 0],          torso: [0, 0, 0] },
   tpose:  { armR: [0, 0, -Math.PI/2], armL: [0, 0, Math.PI/2],  legR: [0, 0, 0],        legL: [0, 0, 0],        head: [0, 0, 0],          torso: [0, 0, 0] },
@@ -1480,16 +1555,11 @@ const POSES = {
   sit:    { armR: [0.6, 0, -0.3],     armL: [0.6, 0, 0.3],      legR: [-1.55, 0, 0.06], legL: [-1.55, 0, -0.06], head: [0, 0, 0],         torso: [0, 0, 0] },
   dab:    { armR: [-1.6, 0.4, -2.2],  armL: [0.3, 0, 1.4],      legR: [0, 0, 0],        legL: [0, 0, 0],        head: [0.3, 0.8, -0.3],   torso: [0.15, 0.35, 0] }
 };
-
-function applyPosePreset(name, keepSelection) {
+function applyPosePreset(name) {
   const p = POSES[name];
   if (!p || !charState.model) return;
   const g = charState.model.groups;
-  for (const k in p) {
-    const grp = g[k];
-    if (!grp) continue;
-    grp.rotation.set(p[k][0], p[k][1], p[k][2]);
-  }
+  for (const k in p) { if (g[k]) g[k].rotation.set(p[k][0], p[k][1], p[k][2]); }
   const AW = charState.model.armWidth;
   g.torso.position.set(0, 12, 0);
   g.head.position.set(0, 12, 0);
@@ -1497,11 +1567,9 @@ function applyPosePreset(name, keepSelection) {
   g.armL.position.set(4 + AW / 2, 12, 0);
   g.legR.position.set(-2, 0, 0);
   g.legL.position.set(2, 0, 0);
-
   $$('#posePresets .chip').forEach(c => c.classList.toggle('active', c.dataset.pose === name));
   syncPartSliders();
 }
-
 const POSE_LIST = [
   ['idle', 'Idle'], ['tpose', 'T-Pose'], ['wave', 'Wave'], ['run', 'Running'],
   ['crouch', 'Crouch'], ['hero', 'Hero'], ['sit', 'Sitting'], ['dab', 'Dab']
@@ -1512,7 +1580,6 @@ POSE_LIST.forEach(([k, label]) => {
   b.addEventListener('click', () => { applyPosePreset(k); pushCharHistory(); });
   $('#posePresets').appendChild(b);
 });
-
 const PART_ICONS = {
   head: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="4" width="14" height="14" rx="2"/><path d="M9 10h.01M15 10h.01M9 15h6"/></svg>',
   torso: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="12" height="14" rx="2"/></svg>',
@@ -1532,9 +1599,7 @@ PARTS.forEach(([k, label]) => {
   b.addEventListener('click', () => selectPart(k));
   $('#partList').appendChild(b);
 });
-
 let sliderRefs = {};
-
 function selectPart(key) {
   charState.selected = key;
   $$('.part-btn').forEach(b => b.classList.toggle('active', b.dataset.part === key));
@@ -1543,7 +1608,6 @@ function selectPart(key) {
     charViewer.tc.attach(charState.model.groups[key]);
   }
 }
-
 function getPartValue(grp, prop) {
   switch (prop) {
     case 'rotX': return grp.rotation.x * 180 / Math.PI;
@@ -1555,14 +1619,12 @@ function getPartValue(grp, prop) {
   }
   return 0;
 }
-
 function buildPartControls(key) {
   const wrap = $('#partControls');
   const grp = charState.model ? charState.model.groups[key] : null;
   if (!grp) { wrap.innerHTML = '<p class="empty">No part selected.</p>'; return; }
   wrap.innerHTML = '';
   sliderRefs = {};
-
   const mk = (title, prop, min, max, step, unit) => {
     const slider = buildSlider({
       label: title, value: getPartValue(grp, prop), min, max, step, unit,
@@ -1575,14 +1637,11 @@ function buildPartControls(key) {
     wrap.appendChild(slider.el);
     sliderRefs[prop] = slider;
   };
-
   const h4 = (t) => {
     const d = document.createElement('div');
-    d.style.cssText = 'font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:4px 0 8px';
-    d.textContent = t;
-    wrap.appendChild(d);
+    d.style.cssText = 'font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:10px 0 8px';
+    d.textContent = t; wrap.appendChild(d);
   };
-
   h4('Rotation');
   mk('Rotate X', 'rotX', -180, 180, 1, '°');
   mk('Rotate Y', 'rotY', -180, 180, 1, '°');
@@ -1591,10 +1650,9 @@ function buildPartControls(key) {
   mk('Move X', 'posX', -24, 24, 0.25, '');
   mk('Move Y', 'posY', -24, 24, 0.25, '');
   mk('Move Z', 'posZ', -24, 24, 0.25, '');
-
   const reset = document.createElement('button');
   reset.className = 'btn ghost block sm';
-  reset.textContent = '↺ Reset this part';
+  reset.textContent = 'Reset This Part';
   reset.addEventListener('click', () => {
     grp.rotation.set(0, 0, 0);
     const AW = charState.model.armWidth;
@@ -1610,10 +1668,8 @@ function buildPartControls(key) {
   wrap.appendChild(reset);
   syncPartSliders();
 }
-
 function syncPartSliders() {
-  const key = charState.selected;
-  const grp = charState.model ? charState.model.groups[key] : null;
+  const grp = charState.model ? charState.model.groups[charState.selected] : null;
   if (!grp || !sliderRefs.rotX) return;
   sliderRefs.rotX.setVal(grp.rotation.x * 180 / Math.PI);
   sliderRefs.rotY.setVal(grp.rotation.y * 180 / Math.PI);
@@ -1622,13 +1678,10 @@ function syncPartSliders() {
   sliderRefs.posY.setVal(grp.position.y);
   sliderRefs.posZ.setVal(grp.position.z);
 }
-
 charViewer.tc.addEventListener('objectChange', () => {
   syncPartSliders();
   scheduleCharHistory();
 });
-
-/* ---- Character UI wiring ---- */
 $('#btnUploadSkin').addEventListener('click', () => $('#skinFile').click());
 $('#skinFile').addEventListener('change', async e => {
   const f = e.target.files[0];
@@ -1639,17 +1692,15 @@ $('#skinFile').addEventListener('change', async e => {
     const norm = normalizeSkin(img);
     await applySkin(norm.source, norm.size);
     pushCharHistory();
-    toast('Skin imported ✓');
+    toast('Skin imported');
   } catch (err) { toast('Could not read that image'); }
   e.target.value = '';
 });
-
 $('#btnResetSkin').addEventListener('click', async () => {
   await loadDefaultSkin();
   pushCharHistory();
   toast('Reset to Steve');
 });
-
 $$('#skinType button').forEach(b => b.addEventListener('click', async () => {
   $$('#skinType button').forEach(x => x.classList.remove('active'));
   b.classList.add('active');
@@ -1659,7 +1710,6 @@ $$('#skinType button').forEach(b => b.addEventListener('click', async () => {
     pushCharHistory();
   }
 }));
-
 $('#chkOverlay').addEventListener('change', async e => {
   charState.overlay = e.target.checked;
   if (charState.source) {
@@ -1667,30 +1717,26 @@ $('#chkOverlay').addEventListener('change', async e => {
     pushCharHistory();
   }
 });
-
 $('#chkGizmo').addEventListener('change', e => {
   charState.gizmo = e.target.checked;
   if (!charState.model) return;
   if (e.target.checked) charViewer.tc.attach(charState.model.groups[charState.selected]);
   else charViewer.tc.detach();
 });
-
 $$('#gizmoMode button').forEach(b => b.addEventListener('click', () => {
   $$('#gizmoMode button').forEach(x => x.classList.remove('active'));
   b.classList.add('active');
   charViewer.tc.setMode(b.dataset.mode);
 }));
-
 $('#chkAutoRotate').addEventListener('change', e => {
   charViewer.controls.autoRotate = e.target.checked;
   charViewer.controls.autoRotateSpeed = 1.6;
 });
-
+$('#chkCharShadows').addEventListener('change', e => charViewer.setFlat(!e.target.checked));
 $('#btnFitView').addEventListener('click', () => {
   if (charState.model) charViewer.fitToObject(charState.model.root, 1.4);
   toast('View fitted');
 });
-
 $$('#view-character [data-cam]').forEach(b => b.addEventListener('click', () => {
   const k = b.dataset.cam;
   charViewer.controls.target.set(0, 16, 0);
@@ -1700,24 +1746,25 @@ $$('#view-character [data-cam]').forEach(b => b.addEventListener('click', () => 
   if (k === 'closeup') { charViewer.camera.position.set(10, 30, 36); charViewer.controls.target.set(0, 26, 0); }
   charViewer.controls.update();
 }));
-
 $('#charAspect').addEventListener('change', e => charViewer.setAspect(parseFloat(e.target.value)));
-
 const charGalleryData = [];
 $('#btnCharCapture').addEventListener('click', async () => {
   const btn = $('#btnCharCapture');
-  btn.disabled = true; btn.textContent = 'Rendering…';
+  btn.disabled = true;
+  const old = btn.textContent;
+  btn.textContent = 'Rendering…';
   try {
     const res = await captureViewer(charViewer, parseInt($('#charRes').value, 10));
-    addShot('charGallery', charGalleryData, res.url);
+    addShot('charGallery', charGalleryData, res.url, 'char');
     toast(`Captured ${res.w}×${res.h}`);
   } catch (err) { toast('Capture failed'); }
-  btn.disabled = false; btn.textContent = '📸 Capture Transparent PNG';
+  btn.disabled = false;
+  btn.textContent = old;
 });
 
-function addShot(galleryId, store, dataUrl) {
+function addShot(galleryId, store, dataUrl, kind) {
   const id = uid();
-  store.unshift({ id, url: dataUrl });
+  store.unshift({ id, url: dataUrl, kind });
   if (store.length > 24) store.pop();
   renderGallery(galleryId, store);
 }
@@ -1725,8 +1772,11 @@ function addShot(galleryId, store, dataUrl) {
 function renderGallery(galleryId, store) {
   const el = document.getElementById(galleryId);
   el.innerHTML = '';
-  const emptyId = galleryId === 'charGallery' ? '#charGalleryEmpty' : '#itemGalleryEmpty';
-  $(emptyId).style.display = store.length ? 'none' : 'block';
+  const emptyId = galleryId === 'charGallery' ? '#charGalleryEmpty' :
+                  galleryId === 'itemGallery' ? '#itemGalleryEmpty' :
+                  galleryId === 'blockGallery' ? '#blockGalleryEmpty' : null;
+  const emptyEl = emptyId ? $(emptyId) : null;
+  if (emptyEl) emptyEl.style.display = store.length ? 'none' : 'block';
   store.forEach(item => {
     const d = document.createElement('div');
     d.className = 'shot';
@@ -1735,7 +1785,8 @@ function renderGallery(galleryId, store) {
     d.querySelector('[data-a="dl"]').addEventListener('click', ev => {
       ev.stopPropagation();
       const a = document.createElement('a');
-      a.href = item.url; a.download = FILE_SLUG + '-' + item.id + '.png';
+      a.href = item.url;
+      a.download = FILE_SLUG + '-' + (item.kind || 'shot') + '-' + item.id + '.png';
       a.click();
     });
     d.querySelector('[data-a="use"]').addEventListener('click', async ev => {
@@ -1743,7 +1794,7 @@ function renderGallery(galleryId, store) {
       const img = await loadImage(item.url);
       addImageLayer(img, 'Render');
       setView('thumb');
-      toast('Added to thumbnail ✓');
+      toast('Added to thumbnail');
     });
     el.appendChild(d);
   });
@@ -1753,28 +1804,17 @@ function renderGallery(galleryId, store) {
 const itemViewer = new Viewer($('#itemStage'), 16 / 9);
 itemViewer.camera.position.set(0, 0, 46);
 itemViewer.controls.target.set(0, 0, 0);
-
-const itemState = {
-  img: null, group: null, mesh: null,
-  depth: 1, pixelScale: 1, baseScale: 1, gizmo: true,
-  suppressFit: false
-};
-
-/* ===== ITEM UNDO / REDO ===== */
+const itemState = { img: null, group: null, mesh: null, depth: 1, pixelScale: 1, baseScale: 1, gizmo: true, suppressFit: false };
 const itemHistory = { stack: [], index: -1, max: 80, suspended: false };
 let itemHistoryTimer = null;
-
 function snapshotItem() {
   if (!itemState.group) return null;
   return {
     rot: [itemState.group.rotation.x, itemState.group.rotation.y, itemState.group.rotation.z],
     pos: [itemState.group.position.x, itemState.group.position.y, itemState.group.position.z],
-    depth: itemState.depth,
-    pixelScale: itemState.pixelScale,
-    img: itemState.img
+    depth: itemState.depth, pixelScale: itemState.pixelScale, img: itemState.img
   };
 }
-
 function pushItemHistory() {
   if (itemHistory.suspended) return;
   const snap = snapshotItem();
@@ -1785,65 +1825,43 @@ function pushItemHistory() {
   itemHistory.index = itemHistory.stack.length - 1;
   updateItemUndoButtons();
 }
-
-function scheduleItemHistory() {
-  clearTimeout(itemHistoryTimer);
-  itemHistoryTimer = setTimeout(pushItemHistory, 350);
-}
-
+function scheduleItemHistory() { clearTimeout(itemHistoryTimer); itemHistoryTimer = setTimeout(pushItemHistory, 350); }
 function updateItemUndoButtons() {
   const u = $('#btnItemUndo'), r = $('#btnItemRedo');
   if (u) u.disabled = itemHistory.index <= 0;
   if (r) r.disabled = itemHistory.index >= itemHistory.stack.length - 1;
 }
-
 function restoreItem(snap) {
   if (!snap || !snap.img) return;
   itemHistory.suspended = true;
-
   itemState.depth = snap.depth;
   itemState.pixelScale = snap.pixelScale;
   itemState.suppressFit = true;
   setItem(snap.img);
   itemState.suppressFit = false;
-
   if (itemState.group) {
     itemState.group.rotation.set(snap.rot[0], snap.rot[1], snap.rot[2]);
     itemState.group.position.set(snap.pos[0], snap.pos[1], snap.pos[2]);
     itemState.group.scale.setScalar(itemState.baseScale * itemState.pixelScale);
   }
-
   if (itemDepthSlider) itemDepthSlider.setVal(itemState.depth);
   if (itemScaleSlider) itemScaleSlider.setVal(itemState.pixelScale);
   if (itemViewer._syncSliders) itemViewer._syncSliders();
-
   itemHistory.suspended = false;
   updateItemUndoButtons();
 }
-
-function undoItem() {
-  if (itemHistory.index <= 0) return;
-  itemHistory.index--;
-  restoreItem(itemHistory.stack[itemHistory.index]);
-}
-
-function redoItem() {
-  if (itemHistory.index >= itemHistory.stack.length - 1) return;
-  itemHistory.index++;
-  restoreItem(itemHistory.stack[itemHistory.index]);
-}
-
+function undoItem() { if (itemHistory.index <= 0) return; itemHistory.index--; restoreItem(itemHistory.stack[itemHistory.index]); }
+function redoItem() { if (itemHistory.index >= itemHistory.stack.length - 1) return; itemHistory.index++; restoreItem(itemHistory.stack[itemHistory.index]); }
 $('#btnItemUndo').addEventListener('click', undoItem);
 $('#btnItemRedo').addEventListener('click', redoItem);
-
 function buildItemMesh(img) {
   const c = document.createElement('canvas');
-  c.width = img.width; c.height = img.height;
+  c.width = img.width;
+  c.height = img.height;
   const x = c.getContext('2d', { willReadFrequently: true });
   x.imageSmoothingEnabled = false;
   x.drawImage(img, 0, 0);
   const data = x.getImageData(0, 0, img.width, img.height).data;
-
   const cells = [];
   for (let py = 0; py < img.height; py++) {
     for (let px = 0; px < img.width; px++) {
@@ -1856,12 +1874,10 @@ function buildItemMesh(img) {
       });
     }
   }
-
   const geo = new THREE.BoxGeometry(1.002, 1.002, 1);
   const mat = new THREE.MeshLambertMaterial({ color: 0xffffff });
   const mesh = new THREE.InstancedMesh(geo, mat, Math.max(cells.length, 1));
   mesh.count = cells.length;
-
   const m = new THREE.Matrix4();
   const col = new THREE.Color();
   cells.forEach((cell, i) => {
@@ -1872,14 +1888,12 @@ function buildItemMesh(img) {
   });
   mesh.instanceMatrix.needsUpdate = true;
   if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
-
   const group = new THREE.Group();
   const baseScale = 16 / Math.max(img.width, img.height);
   group.scale.setScalar(baseScale * itemState.pixelScale);
   group.add(mesh);
   return { group, mesh, baseScale };
 }
-
 function setItem(img) {
   itemViewer.tc.detach();
   if (itemState.group) {
@@ -1893,34 +1907,27 @@ function setItem(img) {
   itemState.baseScale = built.baseScale;
   itemViewer.scene.add(built.group);
   if (itemState.gizmo) itemViewer.tc.attach(built.group);
-
   if (!itemState.suppressFit) {
     itemViewer.controls.target.set(0, 0, 0);
     requestAnimationFrame(() => itemViewer.fitToObject(built.group, 1.5));
   }
   buildItemControls();
 }
-
 function buildItemControls() {
   const wrap = $('#itemControls');
   wrap.innerHTML = '';
   const g = itemState.group;
   if (!g) { wrap.innerHTML = '<p class="empty">Import an item texture to begin.</p>'; return; }
-
   const mk = (label, min, max, step, get, set, unit = '°') => {
-    const s = buildSlider({
-      label, value: get(), min, max, step, unit,
-      onInput: v => { set(v); scheduleItemHistory(); }
-    });
+    const s = buildSlider({ label, value: get(), min, max, step, unit, onInput: v => { set(v); scheduleItemHistory(); } });
     wrap.appendChild(s.el);
     return s;
   };
   const h = (t) => {
     const d = document.createElement('div');
-    d.style.cssText = 'font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:8px 0';
+    d.style.cssText = 'font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:10px 0 8px';
     d.textContent = t; wrap.appendChild(d);
   };
-
   h('Rotation');
   const rx = mk('Rotate X', -180, 180, 1, () => g.rotation.x * 180 / Math.PI, v => g.rotation.x = deg(v));
   const ry = mk('Rotate Y', -180, 180, 1, () => g.rotation.y * 180 / Math.PI, v => g.rotation.y = deg(v));
@@ -1929,7 +1936,6 @@ function buildItemControls() {
   const px = mk('Move X', -20, 20, 0.1, () => g.position.x, v => g.position.x = v, '');
   const py = mk('Move Y', -20, 20, 0.1, () => g.position.y, v => g.position.y = v, '');
   const pz = mk('Move Z', -20, 20, 0.1, () => g.position.z, v => g.position.z = v, '');
-
   itemViewer._syncSliders = () => {
     rx.setVal(g.rotation.x * 180 / Math.PI);
     ry.setVal(g.rotation.y * 180 / Math.PI);
@@ -1939,12 +1945,10 @@ function buildItemControls() {
     pz.setVal(g.position.z);
   };
 }
-
 itemViewer.tc.addEventListener('objectChange', () => {
   if (itemViewer._syncSliders) itemViewer._syncSliders();
   scheduleItemHistory();
 });
-
 $('#btnUploadItem').addEventListener('click', () => $('#itemFile').click());
 $('#itemFile').addEventListener('change', async e => {
   const f = e.target.files[0];
@@ -1952,18 +1956,11 @@ $('#itemFile').addEventListener('change', async e => {
   const img = await loadImage(URL.createObjectURL(f));
   setItem(img);
   pushItemHistory();
-  toast('Item texture loaded ✓');
+  toast('Item texture loaded');
   e.target.value = '';
 });
-
-$('#chkItemSpin').addEventListener('change', e => {
-  itemViewer.controls.autoRotate = e.target.checked;
-  itemViewer.controls.autoRotateSpeed = 2.2;
-});
-$('#chkItemAuto').addEventListener('change', e => {
-  itemViewer.controls.autoRotate = e.target.checked;
-  itemViewer.controls.autoRotateSpeed = 2.2;
-});
+$('#chkItemSpin').addEventListener('change', e => { itemViewer.controls.autoRotate = e.target.checked; itemViewer.controls.autoRotateSpeed = 2.2; });
+$('#chkItemAuto').addEventListener('change', e => { itemViewer.controls.autoRotate = e.target.checked; itemViewer.controls.autoRotateSpeed = 2.2; });
 $('#chkItemWire').addEventListener('change', e => {
   if (!itemState.mesh) return;
   itemState.mesh.material.wireframe = e.target.checked;
@@ -1975,12 +1972,11 @@ $('#chkItemGizmo').addEventListener('change', e => {
   if (e.target.checked) itemViewer.tc.attach(itemState.group);
   else itemViewer.tc.detach();
 });
-
+$('#chkItemShadows').addEventListener('change', e => itemViewer.setFlat(!e.target.checked));
 $('#btnFitItemView').addEventListener('click', () => {
   if (itemState.group) itemViewer.fitToObject(itemState.group, 1.5);
   toast('View fitted');
 });
-
 $$('#view-item [data-icam]').forEach(b => b.addEventListener('click', () => {
   const k = b.dataset.icam;
   itemViewer.controls.target.set(0, 0, 0);
@@ -1989,22 +1985,21 @@ $$('#view-item [data-icam]').forEach(b => b.addEventListener('click', () => {
   if (k === 'top') itemViewer.camera.position.set(0, 46, 1);
   itemViewer.controls.update();
 }));
-
 $('#itemAspect').addEventListener('change', e => itemViewer.setAspect(parseFloat(e.target.value)));
-
 const itemGalleryData = [];
 $('#btnItemCapture').addEventListener('click', async () => {
   const btn = $('#btnItemCapture');
-  btn.disabled = true; btn.textContent = 'Rendering…';
+  btn.disabled = true;
+  const old = btn.textContent;
+  btn.textContent = 'Rendering…';
   try {
     const res = await captureViewer(itemViewer, parseInt($('#itemRes').value, 10));
-    addShot('itemGallery', itemGalleryData, res.url);
+    addShot('itemGallery', itemGalleryData, res.url, 'item');
     toast(`Captured ${res.w}×${res.h}`);
   } catch (err) { toast('Capture failed'); }
-  btn.disabled = false; btn.textContent = '📸 Capture Transparent PNG';
+  btn.disabled = false;
+  btn.textContent = old;
 });
-
-/* Build extrusion sliders */
 let itemDepthSlider, itemScaleSlider;
 {
   const depthWrap = $('#itemDepthCtrl');
@@ -2026,10 +2021,9 @@ let itemDepthSlider, itemScaleSlider;
     }
   });
   depthWrap.appendChild(itemDepthSlider.el);
-
   const scaleWrap = $('#itemScaleCtrl');
   itemScaleSlider = buildSlider({
-    label: 'Pixel size', value: itemState.pixelScale, min: 0.4, max: 1.6, step: 0.01, unit: '',
+    label: 'Pixel Size', value: itemState.pixelScale, min: 0.4, max: 1.6, step: 0.01, unit: '',
     onInput: v => {
       itemState.pixelScale = v;
       if (itemState.group) itemState.group.scale.setScalar(itemState.baseScale * itemState.pixelScale);
@@ -2038,23 +2032,286 @@ let itemDepthSlider, itemScaleSlider;
   });
   scaleWrap.appendChild(itemScaleSlider.el);
 }
-
-/* Lighting sliders */
 {
   const w1 = $('#charLightCtrl');
-  const s1 = buildSlider({
-    label: 'Lighting', value: 100, min: 20, max: 220, step: 1, unit: '%',
-    onInput: v => charViewer.setLighting(v)
-  });
+  const s1 = buildSlider({ label: 'Lighting', value: 100, min: 20, max: 220, step: 1, unit: '%', onInput: v => charViewer.setLighting(v) });
   w1.appendChild(s1.el);
-
   const w2 = $('#itemLightCtrl');
-  const s2 = buildSlider({
-    label: 'Lighting', value: 100, min: 20, max: 220, step: 1, unit: '%',
-    onInput: v => itemViewer.setLighting(v)
-  });
+  const s2 = buildSlider({ label: 'Lighting', value: 100, min: 20, max: 220, step: 1, unit: '%', onInput: v => itemViewer.setLighting(v) });
   w2.appendChild(s2.el);
 }
+
+/* =========================================================
+   CUSTOM BLOCK VIEW
+   ========================================================= */
+const blockViewer = new Viewer($('#blockStage'), 16 / 9);
+blockViewer.camera.position.set(2.4, 2.2, 3.2);
+blockViewer.controls.target.set(0, 0.5, 0);
+blockViewer.controls.minDistance = 0.6;
+
+const FACE_ORDER = ['right', 'left', 'top', 'bottom', 'front', 'back'];
+const FACE_LABELS = { top: 'Top', bottom: 'Bottom', front: 'Front', back: 'Back', left: 'Left', right: 'Right' };
+const FACE_LIST = ['top', 'bottom', 'front', 'back', 'left', 'right'];
+
+const faceState = {
+  textures: { top: null, bottom: null, front: null, back: null, left: null, right: null },
+  links: { top: '', bottom: '', front: '', back: '', left: '', right: '' }
+};
+let blockMesh = null;
+const blockGalleryData = [];
+
+function resolveFace(face, depth = 0) {
+  if (depth > 8) return null;
+  const link = faceState.links[face];
+  if (link) return resolveFace(link, depth + 1);
+  return faceState.textures[face];
+}
+
+function buildFaceGrid() {
+  const grid = $('#faceGrid');
+  grid.innerHTML = '';
+  FACE_LIST.forEach(face => {
+    const slot = document.createElement('div');
+    slot.className = 'face-slot';
+    slot.dataset.face = face;
+
+    const label = document.createElement('div');
+    label.className = 'face-slot-label';
+    label.innerHTML = `<span>${FACE_LABELS[face]}</span>`;
+    slot.appendChild(label);
+
+    const preview = document.createElement('div');
+    preview.className = 'face-preview';
+    preview.dataset.facePreview = face;
+    const img = document.createElement('img');
+    img.alt = FACE_LABELS[face];
+    const plus = document.createElement('div');
+    plus.className = 'face-plus';
+    plus.textContent = '+';
+    preview.appendChild(img);
+    preview.appendChild(plus);
+    preview.addEventListener('click', () => triggerFaceUpload(face));
+    slot.appendChild(preview);
+
+    const buttons = document.createElement('div');
+    buttons.className = 'face-buttons';
+    const uploadBtn = document.createElement('button');
+    uploadBtn.className = 'btn sm';
+    uploadBtn.textContent = 'Upload';
+    uploadBtn.addEventListener('click', () => triggerFaceUpload(face));
+    const clearBtn = document.createElement('button');
+    clearBtn.className = 'btn sm';
+    clearBtn.textContent = 'Clear';
+    clearBtn.addEventListener('click', () => clearFace(face));
+    buttons.appendChild(uploadBtn);
+    buttons.appendChild(clearBtn);
+    slot.appendChild(buttons);
+
+    const linkSel = document.createElement('select');
+    linkSel.className = 'face-link';
+    linkSel.dataset.faceLink = face;
+    const ownOpt = document.createElement('option');
+    ownOpt.value = '';
+    ownOpt.textContent = 'Own texture';
+    linkSel.appendChild(ownOpt);
+    FACE_LIST.forEach(other => {
+      if (other === face) return;
+      const opt = document.createElement('option');
+      opt.value = other;
+      opt.textContent = 'Same as ' + FACE_LABELS[other];
+      linkSel.appendChild(opt);
+    });
+    linkSel.addEventListener('change', () => {
+      faceState.links[face] = linkSel.value;
+      updateFaceSlot(face);
+      refreshBlock();
+    });
+    slot.appendChild(linkSel);
+
+    grid.appendChild(slot);
+    updateFaceSlot(face);
+  });
+}
+
+function updateFaceSlot(face) {
+  const slot = $(`.face-slot[data-face="${face}"]`);
+  if (!slot) return;
+  const preview = slot.querySelector('.face-preview');
+  const img = preview.querySelector('img');
+  const plus = preview.querySelector('.face-plus');
+  const linkSel = slot.querySelector('.face-link');
+  const texture = faceState.textures[face];
+  const linked = faceState.links[face];
+
+  linkSel.value = linked;
+
+  if (linked) {
+    slot.classList.add('linked');
+    preview.classList.remove('has-img');
+    preview.classList.add('linked-preview');
+    img.style.display = 'none';
+    if (plus) plus.style.display = 'none';
+    const oldTag = preview.querySelector('.linked-tag');
+    if (oldTag) oldTag.remove();
+    const tag = document.createElement('div');
+    tag.className = 'linked-tag';
+    tag.textContent = '→ ' + FACE_LABELS[linked];
+    preview.appendChild(tag);
+    img.src = '';
+  } else {
+    slot.classList.remove('linked');
+    const oldTag = preview.querySelector('.linked-tag');
+    if (oldTag) oldTag.remove();
+    preview.classList.remove('linked-preview');
+    if (texture && texture.url) {
+      preview.classList.add('has-img');
+      img.src = texture.url;
+      img.style.display = '';
+      if (plus) plus.style.display = 'none';
+    } else {
+      preview.classList.remove('has-img');
+      img.src = '';
+      img.style.display = 'none';
+      if (plus) plus.style.display = '';
+    }
+  }
+}
+
+function triggerFaceUpload(face) {
+  const inp = document.createElement('input');
+  inp.type = 'file';
+  inp.accept = 'image/*';
+  inp.addEventListener('change', async () => {
+    const f = inp.files[0];
+    if (!f) return;
+    const url = await fileToDataUrl(f);
+    const img = await loadImage(url);
+    setFaceTexture(face, { img, url });
+  });
+  inp.click();
+}
+
+function setFaceTexture(face, data) {
+  faceState.textures[face] = data;
+  faceState.links[face] = '';
+  updateFaceSlot(face);
+  refreshBlock();
+  toast(FACE_LABELS[face] + ' texture set');
+}
+
+function clearFace(face) {
+  faceState.textures[face] = null;
+  faceState.links[face] = '';
+  updateFaceSlot(face);
+  refreshBlock();
+}
+
+function refreshBlock() {
+  if (blockMesh) {
+    blockViewer.scene.remove(blockMesh);
+    blockMesh.traverse(o => {
+      if (o.geometry) o.geometry.dispose();
+      if (o.material) {
+        const mats = Array.isArray(o.material) ? o.material : [o.material];
+        mats.forEach(m => { if (m.map) m.map.dispose(); m.dispose(); });
+      }
+    });
+  }
+  const defaultColor = 0x9aa3b3;
+  const mats = FACE_ORDER.map(face => {
+    const data = resolveFace(face);
+    if (data && data.img) {
+      const tex = makePixelTexture(data.img, false);
+      return new THREE.MeshLambertMaterial({ map: tex });
+    }
+    return new THREE.MeshLambertMaterial({ color: defaultColor });
+  });
+  const geo = new THREE.BoxGeometry(1, 1, 1);
+  blockMesh = new THREE.Mesh(geo, mats);
+  blockMesh.position.set(0, 0.5, 0);
+  blockViewer.scene.add(blockMesh);
+}
+
+$('#btnResetBlock').addEventListener('click', () => {
+  FACE_LIST.forEach(f => {
+    faceState.textures[f] = null;
+    faceState.links[f] = '';
+    updateFaceSlot(f);
+  });
+  refreshBlock();
+  toast('Faces cleared');
+});
+
+$$('#view-block [data-bcam]').forEach(b => b.addEventListener('click', () => {
+  const k = b.dataset.bcam;
+  blockViewer.controls.target.set(0, 0.5, 0);
+  if (k === 'front') blockViewer.camera.position.set(0, 0.5, 3.4);
+  if (k === 'side') blockViewer.camera.position.set(3.4, 0.5, 0);
+  if (k === 'three') blockViewer.camera.position.set(2.4, 2.2, 3.2);
+  if (k === 'top') blockViewer.camera.position.set(0, 3.6, 0.01);
+  blockViewer.controls.update();
+}));
+
+$('#btnFitBlockView').addEventListener('click', () => {
+  if (blockMesh) blockViewer.fitToObject(blockMesh, 1.5);
+  toast('View fitted');
+});
+
+$('#chkBlockSpin').addEventListener('change', e => {
+  blockViewer.controls.autoRotate = e.target.checked;
+  blockViewer.controls.autoRotateSpeed = 1.6;
+});
+$('#chkBlockShadows').addEventListener('change', e => blockViewer.setFlat(!e.target.checked));
+$('#blockAspect').addEventListener('change', e => blockViewer.setAspect(parseFloat(e.target.value)));
+{
+  const w = $('#blockLightCtrl');
+  const s = buildSlider({
+    label: 'Lighting', value: 100, min: 20, max: 220, step: 1, unit: '%',
+    onInput: v => blockViewer.setLighting(v)
+  });
+  w.appendChild(s.el);
+}
+$('#btnBlockCapture').addEventListener('click', async () => {
+  const btn = $('#btnBlockCapture');
+  btn.disabled = true;
+  const old = btn.textContent;
+  btn.textContent = 'Rendering…';
+  try {
+    const res = await captureViewer(blockViewer, parseInt($('#blockRes').value, 10));
+    addShot('blockGallery', blockGalleryData, res.url, 'block');
+    toast(`Captured ${res.w}×${res.h}`);
+  } catch (err) { toast('Capture failed'); }
+  btn.disabled = false;
+  btn.textContent = old;
+});
+
+buildFaceGrid();
+refreshBlock();
+
+/* ==================== FACE MODAL ==================== */
+let pendingFaceTexture = null;
+function openFaceModal(data) {
+  pendingFaceTexture = data;
+  $('#faceModal').hidden = false;
+}
+function closeFaceModal() {
+  pendingFaceTexture = null;
+  $('#faceModal').hidden = true;
+}
+$('#faceModalButtons').addEventListener('click', e => {
+  const btn = e.target.closest('button[data-face]');
+  if (!btn) return;
+  const face = btn.dataset.face;
+  if (pendingFaceTexture) {
+    setFaceTexture(face, pendingFaceTexture);
+    setView('block');
+  }
+  closeFaceModal();
+});
+$('#btnCancelFace').addEventListener('click', closeFaceModal);
+$('#faceModal').addEventListener('click', e => {
+  if (e.target === $('#faceModal')) closeFaceModal();
+});
 
 /* ==================== THUMBNAIL EDITOR ==================== */
 const artCanvas = $('#artCanvas');
@@ -2063,16 +2320,17 @@ const artCtx = artCanvas.getContext('2d');
 const ovCtx = ovCanvas.getContext('2d');
 const measureCanvas = document.createElement('canvas');
 const measureCtx = measureCanvas.getContext('2d');
-
 const T = {
   w: 1280, h: 720,
   bg: { type: 'gradient', c1: '#1b2a5e', c2: '#3b6ef5', angle: 135 },
-  layers: [],
-  sel: null
+  layers: [], sel: null
 };
 let displayScale = 1;
-
 const history = { stack: [], index: -1, max: 60, suspended: false };
+let snapEnabled = false;
+let constrainResize = false;
+let snapGuidesX = [];
+let snapGuidesY = [];
 
 function cloneLayer(L) {
   const c = { ...L };
@@ -2084,16 +2342,7 @@ function cloneLayer(L) {
   if (L.grad) c.grad = { ...L.grad };
   return c;
 }
-
-function snapshot() {
-  return {
-    layers: T.layers.map(cloneLayer),
-    sel: T.sel,
-    bg: { ...T.bg },
-    w: T.w, h: T.h
-  };
-}
-
+function snapshot() { return { layers: T.layers.map(cloneLayer), sel: T.sel, bg: { ...T.bg }, w: T.w, h: T.h }; }
 function pushHistory() {
   if (history.suspended) return;
   history.stack = history.stack.slice(0, history.index + 1);
@@ -2102,33 +2351,15 @@ function pushHistory() {
   history.index = history.stack.length - 1;
   updateUndoButtons();
 }
-
 let historyTimer = null;
-function scheduleHistory() {
-  clearTimeout(historyTimer);
-  historyTimer = setTimeout(pushHistory, 350);
-}
-
+function scheduleHistory() { clearTimeout(historyTimer); historyTimer = setTimeout(pushHistory, 350); }
 function updateUndoButtons() {
   const u = $('#btnUndo'), r = $('#btnRedo');
   if (u) u.disabled = history.index <= 0;
   if (r) r.disabled = history.index >= history.stack.length - 1;
 }
-
-function undo() {
-  if (history.index <= 0) return;
-  history.index--;
-  restore(history.stack[history.index]);
-  updateUndoButtons();
-}
-
-function redo() {
-  if (history.index >= history.stack.length - 1) return;
-  history.index++;
-  restore(history.stack[history.index]);
-  updateUndoButtons();
-}
-
+function undo() { if (history.index <= 0) return; history.index--; restore(history.stack[history.index]); updateUndoButtons(); }
+function redo() { if (history.index >= history.stack.length - 1) return; history.index++; restore(history.stack[history.index]); updateUndoButtons(); }
 function restore(snap) {
   history.suspended = true;
   T.layers = snap.layers.map(cloneLayer);
@@ -2139,24 +2370,16 @@ function restore(snap) {
     artCanvas.width = T.w; artCanvas.height = T.h;
     ovCanvas.width = T.w; ovCanvas.height = T.h;
   }
-  renderLayerList();
-  renderProps();
-  layoutThumb();
-  renderThumb();
+  renderLayerList(); renderProps(); layoutThumb(); renderThumb();
   history.suspended = false;
 }
-
 $('#btnUndo').addEventListener('click', undo);
 $('#btnRedo').addEventListener('click', redo);
 
 function drawBackground(ctx) {
   const b = T.bg;
   if (b.type === 'transparent') return;
-  if (b.type === 'solid') {
-    ctx.fillStyle = b.c1;
-    ctx.fillRect(0, 0, T.w, T.h);
-    return;
-  }
+  if (b.type === 'solid') { ctx.fillStyle = b.c1; ctx.fillRect(0, 0, T.w, T.h); return; }
   const a = deg(b.angle);
   const cx = T.w / 2, cy = T.h / 2;
   const r = Math.abs(T.w * Math.cos(a)) + Math.abs(T.h * Math.sin(a));
@@ -2168,7 +2391,6 @@ function drawBackground(ctx) {
   ctx.fillStyle = g;
   ctx.fillRect(0, 0, T.w, T.h);
 }
-
 let noisePattern = null;
 function getNoisePattern(ctx) {
   if (noisePattern) return noisePattern;
@@ -2185,7 +2407,6 @@ function getNoisePattern(ctx) {
   noisePattern = ctx.createPattern(c, 'repeat');
   return noisePattern;
 }
-
 function buildFilter(f) {
   const parts = [];
   if (f.brightness !== 100) parts.push(`brightness(${f.brightness}%)`);
@@ -2197,13 +2418,11 @@ function buildFilter(f) {
   if (f.grayscale) parts.push(`grayscale(${f.grayscale}%)`);
   return parts.length ? parts.join(' ') : 'none';
 }
-
 function hexToRgba(hex, a) {
   const h = hex.replace('#', '');
   const n = parseInt(h.length === 3 ? h.split('').map(c => c + c).join('') : h, 16);
   return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${a})`;
 }
-
 function drawLayer(ctx, L) {
   ctx.save();
   ctx.globalAlpha = L.opacity ?? 1;
@@ -2215,7 +2434,6 @@ function drawLayer(ctx, L) {
   else if (L.type === 'text') drawTextLayer(ctx, L);
   ctx.restore();
 }
-
 function drawImageLayer(ctx, L) {
   if (!L.img) return;
   const f = buildFilter(L.filters || {});
@@ -2223,7 +2441,6 @@ function drawImageLayer(ctx, L) {
   ctx.drawImage(L.img, -L.w / 2, -L.h / 2, L.w, L.h);
   ctx.filter = 'none';
 }
-
 function measureTextLayer(L) {
   measureCtx.font = `${L.italic ? 'italic ' : ''}${L.weight} ${L.size}px "${L.font}", sans-serif`;
   const lines = String(L.text).split('\n');
@@ -2239,7 +2456,6 @@ function measureTextLayer(L) {
     h: lines.length * lineH + strokeW * 2 + (L.extrude ? L.extrude.depth : 0)
   };
 }
-
 function drawTextLayer(ctx, L) {
   ctx.font = `${L.italic ? 'italic ' : ''}${L.weight} ${L.size}px "${L.font}", sans-serif`;
   ctx.textAlign = 'center';
@@ -2253,7 +2469,6 @@ function drawTextLayer(ctx, L) {
   });
   if ('letterSpacing' in ctx) ctx.letterSpacing = '0px';
 }
-
 function drawTextLine(ctx, L, text, x, y) {
   ctx.lineJoin = 'round';
   ctx.miterLimit = 2;
@@ -2293,19 +2508,15 @@ function drawTextLine(ctx, L, text, x, y) {
     g.addColorStop(0, L.grad.c1);
     g.addColorStop(1, L.grad.c2);
     ctx.fillStyle = g;
-  } else {
-    ctx.fillStyle = L.color;
-  }
+  } else ctx.fillStyle = L.color;
   ctx.fillText(text, x, y);
 }
-
 function drawEffectLayer(ctx, L) {
   const W = T.w, H = T.h;
   const cx = L.x ?? W / 2;
   const cy = L.y ?? H / 2;
   const t = L.effect || 'vignette';
   const intensity = L.intensity ?? 1;
-
   if (t === 'vignette') {
     const g = ctx.createRadialGradient(cx, cy, Math.min(W, H) * 0.15, cx, cy, Math.max(W, H) * 0.78);
     g.addColorStop(0, 'rgba(0,0,0,0)');
@@ -2368,7 +2579,6 @@ function drawEffectLayer(ctx, L) {
     ctx.fillRect(0, 0, W, H);
   }
 }
-
 function renderThumb() {
   if (artCanvas.width !== T.w || artCanvas.height !== T.h) {
     artCanvas.width = T.w; artCanvas.height = T.h;
@@ -2377,16 +2587,69 @@ function renderThumb() {
   artCtx.setTransform(1, 0, 0, 1, 0, 0);
   artCtx.clearRect(0, 0, T.w, T.h);
   drawBackground(artCtx);
-  for (const L of T.layers) {
-    if (L.visible === false) continue;
-    drawLayer(artCtx, L);
-  }
+  for (const L of T.layers) { if (L.visible === false) continue; drawLayer(artCtx, L); }
   drawSelection();
 }
-
+function getSnapTargetsX(excludeId) {
+  const targets = [T.w / 2];
+  for (const L of T.layers) {
+    if (L.id === excludeId) continue;
+    if (L.visible === false) continue;
+    if (L.type === 'effect') continue;
+    targets.push(L.x);
+  }
+  return targets;
+}
+function getSnapTargetsY(excludeId) {
+  const targets = [T.h / 2];
+  for (const L of T.layers) {
+    if (L.id === excludeId) continue;
+    if (L.visible === false) continue;
+    if (L.type === 'effect') continue;
+    targets.push(L.y);
+  }
+  return targets;
+}
+function applySnap(L) {
+  snapGuidesX = [];
+  snapGuidesY = [];
+  if (!snapEnabled) return;
+  const threshold = 10 / Math.max(displayScale, 0.01);
+  const tx = getSnapTargetsX(L.id);
+  let bestX = null, bestDistX = Infinity;
+  for (const t of tx) {
+    const d = Math.abs(L.x - t);
+    if (d < threshold && d < bestDistX) { bestDistX = d; bestX = t; }
+  }
+  if (bestX !== null) { L.x = bestX; snapGuidesX.push(bestX); }
+  const ty = getSnapTargetsY(L.id);
+  let bestY = null, bestDistY = Infinity;
+  for (const t of ty) {
+    const d = Math.abs(L.y - t);
+    if (d < threshold && d < bestDistY) { bestDistY = d; bestY = t; }
+  }
+  if (bestY !== null) { L.y = bestY; snapGuidesY.push(bestY); }
+}
+function drawSnapGuides() {
+  if (!snapGuidesX.length && !snapGuidesY.length) return;
+  const s = 1 / displayScale;
+  ovCtx.save();
+  ovCtx.strokeStyle = '#3b6ef5';
+  ovCtx.lineWidth = 1.5 * s;
+  ovCtx.setLineDash([6 * s, 5 * s]);
+  for (const x of snapGuidesX) {
+    ovCtx.beginPath(); ovCtx.moveTo(x, 0); ovCtx.lineTo(x, T.h); ovCtx.stroke();
+  }
+  for (const y of snapGuidesY) {
+    ovCtx.beginPath(); ovCtx.moveTo(0, y); ovCtx.lineTo(T.w, y); ovCtx.stroke();
+  }
+  ovCtx.setLineDash([]);
+  ovCtx.restore();
+}
 function drawSelection() {
   ovCtx.setTransform(1, 0, 0, 1, 0, 0);
   ovCtx.clearRect(0, 0, T.w, T.h);
+  drawSnapGuides();
   const L = T.layers.find(l => l.id === T.sel);
   if (!L || L.type === 'effect' || L.visible === false) return;
   const s = 1 / displayScale;
@@ -2423,7 +2686,6 @@ function drawSelection() {
   ovCtx.fill(); ovCtx.stroke();
   ovCtx.restore();
 }
-
 function handlePositions(L) {
   const w = L.w, h = L.h;
   const d = 34;
@@ -2434,7 +2696,6 @@ function handlePositions(L) {
     rotate: { x: 0, y: -h / 2 - d }
   };
 }
-
 function layoutThumb() {
   const stage = $('#thumbStage');
   const wrap = $('#canvasWrap');
@@ -2450,18 +2711,19 @@ function layoutThumb() {
   wrap.style.height = dh + 'px';
   renderThumb();
 }
-
 function newImageLayer(img, name = 'Image') {
   const maxW = T.w * 0.72;
   const maxH = T.h * 0.78;
   const sc = Math.min(maxW / img.width, maxH / img.height, 3);
   return {
-    id: uid(), type: 'image', name, visible: true, opacity: 1, blend: 'source-over',
-    x: T.w / 2, y: T.h / 2, w: img.width * sc, h: img.height * sc, rot: 0,
-    img, filters: { brightness: 100, contrast: 100, saturate: 100, hue: 0, blur: 0, sepia: 0, grayscale: 0 }
+    id: uid(), type: 'image', name,
+    visible: true, opacity: 1, blend: 'source-over',
+    x: T.w / 2, y: T.h / 2,
+    w: img.width * sc, h: img.height * sc,
+    rot: 0, img,
+    filters: { brightness: 100, contrast: 100, saturate: 100, hue: 0, blur: 0, sepia: 0, grayscale: 0 }
   };
 }
-
 function newTextLayer(text = 'YOUR TEXT') {
   return {
     id: uid(), type: 'text', name: 'Text', visible: true, opacity: 1, blend: 'source-over',
@@ -2475,56 +2737,64 @@ function newTextLayer(text = 'YOUR TEXT') {
     grad: { on: false, c1: '#ffffff', c2: '#9dc0ff' }
   };
 }
-
 function newEffectLayer(effect = 'vignette') {
   const names = {
     vignette: 'Vignette', glow: 'Glow / Bloom', gradient: 'Gradient Overlay',
     rays: 'Sun Rays', noise: 'Film Grain', scanlines: 'Scanlines', solid: 'Color Wash'
   };
   return {
-    id: uid(), type: 'effect', name: names[effect] || 'Effect', visible: true,
-    opacity: 1, blend: effect === 'glow' ? 'screen' : 'source-over',
+    id: uid(), type: 'effect', name: names[effect] || 'Effect',
+    visible: true, opacity: 1,
+    blend: effect === 'glow' ? 'screen' : 'source-over',
     effect, x: T.w / 2, y: T.h / 2, rot: 0, w: T.w, h: T.h,
     color: effect === 'vignette' ? '#000000' : (effect === 'glow' ? '#8fb4ff' : '#ffffff'),
-    color2: '#000000', intensity: effect === 'vignette' ? 0.85 : 0.6,
-    angle: 90, radius: Math.max(T.w, T.h) * 0.6, gap: 6, count: 18
+    color2: '#000000',
+    intensity: effect === 'vignette' ? 0.85 : 0.6,
+    angle: 90,
+    radius: Math.max(T.w, T.h) * 0.6,
+    gap: 6, count: 18
   };
 }
-
 function addLayer(L) {
   T.layers.push(L);
   T.sel = L.id;
-  renderThumb();
-  renderLayerList();
-  renderProps();
-  pushHistory();
+  renderThumb(); renderLayerList(); renderProps(); pushHistory();
 }
-
 function addImageLayer(img, name) { addLayer(newImageLayer(img, name)); }
 
-let dragSrcId = null;
+function duplicateLayer(L) {
+  const copy = cloneLayer(L);
+  copy.id = uid();
+  copy.name = (L.name || 'Layer') + ' copy';
+  copy.x = (L.x || 0) + 24;
+  copy.y = (L.y || 0) + 24;
+  T.layers.push(copy);
+  T.sel = copy.id;
+  renderThumb(); renderLayerList(); renderProps(); pushHistory();
+  toast('Layer duplicated');
+}
 
+let dragSrcId = null;
 function renderLayerList() {
   const el = $('#layerList');
   el.innerHTML = '';
   $('#layerEmpty').style.display = T.layers.length ? 'none' : 'block';
-
   [...T.layers].reverse().forEach(L => {
     const row = document.createElement('div');
     row.className = 'layer-row' + (T.sel === L.id ? ' selected' : '');
     row.draggable = true;
     row.dataset.id = L.id;
-
-    const icon = L.type === 'image' ? '🖼' : L.type === 'text' ? '🔤' : '✨';
+    const badge = L.type === 'image' ? 'IMG' : L.type === 'text' ? 'TXT' : 'FX';
+    const hiddenStyle = L.visible === false ? ' style="opacity:.45"' : '';
     row.innerHTML = `
       <span class="drag-handle">⠿</span>
-      <button class="icon-btn vis" title="Toggle visibility">${L.visible === false ? '🚫' : icon}</button>
+      <button class="icon-btn vis" title="Toggle visibility"${hiddenStyle}>${badge}</button>
       <span class="lname">${escapeHtml(L.name)}</span>
+      <button class="icon-btn dup" title="Duplicate">⧉</button>
       <button class="icon-btn up" title="Bring forward">▲</button>
       <button class="icon-btn down" title="Send backward">▼</button>
       <button class="icon-btn del" title="Delete">✕</button>
     `;
-
     row.addEventListener('click', e => {
       if (e.target.closest('button')) return;
       T.sel = L.id;
@@ -2534,6 +2804,10 @@ function renderLayerList() {
       e.stopPropagation();
       L.visible = L.visible === false;
       renderLayerList(); renderThumb(); pushHistory();
+    });
+    row.querySelector('.dup').addEventListener('click', e => {
+      e.stopPropagation();
+      duplicateLayer(L);
     });
     row.querySelector('.up').addEventListener('click', e => {
       e.stopPropagation();
@@ -2558,7 +2832,6 @@ function renderLayerList() {
       if (T.sel === L.id) T.sel = null;
       renderLayerList(); renderProps(); renderThumb(); pushHistory();
     });
-
     row.addEventListener('dragstart', e => {
       dragSrcId = L.id;
       e.dataTransfer.effectAllowed = 'move';
@@ -2578,11 +2851,9 @@ function renderLayerList() {
       dragSrcId = null;
       renderLayerList(); renderThumb(); pushHistory();
     });
-
     el.appendChild(row);
   });
 }
-
 function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
@@ -2600,7 +2871,6 @@ function ctrlColor(label, value, onInput) {
   c.appendChild(head);
   return c;
 }
-
 function ctrlSelect(label, options, value, onChange) {
   const c = document.createElement('div');
   c.className = 'ctrl';
@@ -2619,7 +2889,6 @@ function ctrlSelect(label, options, value, onChange) {
   c.appendChild(head); c.appendChild(sel);
   return c;
 }
-
 function ctrlText(label, value, onInput, multiline) {
   const c = document.createElement('div');
   c.className = 'ctrl';
@@ -2634,10 +2903,9 @@ function ctrlText(label, value, onInput, multiline) {
   c.appendChild(head); c.appendChild(inp);
   return c;
 }
-
 function ctrlHead(title) {
   const d = document.createElement('div');
-  d.style.cssText = 'font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:14px 0 9px';
+  d.style.cssText = 'font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:14px 0 9px';
   d.textContent = title;
   return d;
 }
@@ -2651,40 +2919,74 @@ const BLEND_MODES = [
   ['hue', 'Hue'], ['saturation', 'Saturation'], ['color', 'Color'], ['luminosity', 'Luminosity']
 ];
 
-const FONT_LIST = [
+const BUILTIN_FONTS = [
   'Anton', 'Bangers', 'Luckiest Guy', 'Russo One', 'Press Start 2P', 'Permanent Marker',
   'Titan One', 'Archivo Black', 'Bebas Neue', 'Oswald', 'Montserrat', 'Poppins', 'Inter',
   'Creepster', 'Righteous', 'Fredoka', 'Baloo 2', 'Chakra Petch', 'Orbitron', 'Silkscreen',
   'Rubik Mono One', 'Alfa Slab One', 'Ultra', 'Monoton', 'Staatliches', 'Secular One',
   'Impact', 'Arial Black', 'Georgia', 'Courier New'
 ];
+let customFonts = [];
+function getFontList() { return [...BUILTIN_FONTS, ...customFonts]; }
+
+function updateFontHint() {
+  const hint = $('#fontListHint');
+  if (!hint) return;
+  if (customFonts.length === 0) hint.textContent = 'No custom fonts imported.';
+  else hint.textContent = 'Imported: ' + customFonts.join(', ');
+}
+
+$('#btnImportFont').addEventListener('click', () => $('#fontFile').click());
+$('#fontFile').addEventListener('change', async e => {
+  const files = Array.from(e.target.files || []);
+  for (const f of files) {
+    try {
+      const buf = await f.arrayBuffer();
+      let family = f.name.replace(/\.[^.]+$/, '').replace(/[^a-zA-Z0-9 ]/g, ' ').trim();
+      if (!family) family = 'CustomFont' + (customFonts.length + 1);
+      if (customFonts.includes(family) || BUILTIN_FONTS.includes(family)) {
+        family = family + ' ' + (customFonts.length + 1);
+      }
+      const ff = new FontFace(family, buf);
+      await ff.load();
+      document.fonts.add(ff);
+      customFonts.push(family);
+      toast('Font imported: ' + family);
+    } catch (err) {
+      console.error(err);
+      toast('Could not import ' + f.name);
+    }
+  }
+  e.target.value = '';
+  updateFontHint();
+  renderProps();
+});
 
 function renderProps() {
   const el = $('#props');
   el.innerHTML = '';
   const L = T.layers.find(l => l.id === T.sel);
-  if (!L) {
-    el.innerHTML = '<p class="empty">Select a layer to edit its properties.</p>';
-    return;
-  }
+  if (!L) { el.innerHTML = '<p class="empty">Select a layer to edit its properties.</p>'; return; }
+
+  const duplicateBtn = document.createElement('button');
+  duplicateBtn.className = 'btn block sm';
+  duplicateBtn.textContent = 'Duplicate Layer';
+  duplicateBtn.style.marginBottom = '12px';
+  duplicateBtn.addEventListener('click', () => duplicateLayer(L));
+  el.appendChild(duplicateBtn);
 
   el.appendChild(ctrlHead('Transform'));
-
   const addSlider = (label, value, min, max, step, onInput, unit = '') => {
     const s = buildSlider({ label, value, min, max, step, unit, onInput });
     el.appendChild(s.el);
   };
-
   addSlider('Position X', L.x, -T.w, T.w * 2, 1, v => { L.x = v; renderThumb(); scheduleHistory(); });
   addSlider('Position Y', L.y, -T.h, T.h * 2, 1, v => { L.y = v; renderThumb(); scheduleHistory(); });
-  if (L.type !== 'effect') {
-    addSlider('Rotation', L.rot || 0, -180, 180, 0.5, v => { L.rot = v; renderThumb(); scheduleHistory(); }, '°');
-  }
+  if (L.type !== 'effect') addSlider('Rotation', L.rot || 0, -180, 180, 0.5, v => { L.rot = v; renderThumb(); scheduleHistory(); }, '°');
   addSlider('Opacity', L.opacity ?? 1, 0, 1, 0.01, v => { L.opacity = v; renderThumb(); scheduleHistory(); });
   el.appendChild(ctrlSelect('Blend mode', BLEND_MODES, L.blend || 'source-over', v => {
     L.blend = v; renderThumb(); pushHistory();
   }));
-
   if (L.type === 'image') {
     el.appendChild(ctrlHead('Size'));
     addSlider('Width', L.w, 20, T.w * 3, 1, v => {
@@ -2695,7 +2997,6 @@ function renderProps() {
       const ar = L.w / L.h; L.h = v; L.w = v * ar;
       renderThumb(); renderSelection(); scheduleHistory();
     });
-
     el.appendChild(ctrlHead('Filters'));
     const FILTERS = [
       ['brightness', 'Brightness', 0, 250, 1, '%'],
@@ -2711,17 +3012,15 @@ function renderProps() {
         L.filters[key] = v; renderThumb(); scheduleHistory();
       }, unit);
     });
-
     const resetF = document.createElement('button');
     resetF.className = 'btn ghost block sm';
-    resetF.textContent = '↺ Reset filters';
+    resetF.textContent = 'Reset Filters';
     resetF.addEventListener('click', () => {
       L.filters = { brightness: 100, contrast: 100, saturate: 100, hue: 0, blur: 0, sepia: 0, grayscale: 0 };
       renderProps(); renderThumb(); pushHistory();
     });
     el.appendChild(resetF);
   }
-
   if (L.type === 'text') {
     el.appendChild(ctrlHead('Text'));
     el.appendChild(ctrlText('Content', L.text, v => {
@@ -2729,8 +3028,8 @@ function renderProps() {
       const m = measureTextLayer(L); L.w = m.w; L.h = m.h;
       renderThumb(); renderSelection(); renderLayerList(); scheduleHistory();
     }, true));
-
-    el.appendChild(ctrlSelect('Font', FONT_LIST.map(f => [f, f]), L.font, v => {
+    const fontOpts = getFontList().map(f => [f, f]);
+    el.appendChild(ctrlSelect('Font', fontOpts, L.font, v => {
       L.font = v;
       if (document.fonts) document.fonts.load(`${L.weight} 100px "${v}"`).then(() => {
         const m = measureTextLayer(L); L.w = m.w; L.h = m.h;
@@ -2738,12 +3037,10 @@ function renderProps() {
       });
       renderThumb(); pushHistory();
     }));
-
     addSlider('Size', L.size, 12, 420, 1, v => {
       L.size = v; const m = measureTextLayer(L); L.w = m.w; L.h = m.h;
       renderThumb(); renderSelection(); scheduleHistory();
     }, 'px');
-
     el.appendChild(ctrlSelect('Weight',
       [['400', 'Regular'], ['600', 'Semi Bold'], ['700', 'Bold'], ['800', 'Extra Bold'], ['900', 'Black']],
       String(L.weight),
@@ -2752,19 +3049,15 @@ function renderProps() {
         const m = measureTextLayer(L); L.w = m.w; L.h = m.h;
         renderThumb(); renderSelection(); pushHistory();
       }));
-
     addSlider('Letter spacing', L.letterSpacing, -20, 60, 0.5, v => {
       L.letterSpacing = v; const m = measureTextLayer(L); L.w = m.w; L.h = m.h;
       renderThumb(); renderSelection(); scheduleHistory();
     }, 'px');
-
     addSlider('Line height', L.lineHeight, 0.7, 2.2, 0.01, v => {
       L.lineHeight = v; const m = measureTextLayer(L); L.w = m.w; L.h = m.h;
       renderThumb(); renderSelection(); scheduleHistory();
     });
-
     el.appendChild(buildCheckbox('Italic', L.italic, v => { L.italic = v; renderThumb(); pushHistory(); }));
-
     el.appendChild(ctrlHead('Fill'));
     el.appendChild(ctrlColor('Text color', L.color, v => { L.color = v; renderThumb(); scheduleHistory(); }));
     el.appendChild(buildCheckbox('Gradient fill', L.grad.on, v => { L.grad.on = v; renderProps(); renderThumb(); pushHistory(); }));
@@ -2772,14 +3065,12 @@ function renderProps() {
       el.appendChild(ctrlColor('Gradient top', L.grad.c1, v => { L.grad.c1 = v; renderThumb(); scheduleHistory(); }));
       el.appendChild(ctrlColor('Gradient bottom', L.grad.c2, v => { L.grad.c2 = v; renderThumb(); scheduleHistory(); }));
     }
-
     el.appendChild(ctrlHead('Outline'));
     el.appendChild(ctrlColor('Outline color', L.stroke.color, v => { L.stroke.color = v; renderThumb(); scheduleHistory(); }));
     addSlider('Outline width', L.stroke.width, 0, 40, 0.5, v => {
       L.stroke.width = v; const m = measureTextLayer(L); L.w = m.w; L.h = m.h;
       renderThumb(); renderSelection(); scheduleHistory();
     }, 'px');
-
     el.appendChild(ctrlHead('Shadow'));
     el.appendChild(buildCheckbox('Enable shadow', L.shadow.on, v => { L.shadow.on = v; renderThumb(); pushHistory(); }));
     if (L.shadow.on) {
@@ -2788,14 +3079,12 @@ function renderProps() {
       addSlider('Shadow X', L.shadow.x, -60, 60, 1, v => { L.shadow.x = v; renderThumb(); scheduleHistory(); }, 'px');
       addSlider('Shadow Y', L.shadow.y, -60, 60, 1, v => { L.shadow.y = v; renderThumb(); scheduleHistory(); }, 'px');
     }
-
     el.appendChild(ctrlHead('Glow'));
     el.appendChild(buildCheckbox('Enable glow', L.glow.on, v => { L.glow.on = v; renderThumb(); pushHistory(); }));
     if (L.glow.on) {
       el.appendChild(ctrlColor('Glow color', L.glow.color, v => { L.glow.color = v; renderThumb(); scheduleHistory(); }));
       addSlider('Glow blur', L.glow.blur, 2, 120, 1, v => { L.glow.blur = v; renderThumb(); scheduleHistory(); }, 'px');
     }
-
     el.appendChild(ctrlHead('3D Extrude'));
     el.appendChild(buildCheckbox('Enable extrude', L.extrude.on, v => { L.extrude.on = v; renderThumb(); pushHistory(); }));
     if (L.extrude.on) {
@@ -2804,7 +3093,6 @@ function renderProps() {
       addSlider('Extrude angle', L.extrude.angle, 0, 360, 1, v => { L.extrude.angle = v; renderThumb(); scheduleHistory(); }, '°');
     }
   }
-
   if (L.type === 'effect') {
     const EFFECT_LIST = [
       ['vignette', 'Vignette'], ['glow', 'Glow / Bloom'], ['gradient', 'Gradient Overlay'],
@@ -2815,35 +3103,22 @@ function renderProps() {
       L.name = (EFFECT_LIST.find(e => e[0] === v) || ['', 'Effect'])[1];
       renderProps(); renderLayerList(); renderThumb(); pushHistory();
     }));
-
     if (L.effect !== 'gradient') {
       el.appendChild(ctrlColor('Color', L.color, v => { L.color = v; renderThumb(); scheduleHistory(); }));
     } else {
       el.appendChild(ctrlColor('From', L.color, v => { L.color = v; renderThumb(); scheduleHistory(); }));
       el.appendChild(ctrlColor('To', L.color2, v => { L.color2 = v; renderThumb(); scheduleHistory(); }));
     }
-
     addSlider('Intensity', L.intensity, 0, 1, 0.01, v => { L.intensity = v; renderThumb(); scheduleHistory(); });
-
-    if (L.effect === 'glow') {
-      addSlider('Radius', L.radius, 50, Math.max(T.w, T.h) * 1.6, 10, v => { L.radius = v; renderThumb(); scheduleHistory(); }, 'px');
-    }
-    if (L.effect === 'gradient') {
-      addSlider('Angle', L.angle, 0, 360, 1, v => { L.angle = v; renderThumb(); scheduleHistory(); }, '°');
-    }
-    if (L.effect === 'rays') {
-      addSlider('Ray count', L.count, 4, 64, 1, v => { L.count = v; renderThumb(); scheduleHistory(); });
-    }
-    if (L.effect === 'scanlines') {
-      addSlider('Spacing', L.gap, 3, 24, 1, v => { L.gap = v; renderThumb(); scheduleHistory(); }, 'px');
-    }
+    if (L.effect === 'glow') addSlider('Radius', L.radius, 50, Math.max(T.w, T.h) * 1.6, 10, v => { L.radius = v; renderThumb(); scheduleHistory(); }, 'px');
+    if (L.effect === 'gradient') addSlider('Angle', L.angle, 0, 360, 1, v => { L.angle = v; renderThumb(); scheduleHistory(); }, '°');
+    if (L.effect === 'rays') addSlider('Ray count', L.count, 4, 64, 1, v => { L.count = v; renderThumb(); scheduleHistory(); });
+    if (L.effect === 'scanlines') addSlider('Spacing', L.gap, 3, 24, 1, v => { L.gap = v; renderThumb(); scheduleHistory(); }, 'px');
     addSlider('Center X', L.x, -T.w, T.w * 2, 1, v => { L.x = v; renderThumb(); scheduleHistory(); });
     addSlider('Center Y', L.y, -T.h, T.h * 2, 1, v => { L.y = v; renderThumb(); scheduleHistory(); });
   }
 }
-
 function renderSelection() { drawSelection(); }
-
 function toArt(e) {
   const r = ovCanvas.getBoundingClientRect();
   return {
@@ -2851,20 +3126,17 @@ function toArt(e) {
     y: (e.clientY - r.top) / r.height * T.h
   };
 }
-
 function toLocal(L, p) {
   const dx = p.x - L.x, dy = p.y - L.y;
   const a = -deg(L.rot || 0);
   const c = Math.cos(a), s = Math.sin(a);
   return { x: dx * c - dy * s, y: dx * s + dy * c };
 }
-
 function toWorld(L, lp) {
   const a = deg(L.rot || 0);
   const c = Math.cos(a), s = Math.sin(a);
   return { x: L.x + lp.x * c - lp.y * s, y: L.y + lp.x * s + lp.y * c };
 }
-
 function hitTest(p) {
   for (let i = T.layers.length - 1; i >= 0; i--) {
     const L = T.layers[i];
@@ -2874,15 +3146,12 @@ function hitTest(p) {
   }
   return null;
 }
-
 let drag = null;
-
 ovCanvas.addEventListener('pointerdown', e => {
   if (currentView !== 'thumb') return;
   ovCanvas.setPointerCapture(e.pointerId);
   const p = toArt(e);
   const L = T.layers.find(l => l.id === T.sel);
-
   if (L && L.type !== 'effect' && L.visible !== false) {
     const tol = 13 / displayScale;
     const lp = toLocal(L, p);
@@ -2895,6 +3164,7 @@ ovCanvas.addEventListener('pointerdown', e => {
           handle: k, layer: L, start: p,
           orig: { x: L.x, y: L.y, w: L.w, h: L.h, rot: L.rot || 0, size: L.size }
         };
+        drag.isCorner = (k === 'nw' || k === 'ne' || k === 'se' || k === 'sw');
         if (k === 'rotate') {
           drag.startAngle = Math.atan2(p.y - L.y, p.x - L.x) * 180 / Math.PI + 90 - (L.rot || 0);
         } else {
@@ -2915,7 +3185,6 @@ ovCanvas.addEventListener('pointerdown', e => {
       }
     }
   }
-
   const hit = hitTest(p);
   if (hit) {
     T.sel = hit.id;
@@ -2927,15 +3196,14 @@ ovCanvas.addEventListener('pointerdown', e => {
     renderLayerList(); renderProps(); renderThumb();
   }
 });
-
 ovCanvas.addEventListener('pointermove', e => {
   if (!drag) return;
   const p = toArt(e);
   const L = drag.layer;
-
   if (drag.mode === 'move') {
     L.x = drag.orig.x + (p.x - drag.start.x);
     L.y = drag.orig.y + (p.y - drag.start.y);
+    applySnap(L);
   } else if (drag.mode === 'rotate') {
     let ang = Math.atan2(p.y - L.y, p.x - L.x) * 180 / Math.PI + 90 - drag.startAngle;
     if (e.shiftKey) ang = Math.round(ang / 15) * 15;
@@ -2946,21 +3214,26 @@ ovCanvas.addEventListener('pointermove', e => {
     const lp = toLocal(tmp, p);
     const a = drag.anchor;
     let left = -o.w / 2, right = o.w / 2, top = -o.h / 2, bottom = o.h / 2;
-    if (a.fx) {
-      if (lp.x < a.x) { left = lp.x; right = a.x; }
-      else { left = a.x; right = lp.x; }
+    if (a.fx) { if (lp.x < a.x) { left = lp.x; right = a.x; } else { left = a.x; right = lp.x; } }
+    if (a.fy) { if (lp.y < a.y) { top = lp.y; bottom = a.y; } else { top = a.y; bottom = lp.y; } }
+    let nw = Math.max(16, right - left);
+    let nh = Math.max(16, bottom - top);
+    const useConstrain = (e.shiftKey || constrainResize) && drag.isCorner;
+    if (useConstrain) {
+      const dW = nw - o.w;
+      const dH = nh - o.h;
+      const d = (dW + dH) / 2;
+      nw = Math.max(16, o.w + d);
+      nh = Math.max(16, o.h + d);
+      if (a.x > 0) { right = a.x; left = a.x - nw; }
+      else if (a.x < 0) { left = a.x; right = a.x + nw; }
+      if (a.y > 0) { bottom = a.y; top = a.y - nh; }
+      else if (a.y < 0) { top = a.y; bottom = a.y + nh; }
     }
-    if (a.fy) {
-      if (lp.y < a.y) { top = lp.y; bottom = a.y; }
-      else { top = a.y; bottom = lp.y; }
-    }
-    const nw = Math.max(16, right - left);
-    const nh = Math.max(16, bottom - top);
     const ncx = (left + right) / 2;
     const ncy = (top + bottom) / 2;
     const wc = toWorld(tmp, { x: ncx, y: ncy });
     L.x = wc.x; L.y = wc.y;
-
     if (L.type === 'text') {
       const scale = nw / o.w;
       L.size = clamp(o.size * scale, 8, 600);
@@ -2972,19 +3245,20 @@ ovCanvas.addEventListener('pointermove', e => {
   }
   renderThumb();
 });
-
 ovCanvas.addEventListener('pointerup', () => {
   if (drag) {
     ovCanvas.classList.remove('grabbing');
     drag = null;
+    snapGuidesX = [];
+    snapGuidesY = [];
     renderProps();
     pushHistory();
+    renderThumb();
   }
 });
 ovCanvas.addEventListener('pointercancel', () => {
   if (drag) { drag = null; ovCanvas.classList.remove('grabbing'); }
 });
-
 $('#btnAddImage').addEventListener('click', () => $('#thumbImgFile').click());
 $('#thumbImgFile').addEventListener('change', async e => {
   const files = Array.from(e.target.files || []);
@@ -2994,23 +3268,19 @@ $('#thumbImgFile').addEventListener('change', async e => {
   }
   e.target.value = '';
 });
-
 $('#btnAddText').addEventListener('click', () => {
   const L = newTextLayer('YOUR TEXT');
   const m = measureTextLayer(L);
   L.w = m.w; L.h = m.h;
   addLayer(L);
 });
-
 $('#btnAddEffect').addEventListener('click', () => addLayer(newEffectLayer('vignette')));
-
 $('#thumbSize').addEventListener('change', e => {
   const [w, h] = e.target.value.split('x').map(Number);
   T.w = w; T.h = h;
   T.layers.forEach(L => { if (L.type === 'effect') { L.w = w; L.h = h; } });
   layoutThumb(); renderThumb(); pushHistory();
 });
-
 $('#thumbBgType').addEventListener('change', e => {
   T.bg.type = e.target.value;
   $('#bgColors').style.display = T.bg.type === 'transparent' ? 'none' : 'flex';
@@ -3020,26 +3290,26 @@ $('#thumbBgType').addEventListener('change', e => {
 $('#bgC1').addEventListener('input', e => { T.bg.c1 = e.target.value; renderThumb(); scheduleHistory(); });
 $('#bgC2').addEventListener('input', e => { T.bg.c2 = e.target.value; renderThumb(); scheduleHistory(); });
 $('#btnSwapBg').addEventListener('click', () => {
-  const t = T.bg.c1; T.bg.c1 = T.bg.c2; T.bg.c2 = t;
-  $('#bgC1').value = T.bg.c1; $('#bgC2').value = T.bg.c2;
+  const t = T.bg.c1;
+  T.bg.c1 = T.bg.c2;
+  T.bg.c2 = t;
+  $('#bgC1').value = T.bg.c1;
+  $('#bgC2').value = T.bg.c2;
   renderThumb(); pushHistory();
 });
-
 $('#btnExport').addEventListener('click', () => {
   const a = document.createElement('a');
   a.download = FILE_SLUG + '-thumbnail.png';
   a.href = artCanvas.toDataURL('image/png');
   a.click();
-  toast('Thumbnail exported ✓');
+  toast('Thumbnail exported');
 });
-
 $('#btnClearLayers').addEventListener('click', () => {
   if (!T.layers.length) return;
   if (!confirm('Remove all layers?')) return;
   T.layers = []; T.sel = null;
   renderLayerList(); renderProps(); renderThumb(); pushHistory();
 });
-
 {
   const w = $('#bgAngleWrap');
   const s = buildSlider({
@@ -3048,6 +3318,227 @@ $('#btnClearLayers').addEventListener('click', () => {
   });
   w.appendChild(s.el);
 }
+$('#chkSnap').addEventListener('change', e => {
+  snapEnabled = e.target.checked;
+  if (!snapEnabled) { snapGuidesX = []; snapGuidesY = []; renderThumb(); }
+});
+$('#chkConstrain').addEventListener('change', e => { constrainResize = e.target.checked; });
+
+/* ==================== ASSETS TAB ==================== */
+const ASSET_REPO_OWNER = 'Faithful-Pack';
+const ASSET_REPO_NAME = 'Default-Java';
+const ASSET_BRANCH = 'java-latest';
+const ASSET_API_URL = `https://api.github.com/repos/${ASSET_REPO_OWNER}/${ASSET_REPO_NAME}/git/trees/${ASSET_BRANCH}?recursive=1`;
+const ASSET_CDN_BASE = `https://cdn.jsdelivr.net/gh/${ASSET_REPO_OWNER}/${ASSET_REPO_NAME}@${ASSET_BRANCH}/`;
+const ASSET_RAW_BASE = `https://raw.githubusercontent.com/${ASSET_REPO_OWNER}/${ASSET_REPO_NAME}/${ASSET_BRANCH}/`;
+const ASSET_IMG_EXT = /\.(png|jpg|jpeg|gif|webp|bmp)$/i;
+const ASSET_CACHE_KEY = 'craftpic-assets-v4';
+const ASSET_CACHE_TTL = 1000 * 60 * 60 * 24;
+const CHUNK_SIZE = 60;
+let allAssets = [];
+let filteredAssets = [];
+let renderedCount = 0;
+let sentinelObserver = null;
+let searchDebounce = null;
+
+async function loadAssets() {
+  const grid = $('#assetGrid');
+  const countEl = $('#assetCount');
+  try {
+    const cached = localStorage.getItem(ASSET_CACHE_KEY);
+    if (cached) {
+      const parsed = JSON.parse(cached);
+      if (parsed && parsed.ts && Date.now() - parsed.ts < ASSET_CACHE_TTL &&
+          Array.isArray(parsed.list) && parsed.list.length) {
+        allAssets = parsed.list;
+        countEl.textContent = allAssets.length + ' assets';
+        renderAssets(true);
+        return;
+      }
+    }
+  } catch (e) {}
+  grid.innerHTML = `
+    <div class="asset-loader">
+      <div class="spinner"></div>
+      <span>Fetching textures from Faithful Pack…</span>
+    </div>`;
+  countEl.textContent = 'Loading…';
+  try {
+    const res = await fetch(ASSET_API_URL);
+    if (!res.ok) throw new Error('GitHub API ' + res.status);
+    const data = await res.json();
+    if (data.message) throw new Error(data.message);
+    const tree = data.tree || [];
+    const paths = tree
+      .filter(item => item.type === 'blob')
+      .map(item => item.path)
+      .filter(p => p.startsWith('assets/'))
+      .filter(p => ASSET_IMG_EXT.test(p));
+    const seen = new Set();
+    const unique = [];
+    for (const p of paths) {
+      const name = p.split('/').pop();
+      if (!seen.has(name)) { seen.add(name); unique.push(p); }
+    }
+    allAssets = unique.map(p => {
+      const name = p.split('/').pop();
+      const encoded = p.split('/').map(encodeURIComponent).join('/');
+      return { path: p, name, cdn: ASSET_CDN_BASE + encoded, raw: ASSET_RAW_BASE + encoded };
+    });
+    allAssets.sort((a, b) =>
+      a.name.localeCompare(b.name, undefined, { sensitivity: 'base', numeric: true })
+    );
+    try {
+      localStorage.setItem(ASSET_CACHE_KEY, JSON.stringify({ ts: Date.now(), list: allAssets }));
+    } catch (e) {}
+    countEl.textContent = allAssets.length + ' assets';
+    renderAssets(true);
+  } catch (err) {
+    console.error('[Assets] Load failed:', err);
+    grid.innerHTML = `
+      <div class="asset-loader" style="color:var(--danger)">
+        <span>Could not load assets: ${err.message}</span>
+        <button class="btn sm" id="assetRetry" style="margin-top:8px">Retry</button>
+      </div>`;
+    const retry = $('#assetRetry');
+    if (retry) retry.addEventListener('click', () => {
+      try { localStorage.removeItem(ASSET_CACHE_KEY); } catch (_) {}
+      loadAssets();
+    });
+    countEl.textContent = 'Error';
+  }
+}
+function renderAssets(reset = false) {
+  const grid = $('#assetGrid');
+  const countEl = $('#assetCount');
+  const q = ($('#assetSearch').value || '').toLowerCase().trim();
+  if (reset) {
+    filteredAssets = q
+      ? allAssets.filter(a => a.name.toLowerCase().includes(q) || a.path.toLowerCase().includes(q))
+      : allAssets.slice();
+    renderedCount = 0;
+    grid.innerHTML = '';
+    if (sentinelObserver) { sentinelObserver.disconnect(); sentinelObserver = null; }
+    if (!allAssets.length) return;
+    if (!filteredAssets.length) {
+      grid.innerHTML = '<div class="asset-loader"><span>No textures match your search.</span></div>';
+      countEl.textContent = '0 results';
+      return;
+    }
+    countEl.textContent = q ? `${filteredAssets.length} / ${allAssets.length}` : `${allAssets.length} assets`;
+  }
+  appendNextChunk();
+}
+function appendNextChunk() {
+  const grid = $('#assetGrid');
+  const start = renderedCount;
+  const end = Math.min(start + CHUNK_SIZE, filteredAssets.length);
+  if (start >= end) return;
+  const oldSentinel = grid.querySelector('.asset-sentinel');
+  if (oldSentinel) oldSentinel.remove();
+  const slice = filteredAssets.slice(start, end);
+  const html = slice.map((a, i) => {
+    const idx = start + i;
+    return `
+      <div class="asset-card" data-index="${idx}">
+        <div class="asset-thumb">
+          <img src="${a.cdn}" data-fallback="${a.raw}" alt="${a.name}" draggable="false">
+        </div>
+        <div class="asset-name" title="${a.path}">${a.name}</div>
+        <div class="asset-actions">
+          <button data-act="dl">Save</button>
+          <button data-act="thumb">Thumbnail</button>
+          <button data-act="item">Item</button>
+          <button data-act="block">Block</button>
+        </div>
+      </div>`;
+  }).join('');
+  grid.insertAdjacentHTML('beforeend', html);
+  renderedCount = end;
+  grid.querySelectorAll('.asset-thumb img:not([data-bound])').forEach(img => {
+    img.dataset.bound = '1';
+    img.addEventListener('error', function handler() {
+      this.removeEventListener('error', handler);
+      const fb = this.dataset.fallback;
+      if (fb && this.src !== fb) this.src = fb;
+    });
+  });
+  if (renderedCount < filteredAssets.length) {
+    grid.insertAdjacentHTML('beforeend', '<div class="asset-sentinel"><div class="spinner"></div></div>');
+    observeSentinel();
+  }
+}
+function observeSentinel() {
+  const grid = $('#assetGrid');
+  const sentinel = grid.querySelector('.asset-sentinel');
+  if (!sentinel) return;
+  if (sentinelObserver) sentinelObserver.disconnect();
+  sentinelObserver = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        sentinelObserver.disconnect();
+        sentinelObserver = null;
+        setTimeout(appendNextChunk, 30);
+        return;
+      }
+    }
+  }, { root: grid, rootMargin: '500px' });
+  sentinelObserver.observe(sentinel);
+}
+$('#assetGrid').addEventListener('click', async e => {
+  const btn = e.target.closest('button[data-act]');
+  if (!btn) return;
+  const card = btn.closest('.asset-card');
+  if (!card) return;
+  const asset = filteredAssets[parseInt(card.dataset.index, 10)];
+  if (!asset) return;
+  const act = btn.dataset.act;
+  if (act === 'dl') {
+    const a = document.createElement('a');
+    a.href = asset.raw;
+    a.download = asset.name;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    toast('Downloading ' + asset.name);
+    return;
+  }
+  const originalLabel = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = '…';
+  try {
+    let img;
+    try { img = await loadImage(asset.cdn, true); }
+    catch (e1) { img = await loadImage(asset.raw, true); }
+    if (act === 'thumb') {
+      const big = upscaleImageTo4K(img);
+      addImageLayer(big, asset.name.replace(/\.[^.]+$/, '').slice(0, 20));
+      setView('thumb');
+      toast(`Added at ${big.width}×${big.height}`);
+    } else if (act === 'item') {
+      setItem(img);
+      pushItemHistory();
+      setView('item');
+      toast('Loaded as pose item');
+    } else if (act === 'block') {
+      const url = asset.cdn;
+      openFaceModal({ img, url });
+      toast('Pick a face…');
+    }
+  } catch (err) {
+    console.error('[Assets] Could not load image:', err);
+    toast('Could not load image');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = originalLabel;
+  }
+});
+$('#assetSearch').addEventListener('input', () => {
+  clearTimeout(searchDebounce);
+  searchDebounce = setTimeout(() => renderAssets(true), 180);
+});
 
 /* ==================== GLOBAL KEYBOARD ==================== */
 window.addEventListener('keydown', e => {
@@ -3056,11 +3547,9 @@ window.addEventListener('keydown', e => {
   const isY = e.key.toLowerCase() === 'y';
   const tag = (e.target.tagName || '').toLowerCase();
   const isField = tag === 'input' || tag === 'textarea' || tag === 'select';
-
   if (currentView === 'thumb') {
     if (ctrl && isZ && !e.shiftKey) { e.preventDefault(); undo(); return; }
     if (ctrl && (isY || (isZ && e.shiftKey))) { e.preventDefault(); redo(); return; }
-
     if (isField) return;
     const L = T.layers.find(l => l.id === T.sel);
     if (!L) return;
@@ -3070,6 +3559,11 @@ window.addEventListener('keydown', e => {
       T.sel = null;
       renderLayerList(); renderProps(); renderThumb(); pushHistory();
       e.preventDefault();
+    }
+    if (ctrl && e.key.toLowerCase() === 'd') {
+      e.preventDefault();
+      duplicateLayer(L);
+      return;
     }
     const step = e.shiftKey ? 20 : 2;
     if (e.key === 'ArrowLeft') { L.x -= step; renderThumb(); scheduleHistory(); e.preventDefault(); }
@@ -3089,16 +3583,16 @@ window.addEventListener('keydown', e => {
 
 /* ==================== INIT ==================== */
 async function init() {
-  const ro = new ResizeObserver(() => { if (currentView === 'thumb') layoutThumb(); });
+  const ro = new ResizeObserver(() => {
+    if (currentView === 'thumb') layoutThumb();
+  });
   ro.observe($('#thumbStage'));
-
   T.bg.type = 'gradient';
   $('#bgColors').style.display = 'flex';
   $('#bgAngleWrap').style.display = 'block';
-
   renderLayerList();
   renderProps();
-
+  updateFontHint();
   await loadDefaultSkin();
   pushCharHistory();
   updateItemUndoButtons();
@@ -3106,7 +3600,6 @@ async function init() {
   if (document.fonts && document.fonts.ready) {
     try { await document.fonts.ready; } catch (_) {}
   }
-
   const title = newTextLayer('EPIC MINECRAFT');
   title.y = T.h * 0.26;
   title.size = 150;
@@ -3115,7 +3608,6 @@ async function init() {
   title.glow = { on: true, color: '#3b6ef5', blur: 40 };
   let m = measureTextLayer(title);
   title.w = m.w; title.h = m.h;
-
   const sub = newTextLayer('#1 INSANE BUILD');
   sub.y = T.h * 0.44;
   sub.size = 62;
@@ -3128,25 +3620,20 @@ async function init() {
   sub.shadow = { on: true, color: 'rgba(0,0,0,.5)', blur: 18, x: 4, y: 6 };
   m = measureTextLayer(sub);
   sub.w = m.w; sub.h = m.h;
-
   T.layers.push(newEffectLayer('vignette'));
   T.layers.push(title);
   T.layers.push(sub);
   T.sel = sub.id;
-
   renderLayerList();
   renderProps();
   layoutThumb();
   renderThumb();
-
   history.stack = [snapshot()];
   history.index = 0;
   updateUndoButtons();
-
   selectPart('head');
   setView('character');
 }
-
 init();
 
 window.addEventListener('orientationchange', () => {
@@ -3154,6 +3641,7 @@ window.addEventListener('orientationchange', () => {
     layoutThumb();
     charViewer.resize();
     itemViewer.resize();
+    blockViewer.resize();
   }, 300);
 });
 </script>
