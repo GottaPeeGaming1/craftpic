@@ -271,10 +271,13 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
 .pixel-asset-header .asset-search::before{content:'';position:absolute;left:11px;top:50%;transform:translateY(-50%);width:11px;height:11px;border:2px solid var(--muted);border-radius:50%;pointer-events:none}
 .pixel-asset-header .asset-search::after{content:'';position:absolute;left:19px;top:calc(50% + 4px);width:5px;height:1.5px;background:var(--muted);transform:rotate(45deg);border-radius:2px;pointer-events:none}
 .pixel-asset-grid{flex:1 1 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;padding:14px 20px;overflow-y:auto;align-content:start;min-height:0}
-.pixel-asset-item{border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;background:#fff;transition:all .15s var(--ease);display:flex;flex-direction:column}
+.pixel-asset-item{border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;background:#fff;transition:all .15s var(--ease);display:flex;flex-direction:column;min-height:150px}
 .pixel-asset-item:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow)}
-.pixel-asset-item img{width:100%;aspect-ratio:1;object-fit:contain;image-rendering:pixelated;background:#fff;display:block}
+.pixel-asset-item img{width:100%;height:120px;object-fit:contain;image-rendering:pixelated;background:#fff;display:block;flex:0 0 auto}
 .pixel-asset-item .pname{font-size:10.5px;font-weight:700;padding:5px 6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text-2);text-align:center}
+.picker-msg{grid-column:1/-1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:50px 20px;color:var(--muted);font-size:13px;font-weight:600;text-align:center}
+.picker-msg .spinner{width:28px;height:28px;border-radius:50%;border:3px solid var(--border-2);border-top-color:var(--accent);animation:spin .8s linear infinite}
+.picker-msg.is-error{color:var(--danger)}
 .pixel-asset-footer{padding:12px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end}
 
 /* ===== ASSETS TAB (UNCHANGED) ===== */
@@ -648,13 +651,15 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
             <button class="btn ghost block sm" id="btnPixelFillBg" style="margin-top:6px">Fill with Color</button>
           </div>
           <div class="section"><h3>Actions</h3>
-            <button class="btn primary block sm" id="btnPixelSave">Save to Gallery &amp; Download PNG</button>
+            <button class="btn primary block sm" id="btnPixelSaveGallery">Save to Gallery</button>
             <div style="height:6px"></div>
-            <button class="btn block sm" id="btnPixelToThumb">Add to Thumbnail</button>
+            <button class="btn primary block sm" id="btnPixelDownload">Download PNG</button>
             <div style="height:6px"></div>
-            <button class="btn block sm" id="btnPixelToItem">Use as Pose Item</button>
+            <button class="btn primary block sm" id="btnPixelToThumb">Add to Thumbnail</button>
             <div style="height:6px"></div>
-            <button class="btn block sm" id="btnPixelToBlock">Use as Block Face</button>
+            <button class="btn primary block sm" id="btnPixelToItem">Use as Pose Item</button>
+            <div style="height:6px"></div>
+            <button class="btn primary block sm" id="btnPixelToBlock">Use as Block Face</button>
           </div>
           <div class="section"><h3>Gallery</h3>
             <div class="gallery" id="pixelGallery"></div>
@@ -1335,7 +1340,7 @@ function setView(name) {
     else if (name === 'item') { itemViewer.resize(); activeViewer = itemViewer; }
     else if (name === 'block') { blockViewer.resize(); activeViewer = blockViewer; }
     else if (name === 'thumb') { activeViewer = null; layoutThumb(); renderThumb(); }
-    else if (name === 'assets') { activeViewer = null; if (!assetsLoaded) { assetsLoaded = true; loadAssets(); } }
+    else if (name === 'assets') { activeViewer = null; if (!assetsLoaded) { assetsLoaded = true; loadAssets().catch(() => {}); } }
     else if (name === 'pixel') { activeViewer = null; requestAnimationFrame(sizePixelStage); }
   });
   if (window.matchMedia('(max-width:900px)').matches) {
@@ -2540,11 +2545,11 @@ function hitTest(p) {
 }
 let drag = null;
 
-/* ===== PIXEL ART (NEW) ===== */
+/* ===== PIXEL ART ===== */
 const PIXEL_TOOLS = [
   { id: 'pencil', name: 'Pencil', svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21 L7 20 L20 7 L17 4 L4 17 Z"/><path d="M14 7 L17 10"/></svg>' },
   { id: 'eraser', name: 'Eraser', svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 20.5 L3.5 17.5 A2 2 0 0 1 3.5 14.7 L13.5 4.7 A2 2 0 0 1 16.3 4.7 L19.3 7.7 A2 2 0 0 1 19.3 10.5 L9.3 20.5 Z"/><path d="M4 20.5 L20 20.5"/><path d="M8.5 9.5 L14.5 15.5"/></svg>' },
-  { id: 'fill', name: 'Fill', svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12 L12 5 L20 13 L13 20 Z"/><path d="M9 8 L16 4"/><path d="M20 17 Q22 19 22 21 Q22 22 20 22 Q18 22 18 21 Q18 19 20 17 Z"/></svg>' },
+  { id: 'fill', name: 'Fill', svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12 L12 5 L20 13 L13 20 Z"/><path d="M7.5 9.5 Q12 0 16.5 9.5"/><path d="M20 17 Q22 19 22 21 Q22 22 20 22 Q18 22 18 21 Q18 19 20 17 Z"/></svg>' },
   { id: 'line', name: 'Line', svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 20 L20 4"/></svg>' },
   { id: 'rect', name: 'Rectangle', svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="6" width="16" height="12"/></svg>' },
   { id: 'ellipse', name: 'Ellipse', svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="12" rx="9" ry="7"/></svg>' },
@@ -2965,39 +2970,74 @@ function renderPixelGallery() {
 }
 
 /* ===== ASSET PICKER (for pixel) ===== */
+let assetsPromise = null;
+async function ensureAssets() {
+  if (allAssets.length) return allAssets;
+  if (assetsPromise) { try { await assetsPromise; } catch (e) {} return allAssets; }
+  assetsPromise = loadAssets().catch(e => { console.warn('[Assets]', e && e.message); }).finally(() => { assetsPromise = null; });
+  try { await assetsPromise; } catch (e) {}
+  return allAssets;
+}
 async function openAssetPicker() {
   const modal = $('#assetPickerModal');
   const grid = $('#assetPickerGrid');
   modal.hidden = false;
-  if (!allAssets.length) {
-    grid.innerHTML = '<div style="grid-column:1/-1;padding:40px;text-align:center;color:var(--muted)">Loading assets…</div>';
-    if (!assetsLoaded) {
-      assetsLoaded = true;
-      await loadAssets();
-    }
-    // wait a tick for renderAssets to populate
-    await new Promise(r => setTimeout(r, 100));
-    if (!allAssets.length) {
-      grid.innerHTML = '<div style="grid-column:1/-1;padding:40px;text-align:center;color:var(--danger)">Could not load assets.</div>';
-      return;
-    }
-  }
-  renderAssetPicker();
+  $('#assetPickerSearch').value = '';
+  if (allAssets.length) { renderAssetPicker(); return; }
+  grid.innerHTML = '<div class="picker-msg"><div class="spinner"></div><span>Loading textures…</span></div>';
+  await ensureAssets();
+  if (allAssets.length) { renderAssetPicker(); return; }
+  grid.innerHTML = '<div class="picker-msg is-error"><span>Could not load textures.</span><button class="btn sm" id="pickerRetry" style="margin-top:8px">Retry</button></div>';
+  const retry = $('#pickerRetry');
+  if (retry) retry.addEventListener('click', async () => {
+    grid.innerHTML = '<div class="picker-msg"><div class="spinner"></div><span>Loading textures…</span></div>';
+    try { localStorage.removeItem(ASSET_CACHE_KEY); } catch (_) {}
+    allAssets = [];
+    await loadAssets().catch(() => {});
+    if (allAssets.length) renderAssetPicker();
+    else grid.innerHTML = '<div class="picker-msg is-error"><span>Still could not load textures.</span></div>';
+  });
 }
 function renderAssetPicker() {
   const grid = $('#assetPickerGrid');
+  if (!grid) return;
   const q = ($('#assetPickerSearch').value || '').toLowerCase().trim();
   let list = allAssets;
   if (q) list = list.filter(a => a.name.toLowerCase().includes(q) || a.path.toLowerCase().includes(q));
-  // Limit to 300 items for responsiveness
-  const slice = list.slice(0, 300);
-  grid.innerHTML = slice.map(a => `
-    <div class="pixel-asset-item" data-path="${a.path.replace(/"/g, '&quot;')}">
-      <img src="${a.cdn}" alt="${a.name}" loading="lazy" onerror="this.src='${a.raw}'">
-      <div class="pname">${a.name}</div>
-    </div>`).join('');
+  const slice = list.slice(0, 400);
   if (!slice.length) {
-    grid.innerHTML = '<div style="grid-column:1/-1;padding:40px;text-align:center;color:var(--muted)">No assets match your search.</div>';
+    grid.innerHTML = '<div class="picker-msg"><span>' + (q ? 'No textures match your search.' : 'No textures available.') + '</span></div>';
+    return;
+  }
+  grid.innerHTML = '';
+  for (const a of slice) {
+    const item = document.createElement('div');
+    item.className = 'pixel-asset-item';
+    item.dataset.path = a.path;
+
+    const img = document.createElement('img');
+    img.alt = '';
+    img.draggable = false;
+    img.loading = 'lazy';
+    img.style.cssText = 'width:100%;height:120px;object-fit:contain;image-rendering:pixelated;background:#fff;display:block;flex:0 0 auto';
+    // Try CDN first, fall back to raw GitHub if it fails.
+    let fellBack = false;
+    img.addEventListener('error', function onErr() {
+      if (fellBack) { img.removeEventListener('error', onErr); return; }
+      fellBack = true;
+      if (img.src !== a.raw) img.src = a.raw;
+      else img.removeEventListener('error', onErr);
+    });
+    img.src = a.cdn;
+
+    const nm = document.createElement('div');
+    nm.className = 'pname';
+    nm.textContent = a.name;
+    nm.title = a.path;
+
+    item.appendChild(img);
+    item.appendChild(nm);
+    grid.appendChild(item);
   }
 }
 async function loadAssetIntoPixel(asset) {
@@ -3284,13 +3324,17 @@ $('#btnPixelUndo').addEventListener('click', undoPixel);
 $('#btnPixelRedo').addEventListener('click', redoPixel);
 $('#btnPixelClear').addEventListener('click', () => { pushPixelUndo(); pixelCtx.clearRect(0, 0, pixel.size, pixel.size); toast('Canvas cleared'); });
 $('#btnPixelFillBg').addEventListener('click', () => { pushPixelUndo(); pixelCtx.fillStyle = pixel.color; pixelCtx.fillRect(0, 0, pixel.size, pixel.size); toast('Filled with ' + pixel.color); });
-$('#btnPixelSave').addEventListener('click', () => {
+$('#btnPixelSaveGallery').addEventListener('click', () => {
   pixelAddToGallery();
+  toast('Saved to gallery');
+});
+$('#btnPixelDownload').addEventListener('click', () => {
   const c = pixelToHighQualityCanvas();
   const a = document.createElement('a');
   a.download = FILE_SLUG + '-pixel-' + Date.now() + '.png';
-  a.href = c.toDataURL('image/png'); a.click();
-  toast('Saved at ' + c.width + '×' + c.height);
+  a.href = c.toDataURL('image/png');
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  toast('Downloaded ' + c.width + '×' + c.height + ' PNG');
 });
 $('#btnPixelToThumb').addEventListener('click', async () => {
   pixelAddToGallery();
@@ -3524,14 +3568,14 @@ async function loadAssets() {
       const parsed = JSON.parse(cached);
       if (parsed && parsed.ts && Date.now() - parsed.ts < ASSET_CACHE_TTL && Array.isArray(parsed.list) && parsed.list.length) {
         allAssets = parsed.list;
-        countEl.textContent = allAssets.length + ' assets';
+        if (countEl) countEl.textContent = allAssets.length + ' assets';
         renderAssets(true);
-        return;
+        return allAssets;
       }
     }
   } catch (e) {}
-  grid.innerHTML = `<div class="asset-loader"><div class="spinner"></div><span>Fetching textures from Faithful Pack…</span></div>`;
-  countEl.textContent = 'Loading…';
+  if (grid) grid.innerHTML = `<div class="asset-loader"><div class="spinner"></div><span>Fetching textures from Faithful Pack…</span></div>`;
+  if (countEl) countEl.textContent = 'Loading…';
   try {
     const res = await fetch(ASSET_API_URL);
     if (!res.ok) throw new Error('GitHub API ' + res.status);
@@ -3555,17 +3599,22 @@ async function loadAssets() {
     });
     allAssets.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base', numeric: true }));
     try { localStorage.setItem(ASSET_CACHE_KEY, JSON.stringify({ ts: Date.now(), list: allAssets })); } catch (e) {}
-    countEl.textContent = allAssets.length + ' assets';
+    if (countEl) countEl.textContent = allAssets.length + ' assets';
     renderAssets(true);
+    return allAssets;
   } catch (err) {
     console.error('[Assets] Load failed:', err);
-    grid.innerHTML = `<div class="asset-loader" style="color:var(--danger)"><span>Could not load assets: ${err.message}</span><button class="btn sm" id="assetRetry" style="margin-top:8px">Retry</button></div>`;
-    const retry = $('#assetRetry');
-    if (retry) retry.addEventListener('click', () => {
-      try { localStorage.removeItem(ASSET_CACHE_KEY); } catch (_) {}
-      loadAssets();
-    });
-    countEl.textContent = 'Error';
+    if (grid) {
+      grid.innerHTML = `<div class="asset-loader" style="color:var(--danger)"><span>Could not load assets: ${err.message}</span><button class="btn sm" id="assetRetry" style="margin-top:8px">Retry</button></div>`;
+      const retry = $('#assetRetry');
+      if (retry) retry.addEventListener('click', () => {
+        try { localStorage.removeItem(ASSET_CACHE_KEY); } catch (_) {}
+        allAssets = [];
+        loadAssets().catch(() => {});
+      });
+    }
+    if (countEl) countEl.textContent = 'Error';
+    throw err;
   }
 }
 function renderAssets(reset = false) {
