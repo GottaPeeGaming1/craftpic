@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
 <title>CraftPic — Minecraft Thumbnail Maker</title>
-<meta name="description" content="Design custom blocks, pose characters, extrude items, and build YouTube thumbnails.">
+<meta name="description" content="Design custom blocks, pose characters, extrude items, make pixel art, and build YouTube thumbnails.">
 <meta name="theme-color" content="#3b6ef5">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -51,8 +51,7 @@ button,input,select,textarea{font-family:inherit;color:inherit}
 }
 .brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:15.5px;letter-spacing:-.3px;white-space:nowrap;flex:0 0 auto}
 .brand .logo{
-  width:30px;height:30px;border-radius:9px;
-  background:var(--accent);
+  width:30px;height:30px;border-radius:9px;background:var(--accent);
   display:grid;place-items:center;flex:0 0 auto;
 }
 .brand .logo svg{width:18px;height:18px;display:block}
@@ -97,8 +96,7 @@ button,input,select,textarea{font-family:inherit;color:inherit}
 main{flex:1 1 auto;position:relative;overflow:hidden;display:flex}
 .view{
   position:absolute;inset:0;display:none;
-  grid-template-columns:308px minmax(0,1fr) 296px;gap:14px;padding:14px;
-  width:100%;
+  grid-template-columns:308px minmax(0,1fr) 296px;gap:14px;padding:14px;width:100%;
 }
 .view.active{display:grid;animation:viewIn .34s var(--ease)}
 @keyframes viewIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -112,10 +110,7 @@ main{flex:1 1 auto;position:relative;overflow:hidden;display:flex}
 .panel::-webkit-scrollbar-thumb{border:2px solid var(--panel)}
 .section{padding:14px 14px 16px;border-bottom:1px solid var(--border)}
 .section:last-child{border-bottom:0}
-.section h3{
-  margin:0 0 11px;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--muted);
-}
+.section h3{margin:0 0 11px;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
 .hint{font-size:11.5px;color:var(--muted);line-height:1.5;margin:8px 0 0}
 
 .stage{
@@ -140,8 +135,7 @@ main{flex:1 1 auto;position:relative;overflow:hidden;display:flex}
 .val-input{
   width:44px;padding:2px;font-size:11.5px;font-weight:700;
   color:var(--accent);background:transparent;border:0;text-align:right;
-  font-family:inherit;outline:none;font-variant-numeric:tabular-nums;
-  -moz-appearance:textfield;
+  font-family:inherit;outline:none;font-variant-numeric:tabular-nums;-moz-appearance:textfield;
 }
 .val-input::-webkit-outer-spin-button,.val-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
 .val-unit{font-size:11px;font-weight:700;color:var(--accent);padding-right:2px}
@@ -223,12 +217,8 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
 .part-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
 .part-btn.active svg{opacity:1}
 
-/* Face grid for Custom Block */
 .face-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.face-slot{
-  border:1px solid var(--border-2);border-radius:12px;padding:8px;
-  background:var(--panel-2);
-}
+.face-slot{border:1px solid var(--border-2);border-radius:12px;padding:8px;background:var(--panel-2)}
 .face-slot.linked{background:var(--accent-soft);border-color:#b9cdff}
 .face-slot-label{
   font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
@@ -243,50 +233,33 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
 }
 .face-preview img{
   width:100%;height:100%;object-fit:contain;
-  image-rendering:pixelated;image-rendering:crisp-edges;
-  display:none;
+  image-rendering:pixelated;image-rendering:crisp-edges;display:none;
 }
 .face-preview.has-img img{display:block}
 .face-preview.has-img .face-plus{display:none}
-.face-plus{
-  font-size:22px;color:var(--muted);font-weight:300;line-height:1;
-}
-.face-preview.linked-preview{
-  background:transparent;
-}
+.face-plus{font-size:22px;color:var(--muted);font-weight:300;line-height:1}
+.face-preview.linked-preview{background:transparent}
 .face-preview .linked-tag{
   font-size:11px;font-weight:700;color:var(--accent);
-  padding:4px 8px;background:#fff;border-radius:8px;
-  border:1px solid #b9cdff;
+  padding:4px 8px;background:#fff;border-radius:8px;border:1px solid #b9cdff;
 }
 .face-buttons{display:flex;gap:4px;margin-top:6px}
 .face-buttons .btn{flex:1;padding:5px 4px;font-size:11px;border-radius:8px}
-.face-link{
-  margin-top:6px;font-size:11px;padding:5px 8px;border-radius:8px;
-}
+.face-link{margin-top:6px;font-size:11px;padding:5px 8px;border-radius:8px}
 
-/* Asset action buttons grid (4 blue buttons) */
 .asset-actions{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:5px;
-  padding:0 10px 12px;
-  flex:0 0 auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:5px;
+  padding:0 10px 12px;flex:0 0 auto;
 }
 .asset-actions button{
-  border:1px solid var(--accent);
-  border-radius:9px;
-  padding:10px 4px;
-  font-size:12px;
-  font-weight:700;
+  border:1px solid var(--accent);border-radius:9px;
+  padding:10px 4px;font-size:12px;font-weight:700;
   cursor:pointer;transition:all .15s var(--ease);
-  background:var(--accent);color:#fff;
-  white-space:nowrap;letter-spacing:.01em;
+  background:var(--accent);color:#fff;white-space:nowrap;letter-spacing:.01em;
 }
 .asset-actions button:hover{background:var(--accent-2);border-color:var(--accent-2)}
 .asset-actions button:active{transform:scale(.97)}
 
-/* Face picker modal */
 .face-modal{
   position:fixed;inset:0;background:rgba(14,26,43,.55);
   display:flex;align-items:center;justify-content:center;
@@ -297,23 +270,15 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
   background:#fff;border-radius:16px;padding:20px;
   box-shadow:var(--shadow-lg);max-width:360px;width:100%;
 }
-.face-modal-inner h3{
-  margin:0 0 6px;font-size:16px;font-weight:700;color:var(--text);
-}
-.face-modal-inner p{
-  margin:0 0 14px;font-size:12.5px;color:var(--muted);
-}
-.face-modal-buttons{
-  display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px;
-}
+.face-modal-inner h3{margin:0 0 6px;font-size:16px;font-weight:700;color:var(--text)}
+.face-modal-inner p{margin:0 0 14px;font-size:12.5px;color:var(--muted)}
+.face-modal-buttons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px}
 .face-modal-buttons button{
   border:1px solid var(--border-2);background:#fff;color:var(--text);
   padding:12px 6px;border-radius:10px;font-size:12.5px;font-weight:600;
   cursor:pointer;transition:all .15s var(--ease);
 }
-.face-modal-buttons button:hover{
-  background:var(--accent);border-color:var(--accent);color:#fff;
-}
+.face-modal-buttons button:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 
 .gallery{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .shot{
@@ -381,7 +346,131 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
 }
 .toast.show{opacity:1;transform:translate(-50%,0)}
 
-/* ========== ASSETS TAB ========== */
+/* ===== LIGHT DIRECTION PAD ===== */
+.light-pad{
+  position:relative;width:110px;height:110px;margin:12px auto;
+  border-radius:50%;
+  background:radial-gradient(circle at 50% 50%, #eef3fb 0%, #dbe4f2 70%, #c8d5ea 100%);
+  border:1px solid var(--border-2);
+  cursor:grab;touch-action:none;user-select:none;
+  box-shadow:inset 0 1px 4px rgba(16,32,64,.08);
+}
+.light-pad:active{cursor:grabbing}
+.light-pad::before,.light-pad::after{
+  content:'';position:absolute;background:rgba(124,140,163,.18);pointer-events:none;
+}
+.light-pad::before{
+  left:50%;top:0;bottom:0;width:1px;transform:translateX(-50%);
+}
+.light-pad::after{
+  top:50%;left:0;right:0;height:1px;transform:translateY(-50%);
+}
+.light-pad-dot{
+  position:absolute;width:20px;height:20px;border-radius:50%;
+  background:#fff;border:2.5px solid var(--accent);
+  box-shadow:0 2px 8px rgba(59,110,245,.35);
+  transform:translate(-50%,-50%);
+  pointer-events:none;top:50%;left:50%;
+  transition:border-color .15s var(--ease);
+}
+.light-pad-label{
+  text-align:center;font-size:11px;font-weight:600;color:var(--muted);
+  margin-top:-4px;letter-spacing:.02em;
+}
+
+/* ===== PIXEL ART ===== */
+#view-pixel.active{
+  display:flex !important;flex-direction:column !important;
+  grid-template-columns:none !important;padding:0 !important;gap:0 !important;
+}
+.pixel-layout{
+  flex:1 1 auto;display:grid;gap:14px;padding:14px;
+  grid-template-columns:280px minmax(0,1fr) 296px;
+  min-height:0;
+}
+.pixel-stage{
+  position:relative;border-radius:var(--radius);overflow:hidden;
+  background:#f2f6fd;
+  border:1px solid var(--border);box-shadow:var(--shadow);
+  display:flex;align-items:center;justify-content:center;min-height:0;min-width:0;
+  padding:20px;
+}
+.pixel-canvas-wrap{
+  position:relative;max-width:100%;max-height:100%;
+  aspect-ratio:1;box-shadow:0 20px 50px -20px rgba(16,32,64,.45);
+  background:repeating-conic-gradient(#e9eef8 0% 25%,#fff 0% 50%) 50%/18px 18px;
+  border-radius:6px;
+}
+.pixel-canvas-wrap canvas{
+  display:block;width:100%;height:100%;
+  image-rendering:pixelated;image-rendering:crisp-edges;-ms-interpolation-mode:nearest-neighbor;
+  border-radius:6px;
+  touch-action:none;cursor:crosshair;
+}
+.pixel-grid-overlay{
+  position:absolute;inset:0;pointer-events:none;border-radius:6px;
+  opacity:0;transition:opacity .15s;
+}
+.pixel-grid-overlay.on{opacity:1}
+.pixel-cursor{
+  position:absolute;pointer-events:none;display:none;
+  border:1px solid rgba(59,110,245,.9);
+  background:rgba(59,110,245,.14);
+  box-sizing:border-box;border-radius:1px;
+  z-index:3;
+}
+.pixel-cursor.on{display:block}
+
+.pixel-tools{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:6px;
+}
+.pixel-tool{
+  border:1px solid var(--border-2);background:#fff;border-radius:10px;
+  aspect-ratio:1;padding:6px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .18s var(--ease);
+  color:var(--text-2);
+}
+.pixel-tool svg{width:20px;height:20px;display:block}
+.pixel-tool:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.pixel-tool.active{background:var(--accent);border-color:var(--accent);color:#fff}
+
+.pixel-color-row{
+  display:flex;align-items:center;gap:10px;margin-bottom:10px;
+}
+.pixel-swatch{
+  width:44px;height:44px;border-radius:10px;border:1px solid var(--border-2);
+  background:repeating-conic-gradient(#eef3fb 0% 25%,#fff 0% 50%) 50%/10px 10px;
+  position:relative;overflow:hidden;flex:0 0 auto;
+}
+.pixel-swatch::after{
+  content:'';position:absolute;inset:0;background:var(--swatch,#000);
+}
+.pixel-color-input{
+  flex:1;min-width:0;
+}
+.pixel-palette{
+  display:grid;grid-template-columns:repeat(8,1fr);gap:4px;
+}
+.pixel-pal-btn{
+  aspect-ratio:1;border-radius:6px;border:1px solid rgba(0,0,0,.12);
+  cursor:pointer;padding:0;transition:transform .12s;
+}
+.pixel-pal-btn:hover{transform:scale(1.12)}
+.pixel-pal-btn.active{box-shadow:0 0 0 2px var(--accent);border-color:var(--accent)}
+
+.pixel-size-grid{
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;
+}
+.pixel-size-btn{
+  border:1px solid var(--border-2);background:#fff;border-radius:9px;
+  padding:8px 4px;font-size:12px;font-weight:700;color:var(--text-2);
+  cursor:pointer;transition:all .18s var(--ease);
+}
+.pixel-size-btn:hover{border-color:var(--accent);color:var(--accent)}
+.pixel-size-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* Assets tab (unchanged) */
 #view-assets.active{
   display:flex !important;flex-direction:column !important;
   grid-template-columns:none !important;grid-template-rows:none !important;
@@ -411,64 +500,31 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
   background:var(--bg-2);padding:6px 12px;border-radius:20px;white-space:nowrap;
 }
 .asset-grid{
-  flex:1 1 auto;
-  min-height:0;
-  display:grid;
+  flex:1 1 auto;min-height:0;display:grid;
   grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
-  grid-auto-rows:340px;
-  gap:16px;
-  padding:8px 16px 24px;
-  overflow-y:auto;
-  overflow-x:hidden;
-  align-content:start;
+  grid-auto-rows:340px;gap:16px;padding:8px 16px 24px;
+  overflow-y:auto;overflow-x:hidden;align-content:start;
   -webkit-overflow-scrolling:touch;
 }
 .asset-card{
-  display:flex;
-  flex-direction:column;
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:14px;
-  overflow:hidden;
-  box-shadow:var(--shadow);
+  display:flex;flex-direction:column;background:#fff;border:1px solid var(--border);
+  border-radius:14px;overflow:hidden;box-shadow:var(--shadow);
   transition:transform .2s var(--ease),box-shadow .2s var(--ease);
-  height:100%;
-  width:100%;
-  min-height:0;
+  height:100%;width:100%;min-height:0;
 }
 .asset-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
 .asset-thumb{
-  flex:1 1 auto;
-  min-height:0;
-  width:100%;
-  padding:0;
-  display:block;
-  background:#fff;
-  overflow:hidden;
-  border-bottom:1px solid var(--border);
+  flex:1 1 auto;min-height:0;width:100%;padding:0;
+  display:block;background:#fff;overflow:hidden;border-bottom:1px solid var(--border);
 }
 .asset-thumb img{
-  display:block;
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  image-rendering:pixelated;
-  image-rendering:crisp-edges;
-  -ms-interpolation-mode:nearest-neighbor;
+  display:block;width:100%;height:100%;object-fit:contain;
+  image-rendering:pixelated;image-rendering:crisp-edges;-ms-interpolation-mode:nearest-neighbor;
 }
 .asset-name{
-  display:block;
-  flex:0 0 auto;
-  font-size:12px;
-  font-weight:700;
-  padding:10px 12px 8px;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
-  text-align:left;
-  color:var(--text-2);
-  height:34px;
-  box-sizing:border-box;
+  display:block;flex:0 0 auto;font-size:12px;font-weight:700;
+  padding:10px 12px 8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  text-align:left;color:var(--text-2);height:34px;box-sizing:border-box;
 }
 .asset-loader{
   grid-column:1/-1;display:flex;flex-direction:column;
@@ -493,6 +549,7 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
 
 @media (max-width:1180px){
   .view{grid-template-columns:272px minmax(0,1fr) 264px}
+  .pixel-layout{grid-template-columns:260px minmax(0,1fr) 260px}
 }
 @media (max-width:900px){
   main{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;display:block}
@@ -521,10 +578,13 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
   #view-assets.active{display:flex !important;flex-direction:column !important;padding:0 !important;min-height:calc(100vh - 140px)}
   .asset-toolbar{padding:12px 12px 8px}
   .asset-grid{flex:1 1 auto;min-height:400px;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));grid-auto-rows:270px;gap:12px;padding:6px 12px 20px}
-  .asset-thumb{padding:0}
   .asset-name{font-size:11px;padding:8px 10px 6px;height:30px}
   .asset-actions{padding:0 8px 10px;gap:4px}
   .asset-actions button{font-size:11px;padding:9px 2px}
+  #view-pixel.active{display:flex !important;flex-direction:column !important;padding:0 !important;min-height:calc(100vh - 140px)}
+  .pixel-layout{display:flex;flex-direction:column;padding:12px;gap:12px}
+  .pixel-layout > .panel{max-height:none;overflow:visible;flex:0 0 auto;width:100%}
+  .pixel-stage{order:-1;flex:0 0 auto;height:48vh;min-height:260px;max-height:60vh;width:100%;padding:12px}
 }
 @media (max-width:480px){
   .gallery{grid-template-columns:repeat(2,1fr)}
@@ -535,13 +595,15 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
   .stage{height:48vh;min-height:240px}
   #thumbStage{min-height:38vh}
   .asset-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));grid-auto-rows:230px;gap:10px;padding:6px 8px 20px}
-  .asset-thumb{padding:0}
   .asset-actions button{font-size:10px;padding:8px 2px}
   .face-grid{grid-template-columns:1fr 1fr}
+  .pixel-stage{height:42vh;min-height:220px}
+  .pixel-tools{grid-template-columns:repeat(4,1fr)}
 }
 @media (max-width:900px) and (orientation:landscape){
   .stage{height:70vh;max-height:70vh}
   #thumbStage{min-height:60vh}
+  .pixel-stage{height:64vh}
 }
 </style>
 </head>
@@ -564,6 +626,7 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
       <button class="tab active" data-view="character">Pose Character</button>
       <button class="tab" data-view="item">Pose Item</button>
       <button class="tab" data-view="block">Custom Block</button>
+      <button class="tab" data-view="pixel">Pixel Art</button>
       <button class="tab" data-view="thumb">Make Thumbnail</button>
       <button class="tab" data-view="assets">Assets</button>
     </nav>
@@ -624,7 +687,18 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
           <button class="btn block sm" id="btnFitView" style="margin-bottom:10px">Fit View to Model</button>
           <label class="chk"><input type="checkbox" id="chkAutoRotate"> Auto-rotate turntable</label>
           <label class="chk"><input type="checkbox" id="chkCharShadows" checked> Shadows (3D shading)</label>
-          <div class="ctrl" id="charLightCtrl"></div>
+        </div>
+        <div class="section">
+          <h3>Light</h3>
+          <div class="light-pad" id="charLightPad"><div class="light-pad-dot" id="charLightDot"></div></div>
+          <div class="light-pad-label">Drag to move the light</div>
+          <div class="ctrl" id="charLightCtrl" style="margin-top:14px"></div>
+        </div>
+        <div class="section">
+          <h3>Color Grade</h3>
+          <div class="chips" id="charGradePresets" style="margin-bottom:12px"></div>
+          <div id="charGradeCtrl"></div>
+          <button class="btn ghost block sm" id="btnResetCharGrade" style="margin-top:12px">Reset Grade</button>
         </div>
         <div class="section">
           <h3>Capture</h3>
@@ -698,7 +772,18 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
           <button class="btn block sm" id="btnFitItemView" style="margin-bottom:10px">Fit View to Item</button>
           <label class="chk"><input type="checkbox" id="chkItemAuto"> Auto-rotate turntable</label>
           <label class="chk"><input type="checkbox" id="chkItemShadows" checked> Shadows (3D shading)</label>
-          <div class="ctrl" id="itemLightCtrl"></div>
+        </div>
+        <div class="section">
+          <h3>Light</h3>
+          <div class="light-pad" id="itemLightPad"><div class="light-pad-dot" id="itemLightDot"></div></div>
+          <div class="light-pad-label">Drag to move the light</div>
+          <div class="ctrl" id="itemLightCtrl" style="margin-top:14px"></div>
+        </div>
+        <div class="section">
+          <h3>Color Grade</h3>
+          <div class="chips" id="itemGradePresets" style="margin-bottom:12px"></div>
+          <div id="itemGradeCtrl"></div>
+          <button class="btn ghost block sm" id="btnResetItemGrade" style="margin-top:12px">Reset Grade</button>
         </div>
         <div class="section">
           <h3>Capture</h3>
@@ -755,7 +840,18 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
           <button class="btn block sm" id="btnFitBlockView" style="margin-bottom:10px">Fit View to Block</button>
           <label class="chk"><input type="checkbox" id="chkBlockSpin"> Auto-rotate turntable</label>
           <label class="chk"><input type="checkbox" id="chkBlockShadows" checked> Shadows (3D shading)</label>
-          <div class="ctrl" id="blockLightCtrl"></div>
+        </div>
+        <div class="section">
+          <h3>Light</h3>
+          <div class="light-pad" id="blockLightPad"><div class="light-pad-dot" id="blockLightDot"></div></div>
+          <div class="light-pad-label">Drag to move the light</div>
+          <div class="ctrl" id="blockLightCtrl" style="margin-top:14px"></div>
+        </div>
+        <div class="section">
+          <h3>Color Grade</h3>
+          <div class="chips" id="blockGradePresets" style="margin-bottom:12px"></div>
+          <div id="blockGradeCtrl"></div>
+          <button class="btn ghost block sm" id="btnResetBlockGrade" style="margin-top:12px">Reset Grade</button>
         </div>
         <div class="section">
           <h3>Capture</h3>
@@ -786,6 +882,72 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
           <p class="empty" id="blockGalleryEmpty">No captures yet.</p>
         </div>
       </aside>
+    </section>
+
+    <!-- ===== PIXEL ART ===== -->
+    <section class="view" id="view-pixel">
+      <div class="pixel-layout">
+        <aside class="panel">
+          <div class="section">
+            <h3>History</h3>
+            <div class="undo-row">
+              <button class="btn sm" id="btnPixelUndo" disabled>Undo</button>
+              <button class="btn sm" id="btnPixelRedo" disabled>Redo</button>
+            </div>
+          </div>
+          <div class="section">
+            <h3>Tools</h3>
+            <div class="pixel-tools" id="pixelTools"></div>
+          </div>
+          <div class="section">
+            <h3>Color</h3>
+            <div class="pixel-color-row">
+              <div class="pixel-swatch" id="pixelSwatch"></div>
+              <input type="color" id="pixelColorInput" value="#3b6ef5" class="pixel-color-input" style="width:100%;height:44px">
+            </div>
+            <div class="pixel-palette" id="pixelPalette"></div>
+          </div>
+        </aside>
+
+        <div class="pixel-stage">
+          <div class="pixel-canvas-wrap" id="pixelCanvasWrap">
+            <canvas id="pixelCanvas" width="32" height="32"></canvas>
+            <div class="pixel-grid-overlay" id="pixelGridOverlay"></div>
+            <div class="pixel-cursor" id="pixelCursor"></div>
+          </div>
+        </div>
+
+        <aside class="panel">
+          <div class="section">
+            <h3>Canvas Size</h3>
+            <div class="pixel-size-grid" id="pixelSizeGrid"></div>
+          </div>
+          <div class="section">
+            <h3>Options</h3>
+            <label class="chk"><input type="checkbox" id="chkPixelGrid" checked> Show pixel grid</label>
+            <label class="chk"><input type="checkbox" id="chkPixelMirrorX"> Mirror horizontally</label>
+            <label class="chk"><input type="checkbox" id="chkPixelMirrorY"> Mirror vertically</label>
+            <div style="height:6px"></div>
+            <button class="btn ghost block sm" id="btnPixelClear">Clear Canvas</button>
+            <button class="btn ghost block sm" id="btnPixelFillBg" style="margin-top:6px">Fill with Color</button>
+          </div>
+          <div class="section">
+            <h3>Actions</h3>
+            <button class="btn primary block sm" id="btnPixelSave">Save to Gallery &amp; Download PNG</button>
+            <div style="height:6px"></div>
+            <button class="btn block sm" id="btnPixelToThumb">Add to Thumbnail</button>
+            <div style="height:6px"></div>
+            <button class="btn block sm" id="btnPixelToItem">Use as Pose Item</button>
+            <div style="height:6px"></div>
+            <button class="btn block sm" id="btnPixelToBlock">Use as Block Face</button>
+          </div>
+          <div class="section">
+            <h3>Gallery</h3>
+            <div class="gallery" id="pixelGallery"></div>
+            <p class="empty" id="pixelGalleryEmpty">No saved pixel art yet.</p>
+          </div>
+        </aside>
+      </div>
     </section>
 
     <!-- ===== MAKE THUMBNAIL ===== -->
@@ -890,7 +1052,6 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:6px}
 
 <div class="toast" id="toast"></div>
 
-<!-- Face picker modal -->
 <div class="face-modal" id="faceModal" hidden>
   <div class="face-modal-inner">
     <h3>Assign to face</h3>
@@ -966,6 +1127,9 @@ function upscaleImageTo4K(img) {
   c.height = img.height * scale;
   const x = c.getContext('2d');
   x.imageSmoothingEnabled = false;
+  x.webkitImageSmoothingEnabled = false;
+  x.mozImageSmoothingEnabled = false;
+  x.msImageSmoothingEnabled = false;
   x.drawImage(img, 0, 0, c.width, c.height);
   return c;
 }
@@ -1081,7 +1245,7 @@ function makeIcon(size) {
   const manifest = {
     name: 'CraftPic — Minecraft Thumbnail Maker',
     short_name: 'CraftPic',
-    description: 'Design custom blocks, pose characters, extrude items, and build YouTube thumbnails.',
+    description: 'Design custom blocks, pose characters, extrude items, make pixel art, and build YouTube thumbnails.',
     start_url: './', scope: './', display: 'standalone',
     display_override: ['standalone', 'minimal-ui'],
     orientation: 'any',
@@ -1135,40 +1299,248 @@ function makeIcon(size) {
   });
 })();
 
-let currentView = 'character';
-let assetsLoaded = false;
+/* =========================================================
+   COLOR GRADE
+   ========================================================= */
+const DEFAULT_GRADE = {
+  exposure: 0, brightness: 0, contrast: 0, saturation: 0,
+  hue: 0, temperature: 0, tint: 0,
+  highlights: 0, shadows: 0,
+  sharpen: 0, grain: 0,
+  vignette: 0, vignetteRadius: 0.5, gamma: 0
+};
 
-function setView(name) {
-  currentView = name;
-  $$('.view').forEach(v => v.classList.toggle('active', v.id === 'view-' + name));
-  $$('.tab').forEach(t => t.classList.toggle('active', t.dataset.view === name));
-  requestAnimationFrame(() => {
-    if (name === 'character') { charViewer.resize(); activeViewer = charViewer; }
-    else if (name === 'item') { itemViewer.resize(); activeViewer = itemViewer; }
-    else if (name === 'block') { blockViewer.resize(); activeViewer = blockViewer; }
-    else if (name === 'thumb') { activeViewer = null; layoutThumb(); renderThumb(); }
-    else if (name === 'assets') {
-      activeViewer = null;
-      if (!assetsLoaded) { assetsLoaded = true; loadAssets(); }
+const GRADE_PRESETS = {
+  none:      { ...DEFAULT_GRADE },
+  vivid:     { exposure: 0.10, brightness: 0.00, contrast: 0.20, saturation: 0.30, hue: 0, temperature: 0.05, tint: 0, highlights: 0.10, shadows: -0.05, sharpen: 0.40, grain: 0, vignette: 0.10, vignetteRadius: 0.5, gamma: 0 },
+  cinematic: { exposure: 0.00, brightness: -0.05, contrast: 0.15, saturation: -0.10, hue: 0, temperature: -0.10, tint: 0.05, highlights: -0.10, shadows: 0.15, sharpen: 0.20, grain: 0.15, vignette: 0.35, vignetteRadius: 0.45, gamma: 0.05 },
+  warm:      { exposure: 0.05, brightness: 0.00, contrast: 0.05, saturation: 0.15, hue: 0, temperature: 0.30, tint: 0.05, highlights: 0.05, shadows: 0.00, sharpen: 0.10, grain: 0, vignette: 0.15, vignetteRadius: 0.5, gamma: 0 },
+  cool:      { exposure: 0.00, brightness: 0.00, contrast: 0.10, saturation: 0.10, hue: 0, temperature: -0.30, tint: -0.05, highlights: 0.00, shadows: 0.05, sharpen: 0.15, grain: 0, vignette: 0.20, vignetteRadius: 0.5, gamma: 0 },
+  dreamy:    { exposure: 0.15, brightness: 0.05, contrast: -0.10, saturation: 0.20, hue: 0, temperature: 0.10, tint: 0.10, highlights: 0.30, shadows: 0.20, sharpen: 0, grain: 0.05, vignette: 0.25, vignetteRadius: 0.55, gamma: 0.10 },
+  mono:      { exposure: 0.00, brightness: 0.00, contrast: 0.20, saturation: -1.00, hue: 0, temperature: 0, tint: 0, highlights: 0.10, shadows: -0.05, sharpen: 0.20, grain: 0.05, vignette: 0.20, vignetteRadius: 0.5, gamma: 0 },
+  punchy:    { exposure: 0.10, brightness: 0.00, contrast: 0.35, saturation: 0.45, hue: 0, temperature: 0.05, tint: 0, highlights: -0.15, shadows: -0.10, sharpen: 0.50, grain: 0, vignette: 0.15, vignetteRadius: 0.5, gamma: 0 }
+};
+
+const GradePostShader = {
+  uniforms: {
+    tDiffuse: { value: null },
+    uResolution: { value: new THREE.Vector2(1, 1) },
+    uExposure: { value: 0 },
+    uBrightness: { value: 0 },
+    uContrast: { value: 0 },
+    uSaturation: { value: 0 },
+    uHue: { value: 0 },
+    uTemperature: { value: 0 },
+    uTint: { value: 0 },
+    uHighlights: { value: 0 },
+    uShadows: { value: 0 },
+    uSharpen: { value: 0 },
+    uGrain: { value: 0 },
+    uVignette: { value: 0 },
+    uVignetteRadius: { value: 0.5 },
+    uGamma: { value: 0 },
+    uTime: { value: 0 }
+  },
+  vertexShader: `
+    varying vec2 vUv;
+    void main() {
+      vUv = uv;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
     }
-  });
-  if (window.matchMedia('(max-width:900px)').matches) {
-    const m = document.querySelector('main');
-    if (m) m.scrollTop = 0;
+  `,
+  fragmentShader: `
+    uniform sampler2D tDiffuse;
+    uniform vec2 uResolution;
+    uniform float uExposure;
+    uniform float uBrightness;
+    uniform float uContrast;
+    uniform float uSaturation;
+    uniform float uHue;
+    uniform float uTemperature;
+    uniform float uTint;
+    uniform float uHighlights;
+    uniform float uShadows;
+    uniform float uSharpen;
+    uniform float uGrain;
+    uniform float uVignette;
+    uniform float uVignetteRadius;
+    uniform float uGamma;
+    uniform float uTime;
+
+    varying vec2 vUv;
+
+    vec3 linearToSRGB(vec3 c) {
+      c = max(c, vec3(0.0));
+      return mix(
+        c * 12.92,
+        1.055 * pow(c, vec3(1.0/2.4)) - 0.055,
+        step(vec3(0.0031308), c)
+      );
+    }
+    vec3 hueShift(vec3 color, float shift) {
+      const vec3 k = vec3(0.5773502691896258);
+      float cosAngle = cos(shift);
+      return color * cosAngle + cross(k, color) * sin(shift) + k * dot(k, color) * (1.0 - cosAngle);
+    }
+    float hash21(vec2 p) {
+      p = fract(p * vec2(233.34, 851.73));
+      p += dot(p, p + 23.45);
+      return fract(p.x * p.y);
+    }
+
+    void main() {
+      vec4 col;
+      if (uSharpen > 0.001) {
+        vec2 texel = 1.0 / max(uResolution, vec2(1.0));
+        vec4 c0 = texture2D(tDiffuse, vUv);
+        vec4 cN = texture2D(tDiffuse, vUv + vec2(0.0, texel.y));
+        vec4 cS = texture2D(tDiffuse, vUv - vec2(0.0, texel.y));
+        vec4 cE = texture2D(tDiffuse, vUv + vec2(texel.x, 0.0));
+        vec4 cW = texture2D(tDiffuse, vUv - vec2(texel.x, 0.0));
+        col = c0 * (1.0 + uSharpen * 2.0) - (cN + cS + cE + cW) * (uSharpen * 0.5);
+      } else {
+        col = texture2D(tDiffuse, vUv);
+      }
+
+      // Convert linear -> sRGB so the display colors match what 3D would produce
+      vec3 rgb = linearToSRGB(col.rgb);
+      float alpha = col.a;
+
+      rgb *= pow(2.0, uExposure);
+      rgb += uBrightness;
+      rgb = (rgb - 0.5) * (1.0 + uContrast) + 0.5;
+
+      rgb.r += uTemperature * 0.15;
+      rgb.b -= uTemperature * 0.15;
+      rgb.g += uTint * 0.15;
+      rgb.r -= uTint * 0.075;
+      rgb.b -= uTint * 0.075;
+
+      float luma = dot(rgb, vec3(0.2126, 0.7152, 0.0722));
+      rgb = mix(vec3(luma), rgb, 1.0 + uSaturation);
+
+      if (abs(uHue) > 0.001) {
+        rgb = hueShift(rgb, radians(uHue));
+      }
+
+      float lum2 = dot(rgb, vec3(0.2126, 0.7152, 0.0722));
+      if (abs(uHighlights) > 0.001) {
+        float m = smoothstep(0.5, 1.0, lum2);
+        rgb += uHighlights * m * 0.35;
+      }
+      if (abs(uShadows) > 0.001) {
+        float m = 1.0 - smoothstep(0.0, 0.5, lum2);
+        rgb += uShadows * m * 0.35;
+      }
+
+      if (abs(uGamma) > 0.001) {
+        float g = max(1.0 + uGamma, 0.01);
+        rgb = pow(max(rgb, vec3(0.0)), vec3(1.0 / g));
+      }
+
+      if (uVignette > 0.001) {
+        float d = distance(vUv, vec2(0.5));
+        float v = smoothstep(uVignetteRadius, uVignetteRadius + 0.5, d);
+        rgb *= 1.0 - v * uVignette;
+      }
+
+      if (uGrain > 0.001) {
+        float g = hash21(vUv * uResolution + uTime * 100.0) - 0.5;
+        rgb += g * uGrain * 0.2;
+      }
+
+      rgb = clamp(rgb, 0.0, 1.0);
+      gl_FragColor = vec4(rgb, alpha);
+    }
+  `
+};
+
+function buildGradeUI(viewer, containerId, presetsId, resetBtnId) {
+  const container = $('#' + containerId);
+  const presetsContainer = $('#' + presetsId);
+  const resetBtn = $('#' + resetBtnId);
+  if (!container) return;
+
+  const sliders = {};
+
+  const addSlider = (key, label, min, max, step, unit = '') => {
+    const s = buildSlider({
+      label, value: viewer.grade[key], min, max, step, unit,
+      onInput: v => { viewer.grade[key] = v; viewer.applyGrade(); }
+    });
+    container.appendChild(s.el);
+    sliders[key] = s;
+  };
+  const addHeader = (text) => {
+    const d = document.createElement('div');
+    d.style.cssText = 'font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:14px 0 9px';
+    d.textContent = text;
+    container.appendChild(d);
+  };
+
+  addHeader('Tone');
+  addSlider('exposure', 'Exposure', -2, 2, 0.01, 'EV');
+  addSlider('brightness', 'Brightness', -0.5, 0.5, 0.005);
+  addSlider('contrast', 'Contrast', -1, 1, 0.01);
+  addSlider('gamma', 'Gamma', -0.9, 1.5, 0.01);
+
+  addHeader('Color');
+  addSlider('saturation', 'Saturation', -1, 1, 0.01);
+  addSlider('hue', 'Hue', -180, 180, 1, '°');
+  addSlider('temperature', 'Temperature', -1, 1, 0.01);
+  addSlider('tint', 'Tint', -1, 1, 0.01);
+
+  addHeader('Detail');
+  addSlider('sharpen', 'Sharpen', 0, 2, 0.01);
+  addSlider('highlights', 'Highlights', -1, 1, 0.01);
+  addSlider('shadows', 'Shadows', -1, 1, 0.01);
+
+  addHeader('Film');
+  addSlider('grain', 'Grain', 0, 1, 0.01);
+  addSlider('vignette', 'Vignette', 0, 1, 0.01);
+  addSlider('vignetteRadius', 'Vignette Radius', 0.1, 0.9, 0.01);
+
+  if (presetsContainer) {
+    presetsContainer.innerHTML = '';
+    Object.keys(GRADE_PRESETS).forEach(name => {
+      const chip = document.createElement('button');
+      chip.className = 'chip';
+      chip.textContent = name.charAt(0).toUpperCase() + name.slice(1);
+      chip.addEventListener('click', () => {
+        Object.assign(viewer.grade, GRADE_PRESETS[name]);
+        viewer.applyGrade();
+        for (const key in sliders) sliders[key].setVal(viewer.grade[key]);
+        toast('Preset: ' + name);
+      });
+      presetsContainer.appendChild(chip);
+    });
+  }
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      Object.assign(viewer.grade, DEFAULT_GRADE);
+      viewer.applyGrade();
+      for (const key in sliders) sliders[key].setVal(viewer.grade[key]);
+      toast('Grade reset');
+    });
   }
 }
-$$('.tab').forEach(t => t.addEventListener('click', () => setView(t.dataset.view)));
 
-let activeViewer = null;
-
+/* =========================================================
+   VIEWER
+   ========================================================= */
 class Viewer {
   constructor(container, aspect = 16 / 9) {
     this.container = container;
     this.aspect = aspect;
-    this.boxW = 100;
-    this.boxH = 100;
+    this.boxW = 100; this.boxH = 100;
     this.flat = false;
     this.lightPct = 100;
+    this.grade = { ...DEFAULT_GRADE };
+
+    // Light direction — azimuth & elevation (radians), default upper-right-front
+    this.lightAzimuth = Math.PI / 4;      // 45° (between +X and +Z)
+    this.lightElevation = Math.PI / 4;    // 45° above horizon
 
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(42, aspect, 0.1, 8000);
@@ -1200,16 +1572,37 @@ class Viewer {
     this.hemi = new THREE.HemisphereLight(0xffffff, 0x6b7690, 1.35);
     this.scene.add(this.hemi);
     this.key = new THREE.DirectionalLight(0xffffff, 1.9);
-    this.key.position.set(45, 80, 65);
     this.scene.add(this.key);
     this.fill = new THREE.DirectionalLight(0xbcd4ff, 0.85);
-    this.fill.position.set(-70, 30, -55);
     this.scene.add(this.fill);
     this.rim = new THREE.DirectionalLight(0xffffff, 0.45);
     this.rim.position.set(0, -20, 80);
     this.scene.add(this.rim);
 
     this.baseLight = 1;
+
+    this.rt = new THREE.WebGLRenderTarget(2, 2, {
+      format: THREE.RGBAFormat,
+      type: THREE.UnsignedByteType,
+      minFilter: THREE.LinearFilter,
+      magFilter: THREE.LinearFilter,
+      depthBuffer: true,
+      stencilBuffer: false
+    });
+    this.postScene = new THREE.Scene();
+    this.postCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    this.postMaterial = new THREE.ShaderMaterial({
+      uniforms: THREE.UniformsUtils.clone(GradePostShader.uniforms),
+      vertexShader: GradePostShader.vertexShader,
+      fragmentShader: GradePostShader.fragmentShader,
+      transparent: true,
+      depthTest: false,
+      depthWrite: false,
+      blending: THREE.NoBlending
+    });
+    this.postMaterial.uniforms.tDiffuse.value = this.rt.texture;
+    const postQuad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), this.postMaterial);
+    this.postScene.add(postQuad);
 
     this.tc = new TransformControls(this.camera, this.canvas);
     this.tc.setSize(0.85);
@@ -1221,6 +1614,8 @@ class Viewer {
     this.ro.observe(container);
     this.resize();
     this.applyLighting();
+    this.applyLightDirection();
+    this.applyGrade();
   }
   resize() {
     const r = this.container.getBoundingClientRect();
@@ -1231,9 +1626,15 @@ class Viewer {
     if (bh > ah) { bh = ah; bw = ah * this.aspect; }
     this.boxW = Math.round(bw);
     this.boxH = Math.round(bh);
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    this.renderer.setPixelRatio(dpr);
     this.renderer.setSize(this.boxW, this.boxH, true);
+    this.rt.setSize(Math.max(2, this.boxW * dpr), Math.max(2, this.boxH * dpr));
     this.camera.aspect = this.aspect;
     this.camera.updateProjectionMatrix();
+    if (this.postMaterial) {
+      this.postMaterial.uniforms.uResolution.value.set(this.boxW * dpr, this.boxH * dpr);
+    }
   }
   setAspect(a) { this.aspect = a; this.resize(); }
   setLighting(pct) { this.lightPct = pct; this.applyLighting(); }
@@ -1254,6 +1655,41 @@ class Viewer {
       this.rim.intensity = 0.45 * k;
     }
   }
+  setLightDirection(azimuth, elevation) {
+    this.lightAzimuth = azimuth;
+    this.lightElevation = elevation;
+    this.applyLightDirection();
+  }
+  applyLightDirection() {
+    const az = this.lightAzimuth;
+    const el = this.lightElevation;
+    const cosEl = Math.cos(el);
+    const dx = cosEl * Math.cos(az);
+    const dy = Math.sin(el);
+    const dz = cosEl * Math.sin(az);
+    this.key.position.set(dx * 80, dy * 80, dz * 80);
+    // Fill light on opposite side, lower
+    this.fill.position.set(-dx * 60, Math.max(20, dy * 30), -dz * 60);
+  }
+  applyGrade() {
+    if (!this.postMaterial) return;
+    const u = this.postMaterial.uniforms;
+    const g = this.grade;
+    u.uExposure.value = g.exposure;
+    u.uBrightness.value = g.brightness;
+    u.uContrast.value = g.contrast;
+    u.uSaturation.value = g.saturation;
+    u.uHue.value = g.hue;
+    u.uTemperature.value = g.temperature;
+    u.uTint.value = g.tint;
+    u.uHighlights.value = g.highlights;
+    u.uShadows.value = g.shadows;
+    u.uSharpen.value = g.sharpen;
+    u.uGrain.value = g.grain;
+    u.uVignette.value = g.vignette;
+    u.uVignetteRadius.value = g.vignetteRadius;
+    u.uGamma.value = g.gamma;
+  }
   fitToObject(object, padding = 1.4) {
     if (!object) return;
     const box = new THREE.Box3().setFromObject(object);
@@ -1273,9 +1709,28 @@ class Viewer {
     this.camera.updateProjectionMatrix();
     this.controls.update();
   }
+  renderToRT() {
+    const prevRT = this.renderer.getRenderTarget();
+    this.renderer.setRenderTarget(this.rt);
+    this.renderer.setClearColor(0x000000, 0);
+    this.renderer.setClearAlpha(0);
+    this.renderer.clear(true, true, true);
+    this.renderer.render(this.scene, this.camera);
+    this.renderer.setRenderTarget(prevRT);
+  }
   render() {
     this.controls.update();
-    this.renderer.render(this.scene, this.camera);
+    if (this.postMaterial) {
+      this.postMaterial.uniforms.uTime.value = performance.now() * 0.001;
+      this.renderToRT();
+      this.renderer.setRenderTarget(null);
+      this.renderer.setClearColor(0x000000, 0);
+      this.renderer.setClearAlpha(0);
+      this.renderer.clear(true, true, true);
+      this.renderer.render(this.postScene, this.postCamera);
+    } else {
+      this.renderer.render(this.scene, this.camera);
+    }
   }
 }
 
@@ -1284,17 +1739,30 @@ async function captureViewer(v, targetHeight) {
   const scale = clamp(targetHeight / Math.max(oldH, 1), 0.5, 8);
   const w = Math.max(64, Math.round(oldW * scale));
   const h = Math.max(64, Math.round(oldH * scale));
+
   v.renderer.setPixelRatio(1);
   v.renderer.setSize(w, h, false);
+  v.rt.setSize(w, h);
+  v.postMaterial.uniforms.uResolution.value.set(w, h);
   v.camera.aspect = w / h;
   v.camera.updateProjectionMatrix();
-  v.renderer.render(v.scene, v.camera);
+
+  v.renderToRT();
+  v.renderer.setRenderTarget(null);
+  v.renderer.setClearColor(0x000000, 0);
+  v.renderer.setClearAlpha(0);
+  v.renderer.clear(true, true, true);
+  v.renderer.render(v.postScene, v.postCamera);
   const url = v.renderer.domElement.toDataURL('image/png');
-  v.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  v.renderer.setPixelRatio(dpr);
   v.renderer.setSize(oldW, oldH, true);
+  v.rt.setSize(Math.max(2, oldW * dpr), Math.max(2, oldH * dpr));
+  v.postMaterial.uniforms.uResolution.value.set(oldW * dpr, oldH * dpr);
   v.camera.aspect = v.aspect;
   v.camera.updateProjectionMatrix();
-  v.renderer.render(v.scene, v.camera);
+
   return { url, w, h };
 }
 
@@ -1302,9 +1770,35 @@ function loop() {
   requestAnimationFrame(loop);
   if (activeViewer) activeViewer.render();
 }
-loop();
 
-/* ===== UV mapping for character ===== */
+let currentView = 'character';
+let assetsLoaded = false;
+let activeViewer = null;
+
+function setView(name) {
+  currentView = name;
+  $$('.view').forEach(v => v.classList.toggle('active', v.id === 'view-' + name));
+  $$('.tab').forEach(t => t.classList.toggle('active', t.dataset.view === name));
+  requestAnimationFrame(() => {
+    if (name === 'character') { charViewer.resize(); activeViewer = charViewer; }
+    else if (name === 'item') { itemViewer.resize(); activeViewer = itemViewer; }
+    else if (name === 'block') { blockViewer.resize(); activeViewer = blockViewer; }
+    else if (name === 'thumb') { activeViewer = null; layoutThumb(); renderThumb(); }
+    else if (name === 'assets') {
+      activeViewer = null;
+      if (!assetsLoaded) { assetsLoaded = true; loadAssets(); }
+    }
+    else if (name === 'pixel') { activeViewer = null; }
+  });
+  if (window.matchMedia('(max-width:900px)').matches) {
+    const m = document.querySelector('main');
+    if (m) m.scrollTop = 0;
+  }
+}
+
+/* =========================================================
+   UV MAPPING
+   ========================================================= */
 function skinFaces(X, Y, w, h, d) {
   return {
     py: [X + d, Y, w, d],
@@ -1344,7 +1838,7 @@ function makePixelTexture(source, flipY = false) {
 }
 
 /* =========================================================
-   CHARACTER VIEW
+   CHARACTER
    ========================================================= */
 function makeSkinTexture(source) { return makePixelTexture(source, false); }
 function normalizeSkin(img) {
@@ -1491,8 +1985,6 @@ async function restoreChar(snap) {
 }
 function undoChar() { if (charHistory.index <= 0) return; charHistory.index--; restoreChar(charHistory.stack[charHistory.index]); }
 function redoChar() { if (charHistory.index >= charHistory.stack.length - 1) return; charHistory.index++; restoreChar(charHistory.stack[charHistory.index]); }
-$('#btnCharUndo').addEventListener('click', undoChar);
-$('#btnCharRedo').addEventListener('click', redoChar);
 async function applySkin(source, texSize, preservePose = false) {
   let savedPose = null;
   if (preservePose && charState.model) {
@@ -1570,35 +2062,6 @@ function applyPosePreset(name) {
   $$('#posePresets .chip').forEach(c => c.classList.toggle('active', c.dataset.pose === name));
   syncPartSliders();
 }
-const POSE_LIST = [
-  ['idle', 'Idle'], ['tpose', 'T-Pose'], ['wave', 'Wave'], ['run', 'Running'],
-  ['crouch', 'Crouch'], ['hero', 'Hero'], ['sit', 'Sitting'], ['dab', 'Dab']
-];
-POSE_LIST.forEach(([k, label]) => {
-  const b = document.createElement('button');
-  b.className = 'chip'; b.dataset.pose = k; b.textContent = label;
-  b.addEventListener('click', () => { applyPosePreset(k); pushCharHistory(); });
-  $('#posePresets').appendChild(b);
-});
-const PART_ICONS = {
-  head: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="4" width="14" height="14" rx="2"/><path d="M9 10h.01M15 10h.01M9 15h6"/></svg>',
-  torso: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="12" height="14" rx="2"/></svg>',
-  armR: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="6" height="13" rx="2"/></svg>',
-  armL: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="15" y="6" width="6" height="13" rx="2"/></svg>',
-  legR: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="3" width="5" height="18" rx="2"/></svg>',
-  legL: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="13" y="3" width="5" height="18" rx="2"/></svg>'
-};
-const PARTS = [
-  ['head', 'Head'], ['torso', 'Body'], ['armR', 'R. Arm'],
-  ['armL', 'L. Arm'], ['legR', 'R. Leg'], ['legL', 'L. Leg']
-];
-PARTS.forEach(([k, label]) => {
-  const b = document.createElement('button');
-  b.className = 'part-btn'; b.dataset.part = k;
-  b.innerHTML = PART_ICONS[k] + '<span>' + label + '</span>';
-  b.addEventListener('click', () => selectPart(k));
-  $('#partList').appendChild(b);
-});
 let sliderRefs = {};
 function selectPart(key) {
   charState.selected = key;
@@ -1678,97 +2141,14 @@ function syncPartSliders() {
   sliderRefs.posY.setVal(grp.position.y);
   sliderRefs.posZ.setVal(grp.position.z);
 }
-charViewer.tc.addEventListener('objectChange', () => {
-  syncPartSliders();
-  scheduleCharHistory();
-});
-$('#btnUploadSkin').addEventListener('click', () => $('#skinFile').click());
-$('#skinFile').addEventListener('change', async e => {
-  const f = e.target.files[0];
-  if (!f) return;
-  const url = URL.createObjectURL(f);
-  try {
-    const img = await loadImage(url);
-    const norm = normalizeSkin(img);
-    await applySkin(norm.source, norm.size);
-    pushCharHistory();
-    toast('Skin imported');
-  } catch (err) { toast('Could not read that image'); }
-  e.target.value = '';
-});
-$('#btnResetSkin').addEventListener('click', async () => {
-  await loadDefaultSkin();
-  pushCharHistory();
-  toast('Reset to Steve');
-});
-$$('#skinType button').forEach(b => b.addEventListener('click', async () => {
-  $$('#skinType button').forEach(x => x.classList.remove('active'));
-  b.classList.add('active');
-  charState.slim = b.dataset.type === 'slim';
-  if (charState.source) {
-    await applySkin(charState.source, charState.texSize, true);
-    pushCharHistory();
-  }
-}));
-$('#chkOverlay').addEventListener('change', async e => {
-  charState.overlay = e.target.checked;
-  if (charState.source) {
-    await applySkin(charState.source, charState.texSize, true);
-    pushCharHistory();
-  }
-});
-$('#chkGizmo').addEventListener('change', e => {
-  charState.gizmo = e.target.checked;
-  if (!charState.model) return;
-  if (e.target.checked) charViewer.tc.attach(charState.model.groups[charState.selected]);
-  else charViewer.tc.detach();
-});
-$$('#gizmoMode button').forEach(b => b.addEventListener('click', () => {
-  $$('#gizmoMode button').forEach(x => x.classList.remove('active'));
-  b.classList.add('active');
-  charViewer.tc.setMode(b.dataset.mode);
-}));
-$('#chkAutoRotate').addEventListener('change', e => {
-  charViewer.controls.autoRotate = e.target.checked;
-  charViewer.controls.autoRotateSpeed = 1.6;
-});
-$('#chkCharShadows').addEventListener('change', e => charViewer.setFlat(!e.target.checked));
-$('#btnFitView').addEventListener('click', () => {
-  if (charState.model) charViewer.fitToObject(charState.model.root, 1.4);
-  toast('View fitted');
-});
-$$('#view-character [data-cam]').forEach(b => b.addEventListener('click', () => {
-  const k = b.dataset.cam;
-  charViewer.controls.target.set(0, 16, 0);
-  if (k === 'front') charViewer.camera.position.set(0, 18, 74);
-  if (k === 'side') charViewer.camera.position.set(74, 18, 0);
-  if (k === 'three') charViewer.camera.position.set(48, 34, 60);
-  if (k === 'closeup') { charViewer.camera.position.set(10, 30, 36); charViewer.controls.target.set(0, 26, 0); }
-  charViewer.controls.update();
-}));
-$('#charAspect').addEventListener('change', e => charViewer.setAspect(parseFloat(e.target.value)));
-const charGalleryData = [];
-$('#btnCharCapture').addEventListener('click', async () => {
-  const btn = $('#btnCharCapture');
-  btn.disabled = true;
-  const old = btn.textContent;
-  btn.textContent = 'Rendering…';
-  try {
-    const res = await captureViewer(charViewer, parseInt($('#charRes').value, 10));
-    addShot('charGallery', charGalleryData, res.url, 'char');
-    toast(`Captured ${res.w}×${res.h}`);
-  } catch (err) { toast('Capture failed'); }
-  btn.disabled = false;
-  btn.textContent = old;
-});
 
+const charGalleryData = [];
 function addShot(galleryId, store, dataUrl, kind) {
   const id = uid();
   store.unshift({ id, url: dataUrl, kind });
   if (store.length > 24) store.pop();
   renderGallery(galleryId, store);
 }
-
 function renderGallery(galleryId, store) {
   const el = document.getElementById(galleryId);
   el.innerHTML = '';
@@ -1800,7 +2180,9 @@ function renderGallery(galleryId, store) {
   });
 }
 
-/* ==================== ITEM VIEW ==================== */
+/* =========================================================
+   ITEM
+   ========================================================= */
 const itemViewer = new Viewer($('#itemStage'), 16 / 9);
 itemViewer.camera.position.set(0, 0, 46);
 itemViewer.controls.target.set(0, 0, 0);
@@ -1852,12 +2234,9 @@ function restoreItem(snap) {
 }
 function undoItem() { if (itemHistory.index <= 0) return; itemHistory.index--; restoreItem(itemHistory.stack[itemHistory.index]); }
 function redoItem() { if (itemHistory.index >= itemHistory.stack.length - 1) return; itemHistory.index++; restoreItem(itemHistory.stack[itemHistory.index]); }
-$('#btnItemUndo').addEventListener('click', undoItem);
-$('#btnItemRedo').addEventListener('click', redoItem);
 function buildItemMesh(img) {
   const c = document.createElement('canvas');
-  c.width = img.width;
-  c.height = img.height;
+  c.width = img.width; c.height = img.height;
   const x = c.getContext('2d', { willReadFrequently: true });
   x.imageSmoothingEnabled = false;
   x.drawImage(img, 0, 0);
@@ -1945,104 +2324,9 @@ function buildItemControls() {
     pz.setVal(g.position.z);
   };
 }
-itemViewer.tc.addEventListener('objectChange', () => {
-  if (itemViewer._syncSliders) itemViewer._syncSliders();
-  scheduleItemHistory();
-});
-$('#btnUploadItem').addEventListener('click', () => $('#itemFile').click());
-$('#itemFile').addEventListener('change', async e => {
-  const f = e.target.files[0];
-  if (!f) return;
-  const img = await loadImage(URL.createObjectURL(f));
-  setItem(img);
-  pushItemHistory();
-  toast('Item texture loaded');
-  e.target.value = '';
-});
-$('#chkItemSpin').addEventListener('change', e => { itemViewer.controls.autoRotate = e.target.checked; itemViewer.controls.autoRotateSpeed = 2.2; });
-$('#chkItemAuto').addEventListener('change', e => { itemViewer.controls.autoRotate = e.target.checked; itemViewer.controls.autoRotateSpeed = 2.2; });
-$('#chkItemWire').addEventListener('change', e => {
-  if (!itemState.mesh) return;
-  itemState.mesh.material.wireframe = e.target.checked;
-  itemState.mesh.material.needsUpdate = true;
-});
-$('#chkItemGizmo').addEventListener('change', e => {
-  itemState.gizmo = e.target.checked;
-  if (!itemState.group) return;
-  if (e.target.checked) itemViewer.tc.attach(itemState.group);
-  else itemViewer.tc.detach();
-});
-$('#chkItemShadows').addEventListener('change', e => itemViewer.setFlat(!e.target.checked));
-$('#btnFitItemView').addEventListener('click', () => {
-  if (itemState.group) itemViewer.fitToObject(itemState.group, 1.5);
-  toast('View fitted');
-});
-$$('#view-item [data-icam]').forEach(b => b.addEventListener('click', () => {
-  const k = b.dataset.icam;
-  itemViewer.controls.target.set(0, 0, 0);
-  if (k === 'front') itemViewer.camera.position.set(0, 0, 46);
-  if (k === 'iso') itemViewer.camera.position.set(30, 26, 36);
-  if (k === 'top') itemViewer.camera.position.set(0, 46, 1);
-  itemViewer.controls.update();
-}));
-$('#itemAspect').addEventListener('change', e => itemViewer.setAspect(parseFloat(e.target.value)));
-const itemGalleryData = [];
-$('#btnItemCapture').addEventListener('click', async () => {
-  const btn = $('#btnItemCapture');
-  btn.disabled = true;
-  const old = btn.textContent;
-  btn.textContent = 'Rendering…';
-  try {
-    const res = await captureViewer(itemViewer, parseInt($('#itemRes').value, 10));
-    addShot('itemGallery', itemGalleryData, res.url, 'item');
-    toast(`Captured ${res.w}×${res.h}`);
-  } catch (err) { toast('Capture failed'); }
-  btn.disabled = false;
-  btn.textContent = old;
-});
-let itemDepthSlider, itemScaleSlider;
-{
-  const depthWrap = $('#itemDepthCtrl');
-  itemDepthSlider = buildSlider({
-    label: 'Depth', value: itemState.depth, min: 0.1, max: 6, step: 0.1, unit: '',
-    onInput: v => {
-      itemState.depth = v;
-      if (!itemState.mesh) return;
-      const m = new THREE.Matrix4();
-      for (let i = 0; i < itemState.mesh.count; i++) {
-        itemState.mesh.getMatrixAt(i, m);
-        const p = new THREE.Vector3().setFromMatrixPosition(m);
-        m.makeScale(1, 1, itemState.depth);
-        m.setPosition(p);
-        itemState.mesh.setMatrixAt(i, m);
-      }
-      itemState.mesh.instanceMatrix.needsUpdate = true;
-      scheduleItemHistory();
-    }
-  });
-  depthWrap.appendChild(itemDepthSlider.el);
-  const scaleWrap = $('#itemScaleCtrl');
-  itemScaleSlider = buildSlider({
-    label: 'Pixel Size', value: itemState.pixelScale, min: 0.4, max: 1.6, step: 0.01, unit: '',
-    onInput: v => {
-      itemState.pixelScale = v;
-      if (itemState.group) itemState.group.scale.setScalar(itemState.baseScale * itemState.pixelScale);
-      scheduleItemHistory();
-    }
-  });
-  scaleWrap.appendChild(itemScaleSlider.el);
-}
-{
-  const w1 = $('#charLightCtrl');
-  const s1 = buildSlider({ label: 'Lighting', value: 100, min: 20, max: 220, step: 1, unit: '%', onInput: v => charViewer.setLighting(v) });
-  w1.appendChild(s1.el);
-  const w2 = $('#itemLightCtrl');
-  const s2 = buildSlider({ label: 'Lighting', value: 100, min: 20, max: 220, step: 1, unit: '%', onInput: v => itemViewer.setLighting(v) });
-  w2.appendChild(s2.el);
-}
 
 /* =========================================================
-   CUSTOM BLOCK VIEW
+   CUSTOM BLOCK
    ========================================================= */
 const blockViewer = new Viewer($('#blockStage'), 16 / 9);
 blockViewer.camera.position.set(2.4, 2.2, 3.2);
@@ -2052,21 +2336,18 @@ blockViewer.controls.minDistance = 0.6;
 const FACE_ORDER = ['right', 'left', 'top', 'bottom', 'front', 'back'];
 const FACE_LABELS = { top: 'Top', bottom: 'Bottom', front: 'Front', back: 'Back', left: 'Left', right: 'Right' };
 const FACE_LIST = ['top', 'bottom', 'front', 'back', 'left', 'right'];
-
 const faceState = {
   textures: { top: null, bottom: null, front: null, back: null, left: null, right: null },
   links: { top: '', bottom: '', front: '', back: '', left: '', right: '' }
 };
 let blockMesh = null;
 const blockGalleryData = [];
-
 function resolveFace(face, depth = 0) {
   if (depth > 8) return null;
   const link = faceState.links[face];
   if (link) return resolveFace(link, depth + 1);
   return faceState.textures[face];
 }
-
 function buildFaceGrid() {
   const grid = $('#faceGrid');
   grid.innerHTML = '';
@@ -2074,15 +2355,12 @@ function buildFaceGrid() {
     const slot = document.createElement('div');
     slot.className = 'face-slot';
     slot.dataset.face = face;
-
     const label = document.createElement('div');
     label.className = 'face-slot-label';
     label.innerHTML = `<span>${FACE_LABELS[face]}</span>`;
     slot.appendChild(label);
-
     const preview = document.createElement('div');
     preview.className = 'face-preview';
-    preview.dataset.facePreview = face;
     const img = document.createElement('img');
     img.alt = FACE_LABELS[face];
     const plus = document.createElement('div');
@@ -2092,7 +2370,6 @@ function buildFaceGrid() {
     preview.appendChild(plus);
     preview.addEventListener('click', () => triggerFaceUpload(face));
     slot.appendChild(preview);
-
     const buttons = document.createElement('div');
     buttons.className = 'face-buttons';
     const uploadBtn = document.createElement('button');
@@ -2103,22 +2380,18 @@ function buildFaceGrid() {
     clearBtn.className = 'btn sm';
     clearBtn.textContent = 'Clear';
     clearBtn.addEventListener('click', () => clearFace(face));
-    buttons.appendChild(uploadBtn);
-    buttons.appendChild(clearBtn);
+    buttons.appendChild(uploadBtn); buttons.appendChild(clearBtn);
     slot.appendChild(buttons);
-
     const linkSel = document.createElement('select');
     linkSel.className = 'face-link';
     linkSel.dataset.faceLink = face;
     const ownOpt = document.createElement('option');
-    ownOpt.value = '';
-    ownOpt.textContent = 'Own texture';
+    ownOpt.value = ''; ownOpt.textContent = 'Own texture';
     linkSel.appendChild(ownOpt);
     FACE_LIST.forEach(other => {
       if (other === face) return;
       const opt = document.createElement('option');
-      opt.value = other;
-      opt.textContent = 'Same as ' + FACE_LABELS[other];
+      opt.value = other; opt.textContent = 'Same as ' + FACE_LABELS[other];
       linkSel.appendChild(opt);
     });
     linkSel.addEventListener('change', () => {
@@ -2127,12 +2400,10 @@ function buildFaceGrid() {
       refreshBlock();
     });
     slot.appendChild(linkSel);
-
     grid.appendChild(slot);
     updateFaceSlot(face);
   });
 }
-
 function updateFaceSlot(face) {
   const slot = $(`.face-slot[data-face="${face}"]`);
   if (!slot) return;
@@ -2142,9 +2413,7 @@ function updateFaceSlot(face) {
   const linkSel = slot.querySelector('.face-link');
   const texture = faceState.textures[face];
   const linked = faceState.links[face];
-
   linkSel.value = linked;
-
   if (linked) {
     slot.classList.add('linked');
     preview.classList.remove('has-img');
@@ -2176,7 +2445,6 @@ function updateFaceSlot(face) {
     }
   }
 }
-
 function triggerFaceUpload(face) {
   const inp = document.createElement('input');
   inp.type = 'file';
@@ -2190,7 +2458,6 @@ function triggerFaceUpload(face) {
   });
   inp.click();
 }
-
 function setFaceTexture(face, data) {
   faceState.textures[face] = data;
   faceState.links[face] = '';
@@ -2198,14 +2465,12 @@ function setFaceTexture(face, data) {
   refreshBlock();
   toast(FACE_LABELS[face] + ' texture set');
 }
-
 function clearFace(face) {
   faceState.textures[face] = null;
   faceState.links[face] = '';
   updateFaceSlot(face);
   refreshBlock();
 }
-
 function refreshBlock() {
   if (blockMesh) {
     blockViewer.scene.remove(blockMesh);
@@ -2231,64 +2496,6 @@ function refreshBlock() {
   blockMesh.position.set(0, 0.5, 0);
   blockViewer.scene.add(blockMesh);
 }
-
-$('#btnResetBlock').addEventListener('click', () => {
-  FACE_LIST.forEach(f => {
-    faceState.textures[f] = null;
-    faceState.links[f] = '';
-    updateFaceSlot(f);
-  });
-  refreshBlock();
-  toast('Faces cleared');
-});
-
-$$('#view-block [data-bcam]').forEach(b => b.addEventListener('click', () => {
-  const k = b.dataset.bcam;
-  blockViewer.controls.target.set(0, 0.5, 0);
-  if (k === 'front') blockViewer.camera.position.set(0, 0.5, 3.4);
-  if (k === 'side') blockViewer.camera.position.set(3.4, 0.5, 0);
-  if (k === 'three') blockViewer.camera.position.set(2.4, 2.2, 3.2);
-  if (k === 'top') blockViewer.camera.position.set(0, 3.6, 0.01);
-  blockViewer.controls.update();
-}));
-
-$('#btnFitBlockView').addEventListener('click', () => {
-  if (blockMesh) blockViewer.fitToObject(blockMesh, 1.5);
-  toast('View fitted');
-});
-
-$('#chkBlockSpin').addEventListener('change', e => {
-  blockViewer.controls.autoRotate = e.target.checked;
-  blockViewer.controls.autoRotateSpeed = 1.6;
-});
-$('#chkBlockShadows').addEventListener('change', e => blockViewer.setFlat(!e.target.checked));
-$('#blockAspect').addEventListener('change', e => blockViewer.setAspect(parseFloat(e.target.value)));
-{
-  const w = $('#blockLightCtrl');
-  const s = buildSlider({
-    label: 'Lighting', value: 100, min: 20, max: 220, step: 1, unit: '%',
-    onInput: v => blockViewer.setLighting(v)
-  });
-  w.appendChild(s.el);
-}
-$('#btnBlockCapture').addEventListener('click', async () => {
-  const btn = $('#btnBlockCapture');
-  btn.disabled = true;
-  const old = btn.textContent;
-  btn.textContent = 'Rendering…';
-  try {
-    const res = await captureViewer(blockViewer, parseInt($('#blockRes').value, 10));
-    addShot('blockGallery', blockGalleryData, res.url, 'block');
-    toast(`Captured ${res.w}×${res.h}`);
-  } catch (err) { toast('Capture failed'); }
-  btn.disabled = false;
-  btn.textContent = old;
-});
-
-buildFaceGrid();
-refreshBlock();
-
-/* ==================== FACE MODAL ==================== */
 let pendingFaceTexture = null;
 function openFaceModal(data) {
   pendingFaceTexture = data;
@@ -2298,22 +2505,10 @@ function closeFaceModal() {
   pendingFaceTexture = null;
   $('#faceModal').hidden = true;
 }
-$('#faceModalButtons').addEventListener('click', e => {
-  const btn = e.target.closest('button[data-face]');
-  if (!btn) return;
-  const face = btn.dataset.face;
-  if (pendingFaceTexture) {
-    setFaceTexture(face, pendingFaceTexture);
-    setView('block');
-  }
-  closeFaceModal();
-});
-$('#btnCancelFace').addEventListener('click', closeFaceModal);
-$('#faceModal').addEventListener('click', e => {
-  if (e.target === $('#faceModal')) closeFaceModal();
-});
 
-/* ==================== THUMBNAIL EDITOR ==================== */
+/* =========================================================
+   THUMBNAIL EDITOR
+   ========================================================= */
 const artCanvas = $('#artCanvas');
 const ovCanvas = $('#ovCanvas');
 const artCtx = artCanvas.getContext('2d');
@@ -2331,7 +2526,6 @@ let snapEnabled = false;
 let constrainResize = false;
 let snapGuidesX = [];
 let snapGuidesY = [];
-
 function cloneLayer(L) {
   const c = { ...L };
   if (L.filters) c.filters = { ...L.filters };
@@ -2373,9 +2567,6 @@ function restore(snap) {
   renderLayerList(); renderProps(); layoutThumb(); renderThumb();
   history.suspended = false;
 }
-$('#btnUndo').addEventListener('click', undo);
-$('#btnRedo').addEventListener('click', redo);
-
 function drawBackground(ctx) {
   const b = T.bg;
   if (b.type === 'transparent') return;
@@ -2761,7 +2952,6 @@ function addLayer(L) {
   renderThumb(); renderLayerList(); renderProps(); pushHistory();
 }
 function addImageLayer(img, name) { addLayer(newImageLayer(img, name)); }
-
 function duplicateLayer(L) {
   const copy = cloneLayer(L);
   copy.id = uid();
@@ -2773,7 +2963,6 @@ function duplicateLayer(L) {
   renderThumb(); renderLayerList(); renderProps(); pushHistory();
   toast('Layer duplicated');
 }
-
 let dragSrcId = null;
 function renderLayerList() {
   const el = $('#layerList');
@@ -2857,7 +3046,6 @@ function renderLayerList() {
 function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
-
 function ctrlColor(label, value, onInput) {
   const c = document.createElement('div');
   c.className = 'ctrl';
@@ -2909,7 +3097,6 @@ function ctrlHead(title) {
   d.textContent = title;
   return d;
 }
-
 const BLEND_MODES = [
   ['source-over', 'Normal'], ['multiply', 'Multiply'], ['screen', 'Screen'],
   ['overlay', 'Overlay'], ['darken', 'Darken'], ['lighten', 'Lighten'],
@@ -2918,7 +3105,6 @@ const BLEND_MODES = [
   ['difference', 'Difference'], ['exclusion', 'Exclusion'],
   ['hue', 'Hue'], ['saturation', 'Saturation'], ['color', 'Color'], ['luminosity', 'Luminosity']
 ];
-
 const BUILTIN_FONTS = [
   'Anton', 'Bangers', 'Luckiest Guy', 'Russo One', 'Press Start 2P', 'Permanent Marker',
   'Titan One', 'Archivo Black', 'Bebas Neue', 'Oswald', 'Montserrat', 'Poppins', 'Inter',
@@ -2928,53 +3114,23 @@ const BUILTIN_FONTS = [
 ];
 let customFonts = [];
 function getFontList() { return [...BUILTIN_FONTS, ...customFonts]; }
-
 function updateFontHint() {
   const hint = $('#fontListHint');
   if (!hint) return;
   if (customFonts.length === 0) hint.textContent = 'No custom fonts imported.';
   else hint.textContent = 'Imported: ' + customFonts.join(', ');
 }
-
-$('#btnImportFont').addEventListener('click', () => $('#fontFile').click());
-$('#fontFile').addEventListener('change', async e => {
-  const files = Array.from(e.target.files || []);
-  for (const f of files) {
-    try {
-      const buf = await f.arrayBuffer();
-      let family = f.name.replace(/\.[^.]+$/, '').replace(/[^a-zA-Z0-9 ]/g, ' ').trim();
-      if (!family) family = 'CustomFont' + (customFonts.length + 1);
-      if (customFonts.includes(family) || BUILTIN_FONTS.includes(family)) {
-        family = family + ' ' + (customFonts.length + 1);
-      }
-      const ff = new FontFace(family, buf);
-      await ff.load();
-      document.fonts.add(ff);
-      customFonts.push(family);
-      toast('Font imported: ' + family);
-    } catch (err) {
-      console.error(err);
-      toast('Could not import ' + f.name);
-    }
-  }
-  e.target.value = '';
-  updateFontHint();
-  renderProps();
-});
-
 function renderProps() {
   const el = $('#props');
   el.innerHTML = '';
   const L = T.layers.find(l => l.id === T.sel);
   if (!L) { el.innerHTML = '<p class="empty">Select a layer to edit its properties.</p>'; return; }
-
   const duplicateBtn = document.createElement('button');
   duplicateBtn.className = 'btn block sm';
   duplicateBtn.textContent = 'Duplicate Layer';
   duplicateBtn.style.marginBottom = '12px';
   duplicateBtn.addEventListener('click', () => duplicateLayer(L));
   el.appendChild(duplicateBtn);
-
   el.appendChild(ctrlHead('Transform'));
   const addSlider = (label, value, min, max, step, onInput, unit = '') => {
     const s = buildSlider({ label, value, min, max, step, unit, onInput });
@@ -3147,6 +3303,855 @@ function hitTest(p) {
   return null;
 }
 let drag = null;
+
+/* =========================================================
+   PIXEL ART
+   ========================================================= */
+const PIXEL_TOOLS = [
+  { id: 'pencil', name: 'Pencil', svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21 L7 20 L20 7 L17 4 L4 17 Z"/><path d="M14 7 L17 10"/></svg>' },
+  { id: 'eraser', name: 'Eraser', svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16 L11 8 L20 17 L12 21 L3 16 Z"/><path d="M8 11 L17 20"/></svg>' },
+  { id: 'fill', name: 'Fill', svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12 L12 5 L20 13 L13 20 Z"/><path d="M9 8 L16 4"/><path d="M20 17 Q22 19 22 21 Q22 22 20 22 Q18 22 18 21 Q18 19 20 17 Z"/></svg>' },
+  { id: 'line', name: 'Line', svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 20 L20 4"/></svg>' },
+  { id: 'rect', name: 'Rect', svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="6" width="16" height="12"/></svg>' },
+  { id: 'ellipse', name: 'Ellipse', svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="12" rx="9" ry="7"/></svg>' },
+  { id: 'eyedropper', name: 'Pick', svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4 L20 10 L17 13 L11 7 Z"/><path d="M11 7 L4 14 L4 20 L10 20 L17 13"/></svg>' }
+];
+
+const PIXEL_PALETTE = [
+  '#000000','#ffffff','#3b6ef5','#2a56d6','#e5484d','#e8a33d',
+  '#f4d13e','#3fa858','#2db6a8','#8e5ce0','#e84d9c','#8b5a3c',
+  '#c68642','#7c8ca3','#c8d5ea','#1b2a5e'
+];
+
+const PIXEL_SIZES = [16, 32, 64, 128];
+
+const pixel = {
+  size: 32,
+  tool: 'pencil',
+  color: '#3b6ef5',
+  grid: true,
+  mirrorX: false,
+  mirrorY: false,
+  undo: [],
+  redo: [],
+  drag: null,
+  baseState: null
+};
+
+const pixelCanvas = $('#pixelCanvas');
+const pixelCtx = pixelCanvas.getContext('2d', { willReadFrequently: true });
+const pixelCanvasWrap = $('#pixelCanvasWrap');
+const pixelGridOverlay = $('#pixelGridOverlay');
+const pixelCursor = $('#pixelCursor');
+const pixelGalleryData = [];
+
+function updatePixelCanvasSize() {
+  pixelCanvas.width = pixel.size;
+  pixelCanvas.height = pixel.size;
+  pixelCtx.clearRect(0, 0, pixel.size, pixel.size);
+  updatePixelGrid();
+  pixel.undo = [];
+  pixel.redo = [];
+  updatePixelUndoButtons();
+}
+function updatePixelGrid() {
+  pixelGridOverlay.style.backgroundImage =
+    'linear-gradient(to right, rgba(0,0,0,.14) 1px, transparent 1px),' +
+    'linear-gradient(to bottom, rgba(0,0,0,.14) 1px, transparent 1px)';
+  pixelGridOverlay.style.backgroundSize = `calc(100% / ${pixel.size}) calc(100% / ${pixel.size})`;
+}
+function updatePixelSwatch() {
+  $('#pixelSwatch').style.setProperty('--swatch', pixel.color);
+}
+function pushPixelUndo() {
+  try {
+    const state = pixelCtx.getImageData(0, 0, pixel.size, pixel.size);
+    pixel.undo.push(state);
+    if (pixel.undo.length > 40) pixel.undo.shift();
+    pixel.redo = [];
+    updatePixelUndoButtons();
+  } catch (e) {}
+}
+function updatePixelUndoButtons() {
+  $('#btnPixelUndo').disabled = pixel.undo.length === 0;
+  $('#btnPixelRedo').disabled = pixel.redo.length === 0;
+}
+function undoPixel() {
+  if (!pixel.undo.length) return;
+  const current = pixelCtx.getImageData(0, 0, pixel.size, pixel.size);
+  pixel.redo.push(current);
+  const prev = pixel.undo.pop();
+  pixelCtx.putImageData(prev, 0, 0);
+  updatePixelUndoButtons();
+}
+function redoPixel() {
+  if (!pixel.redo.length) return;
+  const current = pixelCtx.getImageData(0, 0, pixel.size, pixel.size);
+  pixel.undo.push(current);
+  const next = pixel.redo.pop();
+  pixelCtx.putImageData(next, 0, 0);
+  updatePixelUndoButtons();
+}
+function pixelFromEvent(e) {
+  const r = pixelCanvas.getBoundingClientRect();
+  const x = Math.floor((e.clientX - r.left) / r.width * pixel.size);
+  const y = Math.floor((e.clientY - r.top) / r.height * pixel.size);
+  return { x: clamp(x, 0, pixel.size - 1), y: clamp(y, 0, pixel.size - 1) };
+}
+function hexToRgb(hex) {
+  const h = hex.replace('#', '');
+  const n = parseInt(h.length === 3 ? h.split('').map(c => c + c).join('') : h, 16);
+  return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+}
+function setPixel(x, y, rgba) {
+  if (x < 0 || y < 0 || x >= pixel.size || y >= pixel.size) return;
+  pixelCtx.fillStyle = rgba;
+  pixelCtx.fillRect(x, y, 1, 1);
+  if (pixel.mirrorX) pixelCtx.fillRect(pixel.size - 1 - x, y, 1, 1);
+  if (pixel.mirrorY) pixelCtx.fillRect(x, pixel.size - 1 - y, 1, 1);
+  if (pixel.mirrorX && pixel.mirrorY) pixelCtx.fillRect(pixel.size - 1 - x, pixel.size - 1 - y, 1, 1);
+}
+function drawPixelLine(x0, y0, x1, y1, rgba) {
+  const dx = Math.abs(x1 - x0);
+  const dy = Math.abs(y1 - y0);
+  const sx = x0 < x1 ? 1 : -1;
+  const sy = y0 < y1 ? 1 : -1;
+  let err = dx - dy;
+  while (true) {
+    setPixel(x0, y0, rgba);
+    if (x0 === x1 && y0 === y1) break;
+    const e2 = 2 * err;
+    if (e2 > -dy) { err -= dy; x0 += sx; }
+    if (e2 < dx) { err += dx; y0 += sy; }
+  }
+}
+function drawPixelRect(x0, y0, x1, y1, rgba, filled = false) {
+  const minX = Math.min(x0, x1), maxX = Math.max(x0, x1);
+  const minY = Math.min(y0, y1), maxY = Math.max(y0, y1);
+  if (filled) {
+    for (let y = minY; y <= maxY; y++)
+      for (let x = minX; x <= maxX; x++) setPixel(x, y, rgba);
+  } else {
+    for (let x = minX; x <= maxX; x++) { setPixel(x, minY, rgba); setPixel(x, maxY, rgba); }
+    for (let y = minY; y <= maxY; y++) { setPixel(minX, y, rgba); setPixel(maxX, y, rgba); }
+  }
+}
+function drawPixelEllipse(cx, cy, rx, ry, rgba, filled = false) {
+  if (rx < 0.5 && ry < 0.5) { setPixel(cx, cy, rgba); return; }
+  let x = 0, y = ry;
+  let d1 = (ry * ry) - (rx * rx * ry) + (0.25 * rx * rx);
+  let dx = 2 * ry * ry * x;
+  let dy = 2 * rx * rx * y;
+  const plot = (x, y) => {
+    setPixel(cx + x, cy + y, rgba);
+    setPixel(cx - x, cy + y, rgba);
+    setPixel(cx + x, cy - y, rgba);
+    setPixel(cx - x, cy - y, rgba);
+  };
+  const plotFill = (x, y) => {
+    for (let xx = cx - x; xx <= cx + x; xx++) {
+      setPixel(xx, cy + y, rgba);
+      setPixel(xx, cy - y, rgba);
+    }
+  };
+  while (dx < dy) {
+    if (filled) plotFill(x, y); else plot(x, y);
+    if (d1 < 0) { x++; dx += 2 * ry * ry; d1 += dx + (ry * ry); }
+    else { x++; y--; dx += 2 * ry * ry; dy -= 2 * rx * rx; d1 += dx - dy + (ry * ry); }
+  }
+  let d2 = ((ry * ry) * ((x + 0.5) * (x + 0.5))) + ((rx * rx) * ((y - 1) * (y - 1))) - (rx * rx * ry * ry);
+  while (y >= 0) {
+    if (filled) plotFill(x, y); else plot(x, y);
+    if (d2 > 0) { y--; dy -= 2 * rx * rx; d2 += (rx * rx) - dy; }
+    else { y--; x++; dx += 2 * ry * ry; dy -= 2 * rx * rx; d2 += dx - dy + (rx * rx); }
+  }
+}
+function floodFill(x, y, hexColor) {
+  const W = pixel.size, H = pixel.size;
+  const imgData = pixelCtx.getImageData(0, 0, W, H);
+  const data = imgData.data;
+  const [tr, tg, tb] = hexToRgb(hexColor);
+  const targetIdx = (y * W + x) * 4;
+  const sr = data[targetIdx], sg = data[targetIdx + 1], sb = data[targetIdx + 2], sa = data[targetIdx + 3];
+  if (sr === tr && sg === tg && sb === tb && sa === 255) return;
+  const stack = [[x, y]];
+  const visited = new Uint8Array(W * H);
+  while (stack.length) {
+    const [cx, cy] = stack.pop();
+    if (cx < 0 || cy < 0 || cx >= W || cy >= H) continue;
+    const idx = cy * W + cx;
+    if (visited[idx]) continue;
+    visited[idx] = 1;
+    const di = idx * 4;
+    if (data[di] === sr && data[di + 1] === sg && data[di + 2] === sb && data[di + 3] === sa) {
+      data[di] = tr; data[di + 1] = tg; data[di + 2] = tb; data[di + 3] = 255;
+      stack.push([cx + 1, cy]); stack.push([cx - 1, cy]);
+      stack.push([cx, cy + 1]); stack.push([cx, cy - 1]);
+    }
+  }
+  pixelCtx.putImageData(imgData, 0, 0);
+}
+function pickColorAt(x, y) {
+  const d = pixelCtx.getImageData(x, y, 1, 1).data;
+  if (d[3] < 10) { toast('Transparent pixel'); return; }
+  const hex = '#' + [d[0], d[1], d[2]].map(v => v.toString(16).padStart(2, '0')).join('');
+  pixel.color = hex;
+  $('#pixelColorInput').value = hex;
+  updatePixelSwatch();
+  updatePaletteActive();
+}
+
+function updatePaletteActive() {
+  $$('.pixel-pal-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.color.toLowerCase() === pixel.color.toLowerCase());
+  });
+}
+function buildPixelTools() {
+  const wrap = $('#pixelTools');
+  wrap.innerHTML = '';
+  PIXEL_TOOLS.forEach(t => {
+    const b = document.createElement('button');
+    b.className = 'pixel-tool' + (pixel.tool === t.id ? ' active' : '');
+    b.dataset.tool = t.id;
+    b.title = t.name;
+    b.innerHTML = t.svg;
+    b.addEventListener('click', () => {
+      pixel.tool = t.id;
+      $$('.pixel-tool').forEach(x => x.classList.toggle('active', x.dataset.tool === t.id));
+    });
+    wrap.appendChild(b);
+  });
+}
+function buildPixelPalette() {
+  const wrap = $('#pixelPalette');
+  wrap.innerHTML = '';
+  PIXEL_PALETTE.forEach(c => {
+    const b = document.createElement('button');
+    b.className = 'pixel-pal-btn';
+    b.dataset.color = c;
+    b.style.background = c;
+    b.title = c;
+    b.addEventListener('click', () => {
+      pixel.color = c;
+      $('#pixelColorInput').value = c;
+      updatePixelSwatch();
+      updatePaletteActive();
+    });
+    wrap.appendChild(b);
+  });
+  updatePaletteActive();
+}
+function buildPixelSizes() {
+  const wrap = $('#pixelSizeGrid');
+  wrap.innerHTML = '';
+  PIXEL_SIZES.forEach(s => {
+    const b = document.createElement('button');
+    b.className = 'pixel-size-btn' + (pixel.size === s ? ' active' : '');
+    b.textContent = s + ' × ' + s;
+    b.addEventListener('click', () => {
+      if (pixel.size === s) return;
+      pixel.size = s;
+      $$('.pixel-size-btn').forEach(x => x.classList.toggle('active', x.textContent.startsWith(s + ' ')));
+      updatePixelCanvasSize();
+      toast('Canvas: ' + s + '×' + s);
+    });
+    wrap.appendChild(b);
+  });
+}
+function updatePixelCursor(e) {
+  const p = pixelFromEvent(e);
+  const r = pixelCanvas.getBoundingClientRect();
+  const cellW = r.width / pixel.size;
+  const cellH = r.height / pixel.size;
+  pixelCursor.style.left = (p.x * cellW) + 'px';
+  pixelCursor.style.top = (p.y * cellH) + 'px';
+  pixelCursor.style.width = cellW + 'px';
+  pixelCursor.style.height = cellH + 'px';
+  pixelCursor.classList.add('on');
+}
+
+function pixelDown(e) {
+  e.preventDefault();
+  pixelCanvas.setPointerCapture?.(e.pointerId);
+  const p = pixelFromEvent(e);
+  const rgba = pixel.color;
+
+  if (pixel.tool === 'pencil') {
+    pushPixelUndo();
+    setPixel(p.x, p.y, rgba);
+    pixel.drag = { mode: 'draw', last: p, rgba };
+  } else if (pixel.tool === 'eraser') {
+    pushPixelUndo();
+    pixelCtx.clearRect(p.x, p.y, 1, 1);
+    pixel.drag = { mode: 'erase', last: p };
+  } else if (pixel.tool === 'fill') {
+    pushPixelUndo();
+    floodFill(p.x, p.y, rgba);
+  } else if (pixel.tool === 'eyedropper') {
+    pickColorAt(p.x, p.y);
+  } else if (pixel.tool === 'line' || pixel.tool === 'rect' || pixel.tool === 'ellipse') {
+    pushPixelUndo();
+    pixel.baseState = pixelCtx.getImageData(0, 0, pixel.size, pixel.size);
+    pixel.drag = { mode: 'shape', start: p, current: p };
+  }
+  updatePixelCursor(e);
+}
+function pixelMove(e) {
+  updatePixelCursor(e);
+  if (!pixel.drag) return;
+  const p = pixelFromEvent(e);
+  if (pixel.drag.mode === 'draw') {
+    drawPixelLine(pixel.drag.last.x, pixel.drag.last.y, p.x, p.y, pixel.drag.rgba);
+    pixel.drag.last = p;
+  } else if (pixel.drag.mode === 'erase') {
+    const steps = Math.max(Math.abs(p.x - pixel.drag.last.x), Math.abs(p.y - pixel.drag.last.y), 1);
+    for (let i = 0; i <= steps; i++) {
+      const t = i / steps;
+      const x = Math.round(pixel.drag.last.x + (p.x - pixel.drag.last.x) * t);
+      const y = Math.round(pixel.drag.last.y + (p.y - pixel.drag.last.y) * t);
+      pixelCtx.clearRect(x, y, 1, 1);
+      if (pixel.mirrorX) pixelCtx.clearRect(pixel.size - 1 - x, y, 1, 1);
+      if (pixel.mirrorY) pixelCtx.clearRect(x, pixel.size - 1 - y, 1, 1);
+      if (pixel.mirrorX && pixel.mirrorY) pixelCtx.clearRect(pixel.size - 1 - x, pixel.size - 1 - y, 1, 1);
+    }
+    pixel.drag.last = p;
+  } else if (pixel.drag.mode === 'shape') {
+    pixelCtx.putImageData(pixel.baseState, 0, 0);
+    const s = pixel.drag.start;
+    const rgba = pixel.color;
+    if (pixel.tool === 'line') drawPixelLine(s.x, s.y, p.x, p.y, rgba);
+    else if (pixel.tool === 'rect') drawPixelRect(s.x, s.y, p.x, p.y, rgba);
+    else if (pixel.tool === 'ellipse') {
+      const cx = (s.x + p.x) / 2;
+      const cy = (s.y + p.y) / 2;
+      const rx = Math.abs(p.x - s.x) / 2;
+      const ry = Math.abs(p.y - s.y) / 2;
+      drawPixelEllipse(Math.round(cx), Math.round(cy), Math.round(rx), Math.round(ry), rgba);
+    }
+    pixel.drag.current = p;
+  }
+}
+function pixelUp(e) {
+  if (pixel.drag) {
+    if (pixel.drag.mode === 'shape') {
+      // commit what's already drawn
+    }
+    pixel.drag = null;
+    pixel.baseState = null;
+  }
+}
+function pixelLeave() {
+  pixelCursor.classList.remove('on');
+}
+
+function pixelToExportCanvas() {
+  // Upscale with nearest neighbor to ~1024px shortest edge
+  const MIN = 1024;
+  const scale = Math.max(1, Math.ceil(MIN / pixel.size));
+  const c = document.createElement('canvas');
+  c.width = c.height = pixel.size * scale;
+  const x = c.getContext('2d');
+  x.imageSmoothingEnabled = false;
+  x.drawImage(pixelCanvas, 0, 0, c.width, c.height);
+  return c;
+}
+function pixelToHighQualityCanvas() {
+  // Upscale further for high-quality export
+  const MIN = 2160;
+  const scale = Math.max(1, Math.ceil(MIN / pixel.size));
+  const c = document.createElement('canvas');
+  c.width = c.height = pixel.size * scale;
+  const x = c.getContext('2d');
+  x.imageSmoothingEnabled = false;
+  x.drawImage(pixelCanvas, 0, 0, c.width, c.height);
+  return c;
+}
+function pixelAddToGallery() {
+  const c = pixelToExportCanvas();
+  const id = uid();
+  const url = c.toDataURL('image/png');
+  pixelGalleryData.unshift({ id, url, size: pixel.size });
+  if (pixelGalleryData.length > 40) pixelGalleryData.pop();
+  renderPixelGallery();
+}
+function renderPixelGallery() {
+  const el = $('#pixelGallery');
+  el.innerHTML = '';
+  $('#pixelGalleryEmpty').style.display = pixelGalleryData.length ? 'none' : 'block';
+  pixelGalleryData.forEach(item => {
+    const d = document.createElement('div');
+    d.className = 'shot';
+    d.innerHTML = `<img src="${item.url}" alt="pixel art">
+      <div class="shot-actions">
+        <button data-a="load" title="Load into editor">Edit</button>
+        <button data-a="dl">Save</button>
+      </div>`;
+    d.querySelector('[data-a="load"]').addEventListener('click', async ev => {
+      ev.stopPropagation();
+      try {
+        const img = await loadImage(item.url);
+        const c = document.createElement('canvas');
+        c.width = pixel.size;
+        c.height = pixel.size;
+        const x = c.getContext('2d');
+        x.imageSmoothingEnabled = false;
+        x.clearRect(0, 0, c.width, c.height);
+        x.drawImage(img, 0, 0, c.width, c.height);
+        pushPixelUndo();
+        pixelCtx.clearRect(0, 0, pixel.size, pixel.size);
+        pixelCtx.drawImage(c, 0, 0);
+        toast('Loaded into editor');
+      } catch (e) { toast('Could not load'); }
+    });
+    d.querySelector('[data-a="dl"]').addEventListener('click', ev => {
+      ev.stopPropagation();
+      const a = document.createElement('a');
+      a.href = item.url;
+      a.download = FILE_SLUG + '-pixel-' + item.id + '.png';
+      a.click();
+    });
+    el.appendChild(d);
+  });
+}
+
+/* =========================================================
+   EVENT WIRING
+   ========================================================= */
+$$('.tab').forEach(t => t.addEventListener('click', () => setView(t.dataset.view)));
+
+// Character
+const POSE_LIST = [
+  ['idle', 'Idle'], ['tpose', 'T-Pose'], ['wave', 'Wave'], ['run', 'Running'],
+  ['crouch', 'Crouch'], ['hero', 'Hero'], ['sit', 'Sitting'], ['dab', 'Dab']
+];
+POSE_LIST.forEach(([k, label]) => {
+  const b = document.createElement('button');
+  b.className = 'chip'; b.dataset.pose = k; b.textContent = label;
+  b.addEventListener('click', () => { applyPosePreset(k); pushCharHistory(); });
+  $('#posePresets').appendChild(b);
+});
+const PART_ICONS = {
+  head: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="4" width="14" height="14" rx="2"/><path d="M9 10h.01M15 10h.01M9 15h6"/></svg>',
+  torso: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="12" height="14" rx="2"/></svg>',
+  armR: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="6" height="13" rx="2"/></svg>',
+  armL: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="15" y="6" width="6" height="13" rx="2"/></svg>',
+  legR: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="3" width="5" height="18" rx="2"/></svg>',
+  legL: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="13" y="3" width="5" height="18" rx="2"/></svg>'
+};
+const PARTS = [
+  ['head', 'Head'], ['torso', 'Body'], ['armR', 'R. Arm'],
+  ['armL', 'L. Arm'], ['legR', 'R. Leg'], ['legL', 'L. Leg']
+];
+PARTS.forEach(([k, label]) => {
+  const b = document.createElement('button');
+  b.className = 'part-btn'; b.dataset.part = k;
+  b.innerHTML = PART_ICONS[k] + '<span>' + label + '</span>';
+  b.addEventListener('click', () => selectPart(k));
+  $('#partList').appendChild(b);
+});
+$('#btnCharUndo').addEventListener('click', undoChar);
+$('#btnCharRedo').addEventListener('click', redoChar);
+$('#btnUploadSkin').addEventListener('click', () => $('#skinFile').click());
+$('#skinFile').addEventListener('change', async e => {
+  const f = e.target.files[0];
+  if (!f) return;
+  const url = URL.createObjectURL(f);
+  try {
+    const img = await loadImage(url);
+    const norm = normalizeSkin(img);
+    await applySkin(norm.source, norm.size);
+    pushCharHistory();
+    toast('Skin imported');
+  } catch (err) { toast('Could not read that image'); }
+  e.target.value = '';
+});
+$('#btnResetSkin').addEventListener('click', async () => {
+  await loadDefaultSkin();
+  pushCharHistory();
+  toast('Reset to Steve');
+});
+$$('#skinType button').forEach(b => b.addEventListener('click', async () => {
+  $$('#skinType button').forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  charState.slim = b.dataset.type === 'slim';
+  if (charState.source) {
+    await applySkin(charState.source, charState.texSize, true);
+    pushCharHistory();
+  }
+}));
+$('#chkOverlay').addEventListener('change', async e => {
+  charState.overlay = e.target.checked;
+  if (charState.source) {
+    await applySkin(charState.source, charState.texSize, true);
+    pushCharHistory();
+  }
+});
+$('#chkGizmo').addEventListener('change', e => {
+  charState.gizmo = e.target.checked;
+  if (!charState.model) return;
+  if (e.target.checked) charViewer.tc.attach(charState.model.groups[charState.selected]);
+  else charViewer.tc.detach();
+});
+$$('#gizmoMode button').forEach(b => b.addEventListener('click', () => {
+  $$('#gizmoMode button').forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  charViewer.tc.setMode(b.dataset.mode);
+}));
+$('#chkAutoRotate').addEventListener('change', e => {
+  charViewer.controls.autoRotate = e.target.checked;
+  charViewer.controls.autoRotateSpeed = 1.6;
+});
+$('#chkCharShadows').addEventListener('change', e => charViewer.setFlat(!e.target.checked));
+$('#btnFitView').addEventListener('click', () => {
+  if (charState.model) charViewer.fitToObject(charState.model.root, 1.4);
+  toast('View fitted');
+});
+$$('#view-character [data-cam]').forEach(b => b.addEventListener('click', () => {
+  const k = b.dataset.cam;
+  charViewer.controls.target.set(0, 16, 0);
+  if (k === 'front') charViewer.camera.position.set(0, 18, 74);
+  if (k === 'side') charViewer.camera.position.set(74, 18, 0);
+  if (k === 'three') charViewer.camera.position.set(48, 34, 60);
+  if (k === 'closeup') { charViewer.camera.position.set(10, 30, 36); charViewer.controls.target.set(0, 26, 0); }
+  charViewer.controls.update();
+}));
+$('#charAspect').addEventListener('change', e => charViewer.setAspect(parseFloat(e.target.value)));
+$('#btnCharCapture').addEventListener('click', async () => {
+  const btn = $('#btnCharCapture');
+  btn.disabled = true;
+  const old = btn.textContent;
+  btn.textContent = 'Rendering…';
+  try {
+    const res = await captureViewer(charViewer, parseInt($('#charRes').value, 10));
+    addShot('charGallery', charGalleryData, res.url, 'char');
+    toast(`Captured ${res.w}×${res.h}`);
+  } catch (err) { toast('Capture failed'); }
+  btn.disabled = false;
+  btn.textContent = old;
+});
+
+// Item
+$('#btnItemUndo').addEventListener('click', undoItem);
+$('#btnItemRedo').addEventListener('click', redoItem);
+$('#btnUploadItem').addEventListener('click', () => $('#itemFile').click());
+$('#itemFile').addEventListener('change', async e => {
+  const f = e.target.files[0];
+  if (!f) return;
+  const img = await loadImage(URL.createObjectURL(f));
+  setItem(img);
+  pushItemHistory();
+  toast('Item texture loaded');
+  e.target.value = '';
+});
+$('#chkItemSpin').addEventListener('change', e => { itemViewer.controls.autoRotate = e.target.checked; itemViewer.controls.autoRotateSpeed = 2.2; });
+$('#chkItemAuto').addEventListener('change', e => { itemViewer.controls.autoRotate = e.target.checked; itemViewer.controls.autoRotateSpeed = 2.2; });
+$('#chkItemWire').addEventListener('change', e => {
+  if (!itemState.mesh) return;
+  itemState.mesh.material.wireframe = e.target.checked;
+  itemState.mesh.material.needsUpdate = true;
+});
+$('#chkItemGizmo').addEventListener('change', e => {
+  itemState.gizmo = e.target.checked;
+  if (!itemState.group) return;
+  if (e.target.checked) itemViewer.tc.attach(itemState.group);
+  else itemViewer.tc.detach();
+});
+$('#chkItemShadows').addEventListener('change', e => itemViewer.setFlat(!e.target.checked));
+$('#btnFitItemView').addEventListener('click', () => {
+  if (itemState.group) itemViewer.fitToObject(itemState.group, 1.5);
+  toast('View fitted');
+});
+$$('#view-item [data-icam]').forEach(b => b.addEventListener('click', () => {
+  const k = b.dataset.icam;
+  itemViewer.controls.target.set(0, 0, 0);
+  if (k === 'front') itemViewer.camera.position.set(0, 0, 46);
+  if (k === 'iso') itemViewer.camera.position.set(30, 26, 36);
+  if (k === 'top') itemViewer.camera.position.set(0, 46, 1);
+  itemViewer.controls.update();
+}));
+$('#itemAspect').addEventListener('change', e => itemViewer.setAspect(parseFloat(e.target.value)));
+$('#btnItemCapture').addEventListener('click', async () => {
+  const btn = $('#btnItemCapture');
+  btn.disabled = true;
+  const old = btn.textContent;
+  btn.textContent = 'Rendering…';
+  try {
+    const res = await captureViewer(itemViewer, parseInt($('#itemRes').value, 10));
+    addShot('itemGallery', itemGalleryData, res.url, 'item');
+    toast(`Captured ${res.w}×${res.h}`);
+  } catch (err) { toast('Capture failed'); }
+  btn.disabled = false;
+  btn.textContent = old;
+});
+const itemGalleryData = [];
+let itemDepthSlider, itemScaleSlider;
+{
+  const depthWrap = $('#itemDepthCtrl');
+  itemDepthSlider = buildSlider({
+    label: 'Depth', value: itemState.depth, min: 0.1, max: 6, step: 0.1, unit: '',
+    onInput: v => {
+      itemState.depth = v;
+      if (!itemState.mesh) return;
+      const m = new THREE.Matrix4();
+      for (let i = 0; i < itemState.mesh.count; i++) {
+        itemState.mesh.getMatrixAt(i, m);
+        const p = new THREE.Vector3().setFromMatrixPosition(m);
+        m.makeScale(1, 1, itemState.depth);
+        m.setPosition(p);
+        itemState.mesh.setMatrixAt(i, m);
+      }
+      itemState.mesh.instanceMatrix.needsUpdate = true;
+      scheduleItemHistory();
+    }
+  });
+  depthWrap.appendChild(itemDepthSlider.el);
+  const scaleWrap = $('#itemScaleCtrl');
+  itemScaleSlider = buildSlider({
+    label: 'Pixel Size', value: itemState.pixelScale, min: 0.4, max: 1.6, step: 0.01, unit: '',
+    onInput: v => {
+      itemState.pixelScale = v;
+      if (itemState.group) itemState.group.scale.setScalar(itemState.baseScale * itemState.pixelScale);
+      scheduleItemHistory();
+    }
+  });
+  scaleWrap.appendChild(itemScaleSlider.el);
+}
+{
+  const w1 = $('#charLightCtrl');
+  const s1 = buildSlider({ label: 'Lighting', value: 100, min: 20, max: 220, step: 1, unit: '%', onInput: v => charViewer.setLighting(v) });
+  w1.appendChild(s1.el);
+  const w2 = $('#itemLightCtrl');
+  const s2 = buildSlider({ label: 'Lighting', value: 100, min: 20, max: 220, step: 1, unit: '%', onInput: v => itemViewer.setLighting(v) });
+  w2.appendChild(s2.el);
+}
+
+// Block
+$('#btnResetBlock').addEventListener('click', () => {
+  FACE_LIST.forEach(f => {
+    faceState.textures[f] = null;
+    faceState.links[f] = '';
+    updateFaceSlot(f);
+  });
+  refreshBlock();
+  toast('Faces cleared');
+});
+$$('#view-block [data-bcam]').forEach(b => b.addEventListener('click', () => {
+  const k = b.dataset.bcam;
+  blockViewer.controls.target.set(0, 0.5, 0);
+  if (k === 'front') blockViewer.camera.position.set(0, 0.5, 3.4);
+  if (k === 'side') blockViewer.camera.position.set(3.4, 0.5, 0);
+  if (k === 'three') blockViewer.camera.position.set(2.4, 2.2, 3.2);
+  if (k === 'top') blockViewer.camera.position.set(0, 3.6, 0.01);
+  blockViewer.controls.update();
+}));
+$('#btnFitBlockView').addEventListener('click', () => {
+  if (blockMesh) blockViewer.fitToObject(blockMesh, 1.5);
+  toast('View fitted');
+});
+$('#chkBlockSpin').addEventListener('change', e => {
+  blockViewer.controls.autoRotate = e.target.checked;
+  blockViewer.controls.autoRotateSpeed = 1.6;
+});
+$('#chkBlockShadows').addEventListener('change', e => blockViewer.setFlat(!e.target.checked));
+$('#blockAspect').addEventListener('change', e => blockViewer.setAspect(parseFloat(e.target.value)));
+{
+  const w = $('#blockLightCtrl');
+  const s = buildSlider({
+    label: 'Lighting', value: 100, min: 20, max: 220, step: 1, unit: '%',
+    onInput: v => blockViewer.setLighting(v)
+  });
+  w.appendChild(s.el);
+}
+$('#btnBlockCapture').addEventListener('click', async () => {
+  const btn = $('#btnBlockCapture');
+  btn.disabled = true;
+  const old = btn.textContent;
+  btn.textContent = 'Rendering…';
+  try {
+    const res = await captureViewer(blockViewer, parseInt($('#blockRes').value, 10));
+    addShot('blockGallery', blockGalleryData, res.url, 'block');
+    toast(`Captured ${res.w}×${res.h}`);
+  } catch (err) { toast('Capture failed'); }
+  btn.disabled = false;
+  btn.textContent = old;
+});
+
+// Face modal
+$('#faceModalButtons').addEventListener('click', e => {
+  const btn = e.target.closest('button[data-face]');
+  if (!btn) return;
+  const face = btn.dataset.face;
+  if (pendingFaceTexture) {
+    setFaceTexture(face, pendingFaceTexture);
+    setView('block');
+  }
+  closeFaceModal();
+});
+$('#btnCancelFace').addEventListener('click', closeFaceModal);
+$('#faceModal').addEventListener('click', e => {
+  if (e.target === $('#faceModal')) closeFaceModal();
+});
+
+/* ===== LIGHT PAD WIRING ===== */
+function wireLightPad(padId, dotId, viewer) {
+  const pad = $('#' + padId);
+  const dot = $('#' + dotId);
+  if (!pad || !dot) return;
+  let dragging = false;
+
+  const updateFromEvent = (e) => {
+    const r = pad.getBoundingClientRect();
+    const cx = r.width / 2;
+    const cy = r.height / 2;
+    let dx = e.clientX - r.left - cx;
+    let dy = e.clientY - r.top - cy;
+    const maxR = r.width / 2 - 12;
+    const rLen = Math.hypot(dx, dy);
+    if (rLen > maxR) {
+      dx = dx / rLen * maxR;
+      dy = dy / rLen * maxR;
+    }
+    const hx = dx / maxR;    // -1..1
+    const hz = -dy / maxR;   // up on screen = +Z (toward camera/front)
+    let len = Math.hypot(hx, hz);
+    let ax = hx, az = hz;
+    if (len > 1) { ax = hx / len; az = hz / len; len = 1; }
+    const elevation = Math.acos(Math.min(1, len));    // 0 = horizon, PI/2 = overhead
+    const azimuth = Math.atan2(az, ax);
+    viewer.setLightDirection(azimuth, elevation);
+    dot.style.left = (cx + dx) + 'px';
+    dot.style.top = (cy + dy) + 'px';
+  };
+
+  const onDown = (e) => {
+    e.preventDefault();
+    dragging = true;
+    pad.setPointerCapture?.(e.pointerId);
+    updateFromEvent(e);
+  };
+  const onMove = (e) => {
+    if (!dragging) return;
+    e.preventDefault();
+    updateFromEvent(e);
+  };
+  const onUp = () => { dragging = false; };
+
+  pad.addEventListener('pointerdown', onDown);
+  pad.addEventListener('pointermove', onMove);
+  pad.addEventListener('pointerup', onUp);
+  pad.addEventListener('pointercancel', onUp);
+  pad.addEventListener('pointerleave', onUp);
+
+  // Initial dot position: default is azimuth 45°, elevation 45°
+  const az = viewer.lightAzimuth;
+  const el = viewer.lightElevation;
+  const horizMag = Math.cos(el);
+  const hx = horizMag * Math.cos(az);
+  const hz = horizMag * Math.sin(az);
+  const r = pad.getBoundingClientRect();
+  const maxR = r.width / 2 - 12;
+  const cx = r.width / 2;
+  const cy = r.height / 2;
+  dot.style.left = (cx + hx * maxR) + 'px';
+  dot.style.top = (cy - hz * maxR) + 'px';
+}
+
+/* ===== THUMBNAIL EVENTS ===== */
+$('#btnUndo').addEventListener('click', undo);
+$('#btnRedo').addEventListener('click', redo);
+$('#btnAddImage').addEventListener('click', () => $('#thumbImgFile').click());
+$('#thumbImgFile').addEventListener('change', async e => {
+  const files = Array.from(e.target.files || []);
+  for (const f of files) {
+    const img = await loadImage(URL.createObjectURL(f));
+    addImageLayer(img, f.name.replace(/\.[^.]+$/, '').slice(0, 20) || 'Image');
+  }
+  e.target.value = '';
+});
+$('#btnAddText').addEventListener('click', () => {
+  const L = newTextLayer('YOUR TEXT');
+  const m = measureTextLayer(L);
+  L.w = m.w; L.h = m.h;
+  addLayer(L);
+});
+$('#btnAddEffect').addEventListener('click', () => addLayer(newEffectLayer('vignette')));
+$('#thumbSize').addEventListener('change', e => {
+  const [w, h] = e.target.value.split('x').map(Number);
+  T.w = w; T.h = h;
+  T.layers.forEach(L => { if (L.type === 'effect') { L.w = w; L.h = h; } });
+  layoutThumb(); renderThumb(); pushHistory();
+});
+$('#thumbBgType').addEventListener('change', e => {
+  T.bg.type = e.target.value;
+  $('#bgColors').style.display = T.bg.type === 'transparent' ? 'none' : 'flex';
+  $('#bgAngleWrap').style.display = T.bg.type === 'gradient' ? 'block' : 'none';
+  renderThumb(); pushHistory();
+});
+$('#bgC1').addEventListener('input', e => { T.bg.c1 = e.target.value; renderThumb(); scheduleHistory(); });
+$('#bgC2').addEventListener('input', e => { T.bg.c2 = e.target.value; renderThumb(); scheduleHistory(); });
+$('#btnSwapBg').addEventListener('click', () => {
+  const t = T.bg.c1;
+  T.bg.c1 = T.bg.c2;
+  T.bg.c2 = t;
+  $('#bgC1').value = T.bg.c1;
+  $('#bgC2').value = T.bg.c2;
+  renderThumb(); pushHistory();
+});
+$('#btnExport').addEventListener('click', () => {
+  const a = document.createElement('a');
+  a.download = FILE_SLUG + '-thumbnail.png';
+  a.href = artCanvas.toDataURL('image/png');
+  a.click();
+  toast('Thumbnail exported');
+});
+$('#btnClearLayers').addEventListener('click', () => {
+  if (!T.layers.length) return;
+  if (!confirm('Remove all layers?')) return;
+  T.layers = []; T.sel = null;
+  renderLayerList(); renderProps(); renderThumb(); pushHistory();
+});
+{
+  const w = $('#bgAngleWrap');
+  const s = buildSlider({
+    label: 'Gradient angle', value: 135, min: 0, max: 360, step: 1, unit: '°',
+    onInput: v => { T.bg.angle = v; renderThumb(); scheduleHistory(); }
+  });
+  w.appendChild(s.el);
+}
+$('#chkSnap').addEventListener('change', e => {
+  snapEnabled = e.target.checked;
+  if (!snapEnabled) { snapGuidesX = []; snapGuidesY = []; renderThumb(); }
+});
+$('#chkConstrain').addEventListener('change', e => { constrainResize = e.target.checked; });
+
+// Font import
+$('#btnImportFont').addEventListener('click', () => $('#fontFile').click());
+$('#fontFile').addEventListener('change', async e => {
+  const files = Array.from(e.target.files || []);
+  for (const f of files) {
+    try {
+      const buf = await f.arrayBuffer();
+      let family = f.name.replace(/\.[^.]+$/, '').replace(/[^a-zA-Z0-9 ]/g, ' ').trim();
+      if (!family) family = 'CustomFont' + (customFonts.length + 1);
+      if (customFonts.includes(family) || BUILTIN_FONTS.includes(family)) {
+        family = family + ' ' + (customFonts.length + 1);
+      }
+      const ff = new FontFace(family, buf);
+      await ff.load();
+      document.fonts.add(ff);
+      customFonts.push(family);
+      toast('Font imported: ' + family);
+    } catch (err) {
+      console.error(err);
+      toast('Could not import ' + f.name);
+    }
+  }
+  e.target.value = '';
+  updateFontHint();
+  renderProps();
+});
+
+// Canvas pointer events
 ovCanvas.addEventListener('pointerdown', e => {
   if (currentView !== 'thumb') return;
   ovCanvas.setPointerCapture(e.pointerId);
@@ -3259,72 +4264,175 @@ ovCanvas.addEventListener('pointerup', () => {
 ovCanvas.addEventListener('pointercancel', () => {
   if (drag) { drag = null; ovCanvas.classList.remove('grabbing'); }
 });
-$('#btnAddImage').addEventListener('click', () => $('#thumbImgFile').click());
-$('#thumbImgFile').addEventListener('change', async e => {
-  const files = Array.from(e.target.files || []);
-  for (const f of files) {
-    const img = await loadImage(URL.createObjectURL(f));
-    addImageLayer(img, f.name.replace(/\.[^.]+$/, '').slice(0, 20) || 'Image');
-  }
-  e.target.value = '';
-});
-$('#btnAddText').addEventListener('click', () => {
-  const L = newTextLayer('YOUR TEXT');
-  const m = measureTextLayer(L);
-  L.w = m.w; L.h = m.h;
-  addLayer(L);
-});
-$('#btnAddEffect').addEventListener('click', () => addLayer(newEffectLayer('vignette')));
-$('#thumbSize').addEventListener('change', e => {
-  const [w, h] = e.target.value.split('x').map(Number);
-  T.w = w; T.h = h;
-  T.layers.forEach(L => { if (L.type === 'effect') { L.w = w; L.h = h; } });
-  layoutThumb(); renderThumb(); pushHistory();
-});
-$('#thumbBgType').addEventListener('change', e => {
-  T.bg.type = e.target.value;
-  $('#bgColors').style.display = T.bg.type === 'transparent' ? 'none' : 'flex';
-  $('#bgAngleWrap').style.display = T.bg.type === 'gradient' ? 'block' : 'none';
-  renderThumb(); pushHistory();
-});
-$('#bgC1').addEventListener('input', e => { T.bg.c1 = e.target.value; renderThumb(); scheduleHistory(); });
-$('#bgC2').addEventListener('input', e => { T.bg.c2 = e.target.value; renderThumb(); scheduleHistory(); });
-$('#btnSwapBg').addEventListener('click', () => {
-  const t = T.bg.c1;
-  T.bg.c1 = T.bg.c2;
-  T.bg.c2 = t;
-  $('#bgC1').value = T.bg.c1;
-  $('#bgC2').value = T.bg.c2;
-  renderThumb(); pushHistory();
-});
-$('#btnExport').addEventListener('click', () => {
-  const a = document.createElement('a');
-  a.download = FILE_SLUG + '-thumbnail.png';
-  a.href = artCanvas.toDataURL('image/png');
-  a.click();
-  toast('Thumbnail exported');
-});
-$('#btnClearLayers').addEventListener('click', () => {
-  if (!T.layers.length) return;
-  if (!confirm('Remove all layers?')) return;
-  T.layers = []; T.sel = null;
-  renderLayerList(); renderProps(); renderThumb(); pushHistory();
-});
-{
-  const w = $('#bgAngleWrap');
-  const s = buildSlider({
-    label: 'Gradient angle', value: 135, min: 0, max: 360, step: 1, unit: '°',
-    onInput: v => { T.bg.angle = v; renderThumb(); scheduleHistory(); }
-  });
-  w.appendChild(s.el);
-}
-$('#chkSnap').addEventListener('change', e => {
-  snapEnabled = e.target.checked;
-  if (!snapEnabled) { snapGuidesX = []; snapGuidesY = []; renderThumb(); }
-});
-$('#chkConstrain').addEventListener('change', e => { constrainResize = e.target.checked; });
 
-/* ==================== ASSETS TAB ==================== */
+/* ===== PIXEL EVENT WIRING ===== */
+$('#pixelColorInput').addEventListener('input', e => {
+  pixel.color = e.target.value;
+  updatePixelSwatch();
+  updatePaletteActive();
+});
+$('#chkPixelGrid').addEventListener('change', e => {
+  pixel.grid = e.target.checked;
+  pixelGridOverlay.classList.toggle('on', pixel.grid);
+});
+$('#chkPixelMirrorX').addEventListener('change', e => { pixel.mirrorX = e.target.checked; });
+$('#chkPixelMirrorY').addEventListener('change', e => { pixel.mirrorY = e.target.checked; });
+$('#btnPixelUndo').addEventListener('click', undoPixel);
+$('#btnPixelRedo').addEventListener('click', redoPixel);
+$('#btnPixelClear').addEventListener('click', () => {
+  pushPixelUndo();
+  pixelCtx.clearRect(0, 0, pixel.size, pixel.size);
+  toast('Canvas cleared');
+});
+$('#btnPixelFillBg').addEventListener('click', () => {
+  pushPixelUndo();
+  pixelCtx.fillStyle = pixel.color;
+  pixelCtx.fillRect(0, 0, pixel.size, pixel.size);
+  toast('Filled with ' + pixel.color);
+});
+$('#btnPixelSave').addEventListener('click', () => {
+  pixelAddToGallery();
+  const c = pixelToHighQualityCanvas();
+  const a = document.createElement('a');
+  a.download = FILE_SLUG + '-pixel-' + Date.now() + '.png';
+  a.href = c.toDataURL('image/png');
+  a.click();
+  toast('Saved at ' + c.width + '×' + c.height);
+});
+$('#btnPixelToThumb').addEventListener('click', async () => {
+  pixelAddToGallery();
+  const c = pixelToHighQualityCanvas();
+  const img = await loadImage(c.toDataURL('image/png'));
+  const big = upscaleImageTo4K(img);
+  addImageLayer(big, 'Pixel Art');
+  setView('thumb');
+  toast('Added to thumbnail');
+});
+$('#btnPixelToItem').addEventListener('click', async () => {
+  pixelAddToGallery();
+  const c = pixelToHighQualityCanvas();
+  const img = await loadImage(c.toDataURL('image/png'));
+  setItem(img);
+  pushItemHistory();
+  setView('item');
+  toast('Loaded as pose item');
+});
+$('#btnPixelToBlock').addEventListener('click', async () => {
+  pixelAddToGallery();
+  const c = pixelToHighQualityCanvas();
+  const img = await loadImage(c.toDataURL('image/png'));
+  openFaceModal({ img, url: c.toDataURL('image/png') });
+  toast('Pick a face…');
+});
+pixelCanvas.addEventListener('pointerdown', pixelDown);
+pixelCanvas.addEventListener('pointermove', pixelMove);
+pixelCanvas.addEventListener('pointerup', pixelUp);
+pixelCanvas.addEventListener('pointercancel', pixelUp);
+pixelCanvas.addEventListener('pointerleave', pixelLeave);
+
+// Assets click
+$('#assetGrid').addEventListener('click', async e => {
+  const btn = e.target.closest('button[data-act]');
+  if (!btn) return;
+  const card = btn.closest('.asset-card');
+  if (!card) return;
+  const asset = filteredAssets[parseInt(card.dataset.index, 10)];
+  if (!asset) return;
+  const act = btn.dataset.act;
+  if (act === 'dl') {
+    const a = document.createElement('a');
+    a.href = asset.raw;
+    a.download = asset.name;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    toast('Downloading ' + asset.name);
+    return;
+  }
+  const originalLabel = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = '…';
+  try {
+    let img;
+    try { img = await loadImage(asset.cdn, true); }
+    catch (e1) { img = await loadImage(asset.raw, true); }
+    if (act === 'thumb') {
+      const big = upscaleImageTo4K(img);
+      addImageLayer(big, asset.name.replace(/\.[^.]+$/, '').slice(0, 20));
+      setView('thumb');
+      toast(`Added at ${big.width}×${big.height}`);
+    } else if (act === 'item') {
+      setItem(img);
+      pushItemHistory();
+      setView('item');
+      toast('Loaded as pose item');
+    } else if (act === 'block') {
+      openFaceModal({ img, url: asset.cdn });
+      toast('Pick a face…');
+    }
+  } catch (err) {
+    console.error('[Assets] Could not load image:', err);
+    toast('Could not load image');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = originalLabel;
+  }
+});
+$('#assetSearch').addEventListener('input', () => {
+  clearTimeout(searchDebounce);
+  searchDebounce = setTimeout(() => renderAssets(true), 180);
+});
+
+// Keyboard
+window.addEventListener('keydown', e => {
+  const ctrl = e.ctrlKey || e.metaKey;
+  const isZ = e.key.toLowerCase() === 'z';
+  const isY = e.key.toLowerCase() === 'y';
+  const tag = (e.target.tagName || '').toLowerCase();
+  const isField = tag === 'input' || tag === 'textarea' || tag === 'select';
+  if (isField) return;
+
+  if (currentView === 'pixel') {
+    if (ctrl && isZ && !e.shiftKey) { e.preventDefault(); undoPixel(); }
+    else if (ctrl && (isY || (isZ && e.shiftKey))) { e.preventDefault(); redoPixel(); }
+    return;
+  }
+  if (currentView === 'thumb') {
+    if (ctrl && isZ && !e.shiftKey) { e.preventDefault(); undo(); return; }
+    if (ctrl && (isY || (isZ && e.shiftKey))) { e.preventDefault(); redo(); return; }
+    const L = T.layers.find(l => l.id === T.sel);
+    if (!L) return;
+    if (e.key === 'Delete' || e.key === 'Backspace') {
+      const i = T.layers.indexOf(L);
+      T.layers.splice(i, 1);
+      T.sel = null;
+      renderLayerList(); renderProps(); renderThumb(); pushHistory();
+      e.preventDefault();
+    }
+    if (ctrl && e.key.toLowerCase() === 'd') {
+      e.preventDefault();
+      duplicateLayer(L);
+      return;
+    }
+    const step = e.shiftKey ? 20 : 2;
+    if (e.key === 'ArrowLeft') { L.x -= step; renderThumb(); scheduleHistory(); e.preventDefault(); }
+    if (e.key === 'ArrowRight') { L.x += step; renderThumb(); scheduleHistory(); e.preventDefault(); }
+    if (e.key === 'ArrowUp') { L.y -= step; renderThumb(); scheduleHistory(); e.preventDefault(); }
+    if (e.key === 'ArrowDown') { L.y += step; renderThumb(); scheduleHistory(); e.preventDefault(); }
+  } else if (currentView === 'character') {
+    if (ctrl && isZ && !e.shiftKey) { e.preventDefault(); undoChar(); }
+    else if (ctrl && (isY || (isZ && e.shiftKey))) { e.preventDefault(); redoChar(); }
+  } else if (currentView === 'item') {
+    if (ctrl && isZ && !e.shiftKey) { e.preventDefault(); undoItem(); }
+    else if (ctrl && (isY || (isZ && e.shiftKey))) { e.preventDefault(); redoItem(); }
+  }
+});
+
+/* =========================================================
+   ASSETS DATA (unchanged)
+   ========================================================= */
 const ASSET_REPO_OWNER = 'Faithful-Pack';
 const ASSET_REPO_NAME = 'Default-Java';
 const ASSET_BRANCH = 'java-latest';
@@ -3485,103 +4593,10 @@ function observeSentinel() {
   }, { root: grid, rootMargin: '500px' });
   sentinelObserver.observe(sentinel);
 }
-$('#assetGrid').addEventListener('click', async e => {
-  const btn = e.target.closest('button[data-act]');
-  if (!btn) return;
-  const card = btn.closest('.asset-card');
-  if (!card) return;
-  const asset = filteredAssets[parseInt(card.dataset.index, 10)];
-  if (!asset) return;
-  const act = btn.dataset.act;
-  if (act === 'dl') {
-    const a = document.createElement('a');
-    a.href = asset.raw;
-    a.download = asset.name;
-    a.target = '_blank';
-    a.rel = 'noopener';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    toast('Downloading ' + asset.name);
-    return;
-  }
-  const originalLabel = btn.textContent;
-  btn.disabled = true;
-  btn.textContent = '…';
-  try {
-    let img;
-    try { img = await loadImage(asset.cdn, true); }
-    catch (e1) { img = await loadImage(asset.raw, true); }
-    if (act === 'thumb') {
-      const big = upscaleImageTo4K(img);
-      addImageLayer(big, asset.name.replace(/\.[^.]+$/, '').slice(0, 20));
-      setView('thumb');
-      toast(`Added at ${big.width}×${big.height}`);
-    } else if (act === 'item') {
-      setItem(img);
-      pushItemHistory();
-      setView('item');
-      toast('Loaded as pose item');
-    } else if (act === 'block') {
-      const url = asset.cdn;
-      openFaceModal({ img, url });
-      toast('Pick a face…');
-    }
-  } catch (err) {
-    console.error('[Assets] Could not load image:', err);
-    toast('Could not load image');
-  } finally {
-    btn.disabled = false;
-    btn.textContent = originalLabel;
-  }
-});
-$('#assetSearch').addEventListener('input', () => {
-  clearTimeout(searchDebounce);
-  searchDebounce = setTimeout(() => renderAssets(true), 180);
-});
 
-/* ==================== GLOBAL KEYBOARD ==================== */
-window.addEventListener('keydown', e => {
-  const ctrl = e.ctrlKey || e.metaKey;
-  const isZ = e.key.toLowerCase() === 'z';
-  const isY = e.key.toLowerCase() === 'y';
-  const tag = (e.target.tagName || '').toLowerCase();
-  const isField = tag === 'input' || tag === 'textarea' || tag === 'select';
-  if (currentView === 'thumb') {
-    if (ctrl && isZ && !e.shiftKey) { e.preventDefault(); undo(); return; }
-    if (ctrl && (isY || (isZ && e.shiftKey))) { e.preventDefault(); redo(); return; }
-    if (isField) return;
-    const L = T.layers.find(l => l.id === T.sel);
-    if (!L) return;
-    if (e.key === 'Delete' || e.key === 'Backspace') {
-      const i = T.layers.indexOf(L);
-      T.layers.splice(i, 1);
-      T.sel = null;
-      renderLayerList(); renderProps(); renderThumb(); pushHistory();
-      e.preventDefault();
-    }
-    if (ctrl && e.key.toLowerCase() === 'd') {
-      e.preventDefault();
-      duplicateLayer(L);
-      return;
-    }
-    const step = e.shiftKey ? 20 : 2;
-    if (e.key === 'ArrowLeft') { L.x -= step; renderThumb(); scheduleHistory(); e.preventDefault(); }
-    if (e.key === 'ArrowRight') { L.x += step; renderThumb(); scheduleHistory(); e.preventDefault(); }
-    if (e.key === 'ArrowUp') { L.y -= step; renderThumb(); scheduleHistory(); e.preventDefault(); }
-    if (e.key === 'ArrowDown') { L.y += step; renderThumb(); scheduleHistory(); e.preventDefault(); }
-  } else if (currentView === 'character') {
-    if (isField) return;
-    if (ctrl && isZ && !e.shiftKey) { e.preventDefault(); undoChar(); }
-    else if (ctrl && (isY || (isZ && e.shiftKey))) { e.preventDefault(); redoChar(); }
-  } else if (currentView === 'item') {
-    if (isField) return;
-    if (ctrl && isZ && !e.shiftKey) { e.preventDefault(); undoItem(); }
-    else if (ctrl && (isY || (isZ && e.shiftKey))) { e.preventDefault(); redoItem(); }
-  }
-});
-
-/* ==================== INIT ==================== */
+/* =========================================================
+   INIT
+   ========================================================= */
 async function init() {
   const ro = new ResizeObserver(() => {
     if (currentView === 'thumb') layoutThumb();
@@ -3593,9 +4608,31 @@ async function init() {
   renderLayerList();
   renderProps();
   updateFontHint();
+
+  buildGradeUI(charViewer, 'charGradeCtrl', 'charGradePresets', 'btnResetCharGrade');
+  buildGradeUI(itemViewer, 'itemGradeCtrl', 'itemGradePresets', 'btnResetItemGrade');
+  buildGradeUI(blockViewer, 'blockGradeCtrl', 'blockGradePresets', 'btnResetBlockGrade');
+
   await loadDefaultSkin();
   pushCharHistory();
   updateItemUndoButtons();
+
+  buildFaceGrid();
+  refreshBlock();
+
+  // Light pads
+  wireLightPad('charLightPad', 'charLightDot', charViewer);
+  wireLightPad('itemLightPad', 'itemLightDot', itemViewer);
+  wireLightPad('blockLightPad', 'blockLightDot', blockViewer);
+
+  // Pixel art
+  buildPixelTools();
+  buildPixelPalette();
+  buildPixelSizes();
+  updatePixelSwatch();
+  updatePixelCanvasSize();
+  pixelGridOverlay.classList.toggle('on', pixel.grid);
+  renderPixelGallery();
 
   if (document.fonts && document.fonts.ready) {
     try { await document.fonts.ready; } catch (_) {}
@@ -3633,6 +4670,8 @@ async function init() {
   updateUndoButtons();
   selectPart('head');
   setView('character');
+  activeViewer = charViewer;
+  loop();
 }
 init();
 
