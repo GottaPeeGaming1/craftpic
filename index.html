@@ -1239,6 +1239,118 @@ body[data-theme="ore"] .btn.danger:hover {
   border-left-color: #5A5A5A;
   border-right-color: #5A5A5A;
 }
+/* ============ BLOCK FACES + MOBILE FIXES ============ */
+
+/* --- FIX 1: Compact block face editor so it fits the panel --- */
+.face-grid { gap: 8px; }
+.face-slot { padding: 6px; }
+.face-slot-label { font-size: 10px; margin-bottom: 5px; letter-spacing: .04em; }
+.face-preview {
+  aspect-ratio: 1;
+  width: 100%;
+  max-width: 80px;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+.face-plus { font-size: 16px; }
+.face-buttons { gap: 3px; margin-top: 4px; }
+.face-buttons .btn { padding: 3px 4px; font-size: 10px; border-radius: 5px; }
+.face-link { margin-top: 4px; font-size: 10px; padding: 4px 6px; border-radius: 5px; }
+
+/* Ore UI overrides for the compact face slots */
+body[data-theme="ore"] .face-grid { gap: 6px; }
+body[data-theme="ore"] .face-slot { padding: 6px; }
+body[data-theme="ore"] .face-slot-label { font-size: 9px; margin-bottom: 4px; }
+body[data-theme="ore"] .face-preview { max-width: 74px; }
+body[data-theme="ore"] .face-buttons .btn { padding: 3px 3px; font-size: 9px; }
+body[data-theme="ore"] .face-link { font-size: 9px; padding: 3px 5px; }
+
+/* Extra compact on mobile */
+@media (max-width: 900px) {
+  .face-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .face-preview { max-width: 68px; }
+  .face-slot { padding: 5px; }
+  .face-slot-label { font-size: 9px; }
+  .face-buttons .btn { font-size: 9px; padding: 3px 2px; }
+}
+
+/* --- FIX 2: Mobile theme picker no longer overflows off-screen --- */
+@media (max-width: 900px) {
+  .theme-modal,
+  .auth-modal {
+    padding: 12px;
+    align-items: flex-start;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .theme-inner,
+  .auth-inner {
+    padding: 18px;
+    margin: 0;
+    max-height: none;
+    width: 100%;
+  }
+  .theme-inner h2,
+  .auth-inner h2 { font-size: 18px; }
+  .theme-inner .sub,
+  .auth-inner .sub { font-size: 12.5px; margin-bottom: 16px; }
+
+  .theme-options {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .theme-option {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    grid-template-rows: auto auto;
+    align-items: center;
+    padding: 10px 12px;
+    column-gap: 12px;
+    row-gap: 2px;
+  }
+  .theme-option .theme-preview {
+    grid-row: 1 / span 2;
+    grid-column: 1;
+    width: 100px;
+    height: auto;
+  }
+  .theme-option .to-name {
+    grid-row: 1;
+    grid-column: 2;
+    font-size: 13px;
+    text-align: left;
+    margin: 0;
+  }
+  .theme-option .to-sub {
+    grid-row: 2;
+    grid-column: 2;
+    font-size: 11px;
+    text-align: left;
+    margin: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .theme-modal,
+  .auth-modal { padding: 8px; }
+  .theme-inner,
+  .auth-inner { padding: 14px; border-radius: 12px; }
+  .theme-option {
+    grid-template-columns: 82px 1fr;
+    padding: 8px 10px;
+    column-gap: 10px;
+  }
+  .theme-option .theme-preview { width: 82px; }
+  .theme-option .to-name { font-size: 12px; }
+  .theme-option .to-sub { font-size: 10px; }
+
+  .face-grid { grid-template-columns: repeat(3, 1fr); gap: 4px; }
+  .face-preview { max-width: 58px; }
+  .face-slot { padding: 4px; }
+  .face-buttons .btn { font-size: 8px; padding: 2px 2px; }
+  .face-link { font-size: 8px; padding: 3px 4px; }
+}
 </style>
 </head>
 <body data-theme="original">
