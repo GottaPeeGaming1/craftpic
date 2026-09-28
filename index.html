@@ -1184,6 +1184,61 @@ body[data-theme="ore"] .footer-link:hover{color:#B0FF90;}
   #thumbStage{min-height:60vh}
   .pixel-stage{height:70vh;max-height:70vh}
 }
+/* ============ FIXES ============ */
+
+/* --- FIX 1: Asset picker search — icon overlapping the "Search textures…" text ---
+   Ore UI's global input padding was overriding the picker's 32px left padding,
+   which reserved room for the magnifying glass icon. Re-assert it. */
+body[data-theme="ore"] .pixel-asset-header .asset-search input {
+  padding: 8px 12px 8px 32px;
+}
+body[data-theme="ore"] .asset-search input {
+  padding: 10px 14px 10px 38px;
+}
+/* Restore select dropdown arrow padding that Ore UI's `padding:8px 10px` broke */
+body[data-theme="ore"] select,
+body[data-theme="ore"] .face-link {
+  padding-right: 30px;
+}
+
+/* --- FIX 2: Block face menu getting cut off ---
+   Prevent the 2-column face grid from overflowing its panel,
+   and let the face modal scroll if it's taller than the viewport. */
+body[data-theme="ore"] .face-grid { min-width: 0; }
+body[data-theme="ore"] .face-slot { min-width: 0; overflow: hidden; }
+body[data-theme="ore"] .face-preview { min-width: 0; }
+body[data-theme="ore"] .face-preview img { max-width: 100%; }
+body[data-theme="ore"] .face-modal-inner {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* --- FIX 3: Primary button outline was invisible against the dark panel ---
+   The top/left/right borders were #1A1A1A (same as the panel), so only the
+   dark-green bottom strip was visible. Make the outline a mid-gray that
+   contrasts against both the green fill and the dark panel. */
+body[data-theme="ore"] .btn,
+body[data-theme="ore"] .btn.primary,
+body[data-theme="ore"] .btn.ghost,
+body[data-theme="ore"] .btn.danger {
+  border-top-color: #4A4A4A;
+  border-left-color: #4A4A4A;
+  border-right-color: #4A4A4A;
+}
+body[data-theme="ore"] .btn        { border-bottom-color: #1E1E1E; }
+body[data-theme="ore"] .btn.primary{ border-bottom-color: #1E4D14; }
+body[data-theme="ore"] .btn.ghost  { border-bottom-color: #3A3A3A; }
+body[data-theme="ore"] .btn.danger { border-bottom-color: #4A0A08; }
+
+/* Slightly brighter outline on hover so it still reads as a button */
+body[data-theme="ore"] .btn:hover,
+body[data-theme="ore"] .btn.primary:hover,
+body[data-theme="ore"] .btn.ghost:hover,
+body[data-theme="ore"] .btn.danger:hover {
+  border-top-color: #5A5A5A;
+  border-left-color: #5A5A5A;
+  border-right-color: #5A5A5A;
+}
 </style>
 </head>
 <body data-theme="original">
@@ -1671,7 +1726,7 @@ body[data-theme="ore"] .footer-link:hover{color:#B0FF90;}
           <div class="tp-main"><div class="tp-bar"></div><div class="tp-row"><div class="tp-block"></div><div class="tp-block"></div></div><div class="tp-row"><div class="tp-block"></div></div></div>
         </div>
         <div class="to-name">Ore UI</div>
-        <div class="to-sub">Minecraft.net style</div>
+        <div class="to-sub">Minecraft style</div>
       </div>
     </div>
     <button class="btn primary block" id="themeContinue">Continue</button>
