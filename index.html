@@ -63,180 +63,208 @@ body[data-theme="dark"]{
   --toast-text:#0e1a2b;
   --font-body:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
 }
-/* ============ ORE UI — Bedrock / minecraft.net authentic ============ */
+/* ============ ORE UI — Bedrock / minecraft.net ============ */
 body[data-theme="ore"]{
-  --bg:#1A1A1A;--bg-2:#212121;--panel:#2B2B2B;--panel-2:#313131;
-  --border:#1E1E1F;--border-2:#3D3D3D;
-  --text:#FFFFFF;--text-2:#C6C6C6;--muted:#8B8B8B;
+  --bg:#1A1A1A;--bg-2:#232323;--panel:#2D2D2D;--panel-2:#363636;
+  --border:#4A4A4A;--border-2:#5A5A5A;
+  --text:#FFFFFF;--text-2:#B0B0B0;--muted:#808080;
   --accent:#3C8527;--accent-2:#4CA637;--accent-soft:#1E3A1A;
-  --accent-ring:rgba(60,133,39,.4);--danger:#C02020;
-  --stage-bg:#141414;
-  --checker-1:#1A1A1A;--checker-2:#222222;
-  --topbar-bg:#1E1E1E;
+  --accent-ring:rgba(60,133,39,.4);--danger:#C42B1C;
+  --stage-bg:#171717;
+  --checker-1:#2A2A2A;--checker-2:#333333;
+  --topbar-bg:#1A1A1A;
   --toast-bg:#FFFFFF;
   --toast-text:#1A1A1A;
-  --font-body:'Minecraft Seven','Noto Sans','Segoe UI',sans-serif;
+  --font-body:'Noto Sans','Segoe UI',Roboto,sans-serif;
+  --font-pixel:'Minecraft Seven','Noto Sans',sans-serif;
+  --font-pixel-bold:'Minecraft Ten','Minecraft Seven',sans-serif;
   --ore-green:#3C8527;
   --ore-green-hover:#4CA637;
-  --ore-green-dark:#2A5F1B;
-  --ore-border:#1E1E1F;
-  --ore-bevel-light:rgba(255,255,255,0.4);
-  --ore-bevel-dark:rgba(0,0,0,0.55);
-  --ore-stone-1:#484848;
-  --ore-stone-2:#3A3A3A;
-  --ore-stone-3:#2D2D2D;
+  --ore-green-shadow:#1E4D14;
+  --ore-border:#1A1A1A;
+  --ore-btn-bg:#3A3A3A;
+  --ore-btn-hover:#4A4A4A;
+  --ore-btn-shadow:#232323;
+  --ore-light:#E0E0E0;
+  --ore-light-shadow:#8B8B8B;
 }
 
-/* === ORE UI: BUTTONS (nine-slice beveled blocks) === */
+/* --- BUTTONS --- */
 body[data-theme="ore"] .btn{
   border-radius:0;
   border:2px solid var(--ore-border);
-  background:var(--ore-stone-1);
+  border-bottom:4px solid var(--ore-btn-shadow);
+  background:var(--ore-btn-bg);
   color:#FFFFFF;
-  padding:10px 16px;
-  box-shadow:
-    inset 3px 3px 0 var(--ore-bevel-light),
-    inset -3px -3px 0 var(--ore-bevel-dark),
-    0 3px 0 #0A0A0A;
-  text-shadow:2px 2px 0 rgba(0,0,0,.6);
-  font-family:'Minecraft Seven','Noto Sans',sans-serif;
+  padding:10px 16px 8px;
+  font-family:var(--font-pixel);
+  font-size:11px;
   font-weight:400;
-  letter-spacing:.02em;
-  font-size:12px;
-  transition:background .06s, transform .06s, box-shadow .06s;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  box-shadow:none;
+  text-shadow:2px 2px 0 rgba(0,0,0,.4);
+  transition:none;
 }
 body[data-theme="ore"] .btn:hover{
-  background:#5A5A5A;
-  border-color:var(--ore-border);
+  background:var(--ore-btn-hover);
+  border-bottom-color:var(--ore-btn-shadow);
   transform:none;
 }
 body[data-theme="ore"] .btn:active{
-  transform:translateY(3px);
-  box-shadow:
-    inset 3px 3px 0 var(--ore-bevel-dark),
-    inset -3px -3px 0 var(--ore-bevel-light);
+  border-bottom-width:2px;
+  transform:translateY(2px);
 }
+body[data-theme="ore"] .btn:disabled{opacity:.4;}
 body[data-theme="ore"] .btn.primary{
   background:var(--ore-green);
-  border-color:var(--ore-border);
+  border:2px solid var(--ore-border);
+  border-bottom:4px solid var(--ore-green-shadow);
   color:#FFFFFF;
-  box-shadow:
-    inset 3px 3px 0 var(--ore-bevel-light),
-    inset -3px -3px 0 var(--ore-bevel-dark),
-    0 3px 0 var(--ore-green-dark);
+  box-shadow:none;
 }
-body[data-theme="ore"] .btn.primary:hover{background:var(--ore-green-hover);}
+body[data-theme="ore"] .btn.primary:hover{
+  background:var(--ore-green-hover);
+  border-bottom-color:var(--ore-green-shadow);
+}
 body[data-theme="ore"] .btn.primary:active{
-  transform:translateY(3px);
-  box-shadow:
-    inset 3px 3px 0 var(--ore-bevel-dark),
-    inset -3px -3px 0 var(--ore-bevel-light);
+  border-bottom-width:2px;
+  transform:translateY(2px);
+  box-shadow:none;
 }
 body[data-theme="ore"] .btn.ghost{
-  background:var(--ore-stone-3);
-  border-color:var(--ore-border);
-  color:var(--text);
-  box-shadow:
-    inset 3px 3px 0 rgba(255,255,255,.15),
-    inset -3px -3px 0 rgba(0,0,0,.5),
-    0 3px 0 #0A0A0A;
+  background:transparent;
+  border:2px solid var(--border);
+  border-bottom:4px solid var(--border);
+  color:var(--text-2);
+  box-shadow:none;
+  text-shadow:none;
 }
-body[data-theme="ore"] .btn.ghost:hover{background:var(--ore-stone-2);}
+body[data-theme="ore"] .btn.ghost:hover{
+  background:var(--ore-btn-bg);
+  border-color:var(--border-2);
+  color:#FFFFFF;
+}
+body[data-theme="ore"] .btn.ghost:active{
+  border-bottom-width:2px;
+  transform:translateY(2px);
+}
 body[data-theme="ore"] .btn.danger{
-  background:#A02020;
-  border-color:var(--ore-border);
-  box-shadow:
-    inset 3px 3px 0 rgba(255,255,255,.3),
-    inset -3px -3px 0 rgba(0,0,0,.5),
-    0 3px 0 #4A0A0A;
+  background:#7A1A12;
+  border:2px solid var(--ore-border);
+  border-bottom:4px solid #4A0A08;
+  color:#FFFFFF;
+  box-shadow:none;
 }
-body[data-theme="ore"] .btn.sm{padding:7px 11px;font-size:10px;}
-body[data-theme="ore"] .btn:disabled{opacity:.5;}
+body[data-theme="ore"] .btn.danger:hover{background:#9A2418;}
+body[data-theme="ore"] .btn.danger:active{
+  border-bottom-width:2px;
+  transform:translateY(2px);
+}
+body[data-theme="ore"] .btn.sm{
+  padding:7px 11px 5px;
+  font-size:10px;
+}
 
-/* === ORE UI: TOP BAR === */
+/* --- TOP BAR --- */
 body[data-theme="ore"] .topbar{
   background:var(--topbar-bg);
-  border-bottom:3px solid var(--ore-border);
-  box-shadow:0 3px 0 rgba(0,0,0,.5);
+  border-bottom:2px solid #000000;
+  box-shadow:none;
 }
 body[data-theme="ore"] .brand{
+  background:transparent;
+  border:none;
+  box-shadow:none;
+  padding:4px 6px;
   border-radius:0;
-  border:2px solid var(--ore-border);
-  background:var(--ore-stone-2);
-  padding:4px 10px;
-  box-shadow:
-    inset 2px 2px 0 var(--ore-bevel-light),
-    inset -2px -2px 0 var(--ore-bevel-dark);
 }
-body[data-theme="ore"] .brand:hover{background:var(--ore-stone-1);}
+body[data-theme="ore"] .brand:hover{background:#2A2A2A;}
 body[data-theme="ore"] .brand .logo{
   border-radius:0;
   background:var(--ore-green);
-  box-shadow:inset 2px 2px 0 rgba(255,255,255,.4), inset -2px -2px 0 rgba(0,0,0,.4);
+  box-shadow:none;
+  width:28px;height:28px;
 }
-body[data-theme="ore"] .brand span.accent{color:#7BE05B;}
-body[data-theme="ore"] .brand .name{font-family:'Minecraft Ten','Minecraft Seven',sans-serif;letter-spacing:.04em;}
+body[data-theme="ore"] .brand .logo svg{width:16px;height:16px;}
+body[data-theme="ore"] .brand span.accent{color:#FFFFFF;}
+body[data-theme="ore"] .brand .name{
+  font-family:var(--font-pixel-bold);
+  font-size:13px;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+}
+body[data-theme="ore"] .brand .name .accent{color:var(--ore-green-hover);}
 
-/* === ORE UI: TABS === */
+/* --- TABS --- */
 body[data-theme="ore"] .tabs{
-  background:var(--ore-stone-3);
-  border:2px solid var(--ore-border);
+  background:transparent;
+  border:none;
   border-radius:0;
-  padding:3px;
-  box-shadow:inset 2px 2px 0 rgba(0,0,0,.5);
+  padding:0;
+  gap:0;
 }
 body[data-theme="ore"] .tab{
   border-radius:0;
-  font-family:'Minecraft Seven',sans-serif;
+  background:transparent;
+  border:none;
+  border-bottom:3px solid transparent;
+  color:var(--text-2);
+  font-family:var(--font-pixel);
   font-size:11px;
   font-weight:400;
-  color:var(--text-2);
-  letter-spacing:.02em;
-  padding:9px 14px;
-  text-shadow:1px 1px 0 rgba(0,0,0,.4);
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  padding:14px 16px 11px;
+  text-shadow:none;
+  transition:color .1s, border-color .1s;
+}
+body[data-theme="ore"] .tab:hover{
+  background:transparent;
+  color:#FFFFFF;
 }
 body[data-theme="ore"] .tab.active{
-  background:var(--ore-green);
+  background:transparent;
   color:#FFFFFF;
-  box-shadow:
-    inset 2px 2px 0 var(--ore-bevel-light),
-    inset -2px -2px 0 var(--ore-bevel-dark);
-}
-body[data-theme="ore"] .tab:hover:not(.active){
-  background:var(--ore-stone-2);
-  color:#FFFFFF;
+  border-bottom-color:var(--ore-green);
+  box-shadow:none;
 }
 
-/* === ORE UI: ICON BUTTONS === */
+/* --- ICON BUTTONS --- */
 body[data-theme="ore"] .icon-btn-top{
   border-radius:0;
-  border:2px solid var(--ore-border);
-  background:var(--ore-stone-1);
-  box-shadow:
-    inset 2px 2px 0 var(--ore-bevel-light),
-    inset -2px -2px 0 var(--ore-bevel-dark);
+  border:2px solid var(--border);
+  background:transparent;
+  box-shadow:none;
+  width:34px;height:34px;
 }
-body[data-theme="ore"] .icon-btn-top:hover{background:var(--ore-stone-2);}
+body[data-theme="ore"] .icon-btn-top:hover{
+  background:var(--ore-btn-bg);
+  border-color:var(--border-2);
+  color:#FFFFFF;
+}
 
-/* === ORE UI: PANELS === */
+/* --- PANELS --- */
 body[data-theme="ore"] .panel{
   border-radius:0;
-  border:2px solid var(--ore-border);
+  border:1px solid var(--border);
   background:var(--panel);
-  box-shadow:
-    inset 2px 2px 0 rgba(255,255,255,.05),
-    inset -2px -2px 0 rgba(0,0,0,.4);
+  box-shadow:none;
 }
-body[data-theme="ore"] .section{border-bottom:1px solid var(--border-2);}
+body[data-theme="ore"] .section{
+  border-bottom:1px solid #3A3A3A;
+}
 body[data-theme="ore"] .section h3{
-  color:#7BE05B;
-  font-family:'Minecraft Seven',sans-serif;
-  font-size:10px;
-  letter-spacing:.15em;
-  text-shadow:1px 1px 0 rgba(0,0,0,.5);
+  color:#FFFFFF;
+  font-family:var(--font-pixel);
+  font-size:11px;
+  font-weight:400;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  text-shadow:none;
 }
 
-/* === ORE UI: INPUTS (recessed stone) === */
+/* --- INPUTS --- */
 body[data-theme="ore"] input[type=text],
 body[data-theme="ore"] input[type=number],
 body[data-theme="ore"] input[type=email],
@@ -244,278 +272,471 @@ body[data-theme="ore"] textarea,
 body[data-theme="ore"] select{
   border-radius:0;
   border:2px solid var(--ore-border);
-  background:#121212;
+  background:#1E1E1E;
   color:#FFFFFF;
-  font-family:'Minecraft Seven','Noto Sans',sans-serif;
-  box-shadow:inset 3px 3px 0 rgba(0,0,0,.7);
+  font-family:var(--font-body);
+  font-size:13px;
+  box-shadow:none;
+  padding:8px 10px;
 }
 body[data-theme="ore"] input[type=text]:focus,
+body[data-theme="ore"] input[type=email]:focus,
 body[data-theme="ore"] textarea:focus,
 body[data-theme="ore"] select:focus{
   border-color:var(--ore-green);
-  box-shadow:inset 3px 3px 0 rgba(0,0,0,.7), 0 0 0 2px rgba(60,133,39,.4);
+  box-shadow:none;
+  outline:none;
 }
 body[data-theme="ore"] .val-wrap{
   border-radius:0;
-  background:var(--ore-stone-3);
-  border:2px solid var(--ore-border);
-  box-shadow:inset 2px 2px 0 rgba(0,0,0,.4);
+  background:transparent;
+  border:2px solid var(--border);
+  padding:1px 6px 1px 4px;
+  box-shadow:none;
 }
-body[data-theme="ore"] .val-wrap:focus-within{border-color:var(--ore-green);background:#121212;box-shadow:inset 2px 2px 0 rgba(0,0,0,.6);}
-body[data-theme="ore"] .val-input{color:#7BE05B;font-family:'Minecraft Seven',sans-serif;}
-body[data-theme="ore"] .val-unit{color:#7BE05B;font-family:'Minecraft Seven',sans-serif;}
+body[data-theme="ore"] .val-wrap:focus-within{
+  border-color:var(--ore-green);
+  background:transparent;
+  box-shadow:none;
+}
+body[data-theme="ore"] .val-input{
+  color:#FFFFFF;
+  font-family:var(--font-pixel);
+  font-size:10px;
+}
+body[data-theme="ore"] .val-unit{
+  color:var(--text-2);
+  font-family:var(--font-pixel);
+  font-size:9px;
+}
 
-/* === ORE UI: SLIDERS === */
+/* --- SLIDERS --- */
+body[data-theme="ore"] input[type=range]{height:24px;}
 body[data-theme="ore"] input[type=range]::-webkit-slider-runnable-track{
-  height:10px;border-radius:0;
-  background:#121212;
-  border:2px solid var(--ore-border);
-  box-shadow:inset 2px 2px 0 rgba(0,0,0,.7);
-  background-image:linear-gradient(90deg,var(--ore-green) var(--p,0%),#121212 var(--p,0%));
+  height:12px;
+  border-radius:0;
+  background:linear-gradient(90deg,var(--ore-green) var(--p,0%),#4A4A4A var(--p,0%));
+  border:none;
+  box-shadow:none;
 }
 body[data-theme="ore"] input[type=range]::-webkit-slider-thumb{
-  width:12px;height:22px;border-radius:0;
-  background:var(--ore-stone-1);
+  -webkit-appearance:none;
+  width:14px;
+  height:20px;
+  border-radius:0;
+  background:#FFFFFF;
   border:2px solid var(--ore-border);
-  margin-top:-8px;
-  box-shadow:
-    inset 2px 2px 0 var(--ore-bevel-light),
-    inset -2px -2px 0 var(--ore-bevel-dark);
+  margin-top:-4px;
+  box-shadow:0 2px 0 rgba(0,0,0,.5);
+  transition:none;
+}
+body[data-theme="ore"] input[type=range]::-webkit-slider-thumb:hover{transform:none;}
+body[data-theme="ore"] input[type=range]::-moz-range-track{
+  height:12px;border-radius:0;background:#4A4A4A;
+}
+body[data-theme="ore"] input[type=range]::-moz-range-progress{
+  height:12px;border-radius:0;background:var(--ore-green);
+}
+body[data-theme="ore"] input[type=range]::-moz-range-thumb{
+  width:14px;height:20px;border-radius:0;
+  background:#FFFFFF;border:2px solid var(--ore-border);
+  box-shadow:0 2px 0 rgba(0,0,0,.5);
 }
 
-/* === ORE UI: CHIPS === */
+/* --- CHIPS --- */
 body[data-theme="ore"] .chip{
   border-radius:0;
-  border:2px solid var(--ore-border);
-  background:var(--ore-stone-1);
-  font-family:'Minecraft Seven',sans-serif;
+  border:2px solid var(--border);
+  background:var(--panel-2);
+  color:var(--text-2);
+  font-family:var(--font-pixel);
   font-size:10px;
-  font-weight:400;
-  text-shadow:1px 1px 0 rgba(0,0,0,.5);
-  box-shadow:
-    inset 2px 2px 0 var(--ore-bevel-light),
-    inset -2px -2px 0 var(--ore-bevel-dark);
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+  box-shadow:none;
+  padding:7px 11px;
 }
-body[data-theme="ore"] .chip:hover{background:var(--ore-stone-2);border-color:var(--ore-border);color:#FFF;transform:none;}
+body[data-theme="ore"] .chip:hover{
+  background:var(--ore-btn-bg);
+  border-color:var(--border-2);
+  color:#FFFFFF;
+  transform:none;
+}
 body[data-theme="ore"] .chip.active{
   background:var(--ore-green);
-  border-color:var(--ore-border);
+  border-color:var(--ore-green);
   color:#FFFFFF;
-  box-shadow:
-    inset 2px 2px 0 var(--ore-bevel-light),
-    inset -2px -2px 0 var(--ore-bevel-dark);
+  box-shadow:none;
 }
 
-/* === ORE UI: SEG === */
+/* --- SEG --- */
 body[data-theme="ore"] .seg{
-  background:var(--ore-stone-3);
+  background:#1E1E1E;
   border:2px solid var(--ore-border);
   border-radius:0;
-  box-shadow:inset 2px 2px 0 rgba(0,0,0,.5);
+  box-shadow:none;
+  padding:2px;
 }
 body[data-theme="ore"] .seg button{
   border-radius:0;
-  font-family:'Minecraft Seven',sans-serif;
+  font-family:var(--font-pixel);
   font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+  padding:8px 6px;
+  color:var(--text-2);
 }
+body[data-theme="ore"] .seg button:hover{color:#FFFFFF;}
 body[data-theme="ore"] .seg button.active{
   background:var(--ore-green);
-  color:#FFF;
-  box-shadow:
-    inset 2px 2px 0 var(--ore-bevel-light),
-    inset -2px -2px 0 var(--ore-bevel-dark);
+  color:#FFFFFF;
+  box-shadow:none;
 }
 
-/* === ORE UI: PART BUTTONS === */
+/* --- PART BUTTONS --- */
 body[data-theme="ore"] .part-btn{
   border-radius:0;
-  border:2px solid var(--ore-border);
-  background:var(--ore-stone-1);
-  font-family:'Minecraft Seven',sans-serif;
-  font-size:10px;
+  border:2px solid var(--border);
+  background:var(--panel-2);
   color:var(--text-2);
-  box-shadow:
-    inset 2px 2px 0 var(--ore-bevel-light),
-    inset -2px -2px 0 var(--ore-bevel-dark);
+  font-family:var(--font-pixel);
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  box-shadow:none;
 }
-body[data-theme="ore"] .part-btn:hover{background:var(--ore-stone-2);color:#FFF;border-color:var(--ore-border);}
+body[data-theme="ore"] .part-btn:hover{
+  background:var(--ore-btn-bg);
+  border-color:var(--border-2);
+  color:#FFFFFF;
+}
 body[data-theme="ore"] .part-btn.active{
   background:var(--ore-green);
-  color:#FFF;
-  border-color:var(--ore-border);
+  border-color:var(--ore-green);
+  color:#FFFFFF;
 }
 
-/* === ORE UI: STAGES === */
+/* --- STAGES --- */
 body[data-theme="ore"] .stage{
   border-radius:0;
-  border:3px solid var(--ore-border);
-  box-shadow:
-    inset 0 0 0 2px rgba(255,255,255,.03),
-    0 4px 0 rgba(0,0,0,.5);
+  border:2px solid var(--ore-border);
+  box-shadow:none;
 }
 body[data-theme="ore"] .pixel-stage{
   border-radius:0;
-  border:3px solid var(--ore-border);
-  box-shadow:0 4px 0 rgba(0,0,0,.5);
+  border:2px solid var(--ore-border);
+  box-shadow:none;
 }
 body[data-theme="ore"] .canvas-wrap{
   border-radius:0;
-  box-shadow:0 4px 0 rgba(0,0,0,.6), 0 0 0 2px var(--ore-border);
+  box-shadow:0 0 0 2px var(--ore-border);
 }
-body[data-theme="ore"] .canvas-wrap canvas{border-radius:0;}
 
-/* === ORE UI: MODALS === */
+/* --- MODALS --- */
 body[data-theme="ore"] .theme-inner,
 body[data-theme="ore"] .auth-inner,
 body[data-theme="ore"] .face-modal-inner,
 body[data-theme="ore"] .account-inner,
 body[data-theme="ore"] .pixel-asset-inner{
   border-radius:0;
-  border:4px solid var(--ore-border);
+  border:2px solid #000000;
   background:var(--panel);
-  box-shadow:
-    inset 3px 3px 0 rgba(255,255,255,.06),
-    inset -3px -3px 0 rgba(0,0,0,.4),
-    0 8px 0 rgba(0,0,0,.6);
+  box-shadow:0 8px 0 rgba(0,0,0,.6);
 }
 body[data-theme="ore"] .theme-inner h2,
 body[data-theme="ore"] .auth-inner h2,
 body[data-theme="ore"] .account-inner h3,
 body[data-theme="ore"] .face-modal-inner h3{
-  font-family:'Minecraft Ten','Minecraft Seven',sans-serif;
-  letter-spacing:.03em;
+  font-family:var(--font-pixel-bold);
+  letter-spacing:0.03em;
+  text-transform:uppercase;
 }
-body[data-theme="ore"] .face-modal,
 body[data-theme="ore"] .theme-modal,
 body[data-theme="ore"] .auth-modal,
+body[data-theme="ore"] .face-modal,
 body[data-theme="ore"] .pixel-asset-picker{
-  backdrop-filter:blur(0);
-  background:rgba(0,0,0,.75);
+  background:rgba(0,0,0,.8);
+  backdrop-filter:none;
 }
 body[data-theme="ore"] .face-modal-buttons button{
   border-radius:0;
-  border:2px solid var(--ore-border);
-  background:var(--ore-stone-1);
-  font-family:'Minecraft Seven',sans-serif;
+  border:2px solid var(--border);
+  background:var(--panel-2);
+  font-family:var(--font-pixel);
   font-size:10px;
-  box-shadow:
-    inset 2px 2px 0 var(--ore-bevel-light),
-    inset -2px -2px 0 var(--ore-bevel-dark);
+  text-transform:uppercase;
+  box-shadow:none;
 }
 body[data-theme="ore"] .face-modal-buttons button:hover{
   background:var(--ore-green);
-  border-color:var(--ore-border);
+  border-color:var(--ore-green);
 }
 
-/* === ORE UI: CODE BOX === */
+/* --- CODE BOX (unused with Google login but kept) --- */
 body[data-theme="ore"] .code-box,
 body[data-theme="ore"] .acc-code{
   border-radius:0;
   border:2px solid var(--ore-border);
-  background:#121212;
-  box-shadow:inset 3px 3px 0 rgba(0,0,0,.7);
-  font-family:'Minecraft Seven',monospace;
+  background:#1E1E1E;
+  box-shadow:none;
+  font-family:var(--font-pixel);
 }
-body[data-theme="ore"] .code-value{color:#7BE05B;}
+body[data-theme="ore"] .code-value{color:var(--ore-green-hover);}
 body[data-theme="ore"] .auth-warn{
   border-radius:0;
-  border:2px solid #A02020;
-  background:rgba(160,32,32,.15);
+  border:2px solid var(--danger);
+  background:rgba(196,43,28,.12);
 }
 
-/* === ORE UI: HOME === */
+/* --- HOME --- */
+body[data-theme="ore"] .home-hero h1{
+  font-family:var(--font-pixel-bold);
+  font-size:28px;
+  letter-spacing:0.02em;
+  text-transform:uppercase;
+}
+body[data-theme="ore"] .home-hero .accent{color:var(--ore-green-hover);}
+body[data-theme="ore"] .home-hero p{font-size:13px;color:var(--text-2);}
+body[data-theme="ore"] .home-projects-head h2{
+  font-family:var(--font-pixel);
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  color:#FFFFFF;
+}
 body[data-theme="ore"] .project-card{
   border-radius:0;
-  border:3px solid var(--ore-border);
-  box-shadow:0 4px 0 rgba(0,0,0,.5);
-  background:var(--panel);
+  border:1px solid var(--border);
+  background:var(--panel-2);
+  box-shadow:none;
+  transition:border-color .1s;
 }
 body[data-theme="ore"] .project-card:hover{
+  transform:none;
   border-color:var(--ore-green);
-  transform:translateY(-2px);
-  box-shadow:0 6px 0 rgba(0,0,0,.5);
+  box-shadow:none;
 }
 body[data-theme="ore"] .project-card .pc-meta{
-  border-top:2px solid var(--ore-border);
-  background:var(--ore-stone-3);
+  border-top:1px solid var(--border);
+  background:var(--panel-2);
 }
 body[data-theme="ore"] .project-card .pc-name{
-  font-family:'Minecraft Seven',sans-serif;
+  font-family:var(--font-body);
+  font-size:13px;
+  font-weight:600;
+  color:#FFFFFF;
+}
+body[data-theme="ore"] .project-card .pc-time{
   font-size:11px;
-  color:#FFF;
+  color:var(--muted);
+}
+body[data-theme="ore"] .project-card .pc-del{
+  border-radius:0;
+  background:rgba(0,0,0,.7);
 }
 body[data-theme="ore"] .project-card.new-project{
-  background:var(--ore-stone-3);
-  border-color:var(--ore-border);
-  border-style:dashed;
+  background:var(--panel);
+  border:2px dashed var(--border);
+}
+body[data-theme="ore"] .project-card.new-project:hover{
+  border-color:var(--ore-green);
+  background:var(--panel-2);
+}
+body[data-theme="ore"] .project-card.new-project .np-plus{color:var(--ore-green-hover);}
+body[data-theme="ore"] .project-card.new-project .np-label{
+  font-family:var(--font-pixel);
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  color:var(--ore-green-hover);
 }
 body[data-theme="ore"] .home-banner{
   border-radius:0;
   border:2px solid var(--ore-green);
-  background:var(--ore-green-dark);
-  color:#FFF;
+  background:#1E3A1A;
+  color:#FFFFFF;
 }
-body[data-theme="ore"] .home-banner strong{color:#7BE05B;}
-body[data-theme="ore"] .home-hero h1{
-  font-family:'Minecraft Ten','Minecraft Seven',sans-serif;
-  letter-spacing:.02em;
-}
-body[data-theme="ore"] .home-hero .accent{color:#7BE05B;}
-body[data-theme="ore"] .home-projects-head h2{
-  font-family:'Minecraft Seven',sans-serif;
-  font-size:14px;
-  color:#7BE05B;
-  letter-spacing:.1em;
-}
+body[data-theme="ore"] .home-banner strong{color:var(--ore-green-hover);}
 body[data-theme="ore"] .home-footer{
-  border-top:2px solid var(--ore-border);
-  font-family:'Minecraft Seven',sans-serif;
-  font-size:10px;
+  border-top:1px solid var(--border);
   color:var(--muted);
+  font-family:var(--font-body);
+  font-size:12px;
 }
+body[data-theme="ore"] .footer-link{color:var(--ore-green-hover);}
+body[data-theme="ore"] .footer-link:hover{color:#7BE05B;}
 
-/* === ORE UI: LIGHT PAD === */
+/* --- LIGHT PAD --- */
 body[data-theme="ore"] .light-pad{
   border-radius:0;
   border:2px solid var(--ore-border);
   background:radial-gradient(circle at 50% 50%, #3A3A3A 0%, #2A2A2A 70%, #1E1E1E 100%);
-  box-shadow:inset 3px 3px 0 rgba(0,0,0,.7);
+  box-shadow:none;
 }
+body[data-theme="ore"] .light-pad::before,
+body[data-theme="ore"] .light-pad::after{background:#5A5A5A;}
 body[data-theme="ore"] .light-pad-dot{
   border-radius:0;
-  background:var(--ore-green);
+  background:#FFFFFF;
   border:2px solid var(--ore-border);
-  box-shadow:inset 2px 2px 0 var(--ore-bevel-light), inset -2px -2px 0 var(--ore-bevel-dark);
+  box-shadow:none;
 }
 
-/* === ORE UI: MISC === */
-body[data-theme="ore"] .layer-row{border-radius:0;background:var(--ore-stone-3);}
-body[data-theme="ore"] .layer-row.selected{background:var(--ore-green-dark);border-color:var(--ore-green);color:#7BE05B;}
-body[data-theme="ore"] .layer-row.selected .badge{background:var(--ore-green);color:#FFF;}
-body[data-theme="ore"] .layer-row:hover{background:var(--ore-stone-2);}
-body[data-theme="ore"] .shot{border-radius:0;border:2px solid var(--ore-border);}
-body[data-theme="ore"] .face-slot{border-radius:0;border:2px solid var(--ore-border);background:var(--ore-stone-3);}
-body[data-theme="ore"] .face-preview{border-radius:0;border:2px solid var(--ore-border);}
-body[data-theme="ore"] .face-preview .linked-tag{border-radius:0;border:2px solid var(--ore-green);background:var(--ore-green-dark);color:#7BE05B;}
-body[data-theme="ore"] .pixel-tool{border-radius:0;border:2px solid var(--ore-border);background:var(--ore-stone-1);box-shadow:inset 2px 2px 0 var(--ore-bevel-light), inset -2px -2px 0 var(--ore-bevel-dark);}
-body[data-theme="ore"] .pixel-tool.active{background:var(--ore-green);}
-body[data-theme="ore"] .pixel-brush-btn{border-radius:0;border:2px solid var(--ore-border);background:var(--ore-stone-1);}
-body[data-theme="ore"] .pixel-brush-btn.active{background:var(--ore-green);}
-body[data-theme="ore"] .pixel-size-btn{border-radius:0;border:2px solid var(--ore-border);background:var(--ore-stone-1);font-family:'Minecraft Seven',sans-serif;font-size:10px;}
-body[data-theme="ore"] .pixel-size-btn.active{background:var(--ore-green);}
-body[data-theme="ore"] .asset-card{border-radius:0;border:2px solid var(--ore-border);}
-body[data-theme="ore"] .asset-name{font-family:'Minecraft Seven',sans-serif;font-size:10px;}
-body[data-theme="ore"] .theme-option{border-radius:0;border:2px solid var(--ore-border);background:var(--ore-stone-3);}
-body[data-theme="ore"] .theme-option.selected{border-color:var(--ore-green);background:var(--ore-green-dark);}
-body[data-theme="ore"] .theme-option .to-name{font-family:'Minecraft Seven',sans-serif;font-size:11px;}
+/* --- MISC --- */
+body[data-theme="ore"] .layer-row{
+  border-radius:0;
+  background:var(--panel-2);
+  border:1px solid transparent;
+}
+body[data-theme="ore"] .layer-row:hover{background:var(--ore-btn-bg);border-color:var(--border);}
+body[data-theme="ore"] .layer-row.selected{
+  background:#1E3A1A;
+  border-color:var(--ore-green);
+  color:#FFFFFF;
+}
+body[data-theme="ore"] .layer-row .badge{
+  border-radius:0;
+  background:#1E1E1E;
+  color:var(--text-2);
+  font-family:var(--font-pixel);
+  font-size:8px;
+}
+body[data-theme="ore"] .layer-row.selected .badge{
+  background:var(--ore-green);
+  color:#FFFFFF;
+}
+body[data-theme="ore"] .shot{
+  border-radius:0;
+  border:1px solid var(--border);
+}
+body[data-theme="ore"] .face-slot{
+  border-radius:0;
+  border:1px solid var(--border);
+  background:var(--panel-2);
+}
+body[data-theme="ore"] .face-preview{
+  border-radius:0;
+  border:1px solid var(--border);
+}
+body[data-theme="ore"] .face-preview .linked-tag{
+  border-radius:0;
+  border:1px solid var(--ore-green);
+  background:#1E3A1A;
+  color:var(--ore-green-hover);
+  font-family:var(--font-pixel);
+  font-size:9px;
+}
+body[data-theme="ore"] .pixel-tool{
+  border-radius:0;
+  border:2px solid var(--border);
+  background:var(--panel-2);
+  box-shadow:none;
+}
+body[data-theme="ore"] .pixel-tool:hover{border-color:var(--border-2);color:#FFFFFF;}
+body[data-theme="ore"] .pixel-tool.active{
+  background:var(--ore-green);
+  border-color:var(--ore-green);
+  color:#FFFFFF;
+}
+body[data-theme="ore"] .pixel-brush-btn{
+  border-radius:0;
+  border:1px solid var(--border);
+  background:var(--panel-2);
+}
+body[data-theme="ore"] .pixel-brush-btn:hover{border-color:var(--border-2);}
+body[data-theme="ore"] .pixel-brush-btn.active{
+  background:var(--ore-green);
+  border-color:var(--ore-green);
+}
+body[data-theme="ore"] .pixel-size-btn{
+  border-radius:0;
+  border:1px solid var(--border);
+  background:var(--panel-2);
+  font-family:var(--font-body);
+  font-size:12px;
+  font-weight:600;
+}
+body[data-theme="ore"] .pixel-size-btn.active{
+  background:var(--ore-green);
+  border-color:var(--ore-green);
+  color:#FFFFFF;
+}
+body[data-theme="ore"] .pixel-swatch{
+  border-radius:0;
+  border:2px solid var(--ore-border);
+}
+body[data-theme="ore"] .pixel-pal-btn{
+  border-radius:0;
+}
+body[data-theme="ore"] .asset-card{
+  border-radius:0;
+  border:1px solid var(--border);
+  background:var(--panel-2);
+}
+body[data-theme="ore"] .asset-card:hover{
+  transform:none;
+  border-color:var(--ore-green);
+  box-shadow:none;
+}
+body[data-theme="ore"] .asset-name{
+  font-family:var(--font-body);
+  font-size:12px;
+  color:var(--text-2);
+}
+body[data-theme="ore"] .theme-option{
+  border-radius:0;
+  border:2px solid var(--border);
+  background:var(--panel-2);
+}
+body[data-theme="ore"] .theme-option:hover{
+  transform:none;
+  border-color:var(--border-2);
+}
+body[data-theme="ore"] .theme-option.selected{
+  border-color:var(--ore-green);
+  background:#1E3A1A;
+}
+body[data-theme="ore"] .theme-option .to-name{
+  font-family:var(--font-pixel);
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+}
+body[data-theme="ore"] .theme-option.selected .to-name{color:var(--ore-green-hover);}
+body[data-theme="ore"] .theme-option .to-sub{font-family:var(--font-body);font-size:10px;}
 
-/* === ORE UI: THEME PREVIEW === */
-.theme-preview[data-t="ore"]{background:#1A1A1A;border-color:#1E1E1F}
-.theme-preview[data-t="ore"] .tp-side{background:#2B2B2B;border-right:2px solid #1E1E1F}
-.theme-preview[data-t="ore"] .tp-side-dot{background:#484848}
-.theme-preview[data-t="ore"] .tp-bar{background:#3C8527;box-shadow:0 2px 0 #2A5F1B}
-.theme-preview[data-t="ore"] .tp-block{background:#313131;border:1px solid #1E1E1F;box-shadow:inset 2px 2px 0 rgba(255,255,255,.15)}
+/* --- CHECKBOXES (square, not pill) --- */
+body[data-theme="ore"] .chk input{
+  width:20px;height:20px;
+  border-radius:0;
+  background:#1E1E1E;
+  border:2px solid var(--border);
+}
+body[data-theme="ore"] .chk input::after{
+  display:none;
+}
+body[data-theme="ore"] .chk input:checked{
+  background:var(--ore-green);
+  border-color:var(--ore-green);
+  position:relative;
+}
+body[data-theme="ore"] .chk input:checked::before{
+  content:'✓';
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  color:#FFFFFF;
+  font-size:12px;
+  font-weight:700;
+  line-height:1;
+}
 
+/* --- THEME PREVIEW --- */
+.theme-preview[data-t="ore"]{background:#1A1A1A;border-color:#000}
+.theme-preview[data-t="ore"] .tp-side{background:#232323;border-right:1px solid #3A3A3A}
+.theme-preview[data-t="ore"] .tp-side-dot{background:#4A4A4A}
+.theme-preview[data-t="ore"] .tp-bar{background:#3C8527;border-bottom:2px solid #1E4D14}
+.theme-preview[data-t="ore"] .tp-block{background:#2D2D2D;border:1px solid #3A3A3A}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;margin:0;padding:0}
 body{
